@@ -1,5 +1,5 @@
 <?php
-namespace MediaWiki\Skins\Vector;
+namespace MediaWiki\Skins\Ubuntu;
 
 use MediaWiki\Exception\FatalError;
 
@@ -22,6 +22,12 @@ final class Constants {
 	 */
 	public const SKIN_NAME_LEGACY = 'vector';
 
+	/**
+	 * This is tightly coupled to the ValidSkinNames field in skin.json.
+	 * @var string
+	 */
+	public const SKIN_NAME_UBUNTU = 'ubuntu';
+
 	// These are used to provide different default skin for new users.
 	/**
 	 * @var string
@@ -37,7 +43,7 @@ final class Constants {
 	 * @var string
 	 */
 	public const CONFIG_KEY_DEFAULT_SKIN_VERSION_FOR_NEW_ACCOUNTS =
-		'VectorDefaultSkinVersionForNewAccounts';
+		'UbuntuDefaultSkinVersionForNewAccounts';
 
 	/**
 	 * @var string
@@ -69,12 +75,7 @@ final class Constants {
 	/**
 	 * @var string
 	 */
-	public const FEATURE_LANGUAGE_IN_MAIN_MENU = 'LanguageInMainMenu';
-
-	/**
-	 * @var string
-	 */
-	public const CONFIG_KEY_LANGUAGE_IN_HEADER = 'VectorLanguageInHeader';
+	public const CONFIG_KEY_LANGUAGE_IN_HEADER = 'UbuntuLanguageInHeader';
 
 	/**
 	 * @var string
@@ -129,7 +130,7 @@ final class Constants {
 	/**
 	 * @var string
 	 */
-	public const CONFIG_LANGUAGE_IN_MAIN_PAGE_HEADER = 'VectorLanguageInMainPageHeader';
+	public const CONFIG_LANGUAGE_IN_MAIN_PAGE_HEADER = 'UbuntuLanguageInMainPageHeader';
 
 	/**
 	 * @var string

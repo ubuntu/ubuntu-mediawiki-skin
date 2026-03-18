@@ -60,7 +60,7 @@
 	"vector-toc-collapsible-button-label": "Toggle the table of contents",
 	"vector-site-nav-label": "Site",
 	"vector-main-menu-label": "Main menu",
-	"vector-feature-custom-font-size-exclusion-notice" : "This page always uses small font size",
+	"vector-feature-custom-font-size-exclusion-notice": "This page always uses small font size",
 	"vector-feature-limited-width-exclusion-notice": "The content is as wide as possible for your browser window.",
 	"vector-page-tools-label": "Tools",
 	"vector-page-tools-general-label": "General",
@@ -85,5 +85,7 @@
 	"vector-night-mode-issue-reporting-link-notification": "Report received!",
 	"vector-night-mode-issue-reporting-preload-title": "$1 dark mode error",
 	"vector-night-mode-issue-reporting-preload-content": "<!--\nInstructions\nPlease describe how the dark mode colors are making Wikipedia difficult to read.\nPlease include the section of the article where you found the issue.\n-->\n'''Issue Description'''",
-	"vector-night-mode-beta-tag": "(beta)"
+	"vector-night-mode-beta-tag": "(beta)",
+	"ubuntu-specialversion-name": "Ubuntu",
+	"ubuntu-skin-desc": "Ubuntu skin for MediaWiki, based on Vector 2022."
 }

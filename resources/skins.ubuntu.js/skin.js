@@ -71,10 +71,10 @@ function main( window ) {
 	const appearanceMenuExists = document.querySelectorAll( appearanceMenuSelector ).length > 0;
 	if ( appearanceMenuExists ) {
 		mw.loader.using( [
-			'skins.vector.clientPreferences',
-			'skins.vector.search.codex.styles'
+			'skins.ubuntu.clientPreferences',
+			'skins.ubuntu.search.codex.styles'
 		] ).then( () => {
-			const clientPreferences = require( /** @type {string} */ ( 'skins.vector.clientPreferences' ) );
+			const clientPreferences = require( /** @type {string} */ ( 'skins.ubuntu.clientPreferences' ) );
 			const clientPreferenceConfig = ( require( './clientPreferences.json' ) );
 			// Can be removed once wgVectorNightMode is removed.
 			if ( document.documentElement.classList.contains( 'vector-feature-night-mode-disabled' ) ) {
@@ -145,9 +145,9 @@ if ( document.readyState === 'interactive' || document.readyState === 'complete'
 	} );
 }
 
-// Provider of skins.vector.js module:
+// Provider of skins.ubuntu.js module:
 /**
- * skins.vector.js
+ * skins.ubuntu.js
  *
  * @stable for use inside WikimediaEvents ONLY.
  */

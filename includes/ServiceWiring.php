@@ -23,8 +23,8 @@
  */
 
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Skins\Vector\ConfigHelper;
-use MediaWiki\Skins\Vector\FeatureManagement\FeatureManagerFactory;
+use MediaWiki\Skins\Ubuntu\ConfigHelper;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\FeatureManagerFactory;
 
 // PHP unit does not understand code coverage for this file
 // as the @covers annotation cannot cover a specific file
@@ -33,14 +33,14 @@ use MediaWiki\Skins\Vector\FeatureManagement\FeatureManagerFactory;
 
 /** @phpcs-require-sorted-array */
 return [
-	'Vector.ConfigHelper' => static function ( MediaWikiServices $services ): ConfigHelper {
+	'Ubuntu.ConfigHelper' => static function ( MediaWikiServices $services ): ConfigHelper {
 		return new ConfigHelper(
 			$services->getSpecialPageFactory()
 		);
 	},
-	'Vector.FeatureManagerFactory' => static function ( MediaWikiServices $services ): FeatureManagerFactory {
+	'Ubuntu.FeatureManagerFactory' => static function ( MediaWikiServices $services ): FeatureManagerFactory {
 		return new FeatureManagerFactory(
-			$services->getService( 'Vector.ConfigHelper' ),
+			$services->getService( 'Ubuntu.ConfigHelper' ),
 			$services->getUserOptionsLookup()
 		);
 	},

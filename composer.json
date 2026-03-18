@@ -1,13 +1,12 @@
 {
-	"name": "mediawiki/vector-skin",
+	"name": "ubuntu/mediawiki-ubuntu-skin",
 	"type": "mediawiki-skin",
-	"description": "Modern version of the MonoBook skin",
+	"description": "Ubuntu MediaWiki skin based on Vector 2022",
 	"keywords": [
 		"wiki",
 		"MediaWiki",
 		"skin"
 	],
-	"homepage": "https://www.mediawiki.org/wiki/Skin:Vector",
 	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
@@ -18,10 +17,7 @@
 		}
 	],
 	"support": {
-		"wiki": "https://www.mediawiki.org/wiki/Skin:Vector",
-		"forum": "https://www.mediawiki.org/wiki/Skin_talk:Vector",
-		"source": "http://gerrit.wikimedia.org/g/mediawiki/skins/Vector",
-		"irc": "irc://irc.libera.chat/mediawiki"
+		"source": "https://github.com/ubuntu/ubuntu-mediawiki-skin"
 	},
 	"require": {
 		"composer/installers": ">1.0.12"
@@ -30,7 +26,7 @@
 		"branch-alias": {
 			"dev-main": "1.x-dev"
 		},
-		"installer-name": "Vector"
+		"installer-name": "Ubuntu"
 	},
 	"require-dev": {
 		"mediawiki/mediawiki-codesniffer": "48.0.0",

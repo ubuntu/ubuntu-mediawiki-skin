@@ -1,5 +1,5 @@
 <?php
-namespace MediaWiki\Skins\Vector\Components;
+namespace MediaWiki\Skins\Ubuntu\Components;
 
 /**
  * Component interface for managing Vector-modified components

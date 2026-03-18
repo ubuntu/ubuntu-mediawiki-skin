@@ -1,0 +1,28 @@
+services:
+  db:
+    image: mariadb:10.11
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mediawiki
+      MYSQL_USER: mediawiki
+      MYSQL_PASSWORD: mediawiki
+    volumes:
+      - db-data:/var/lib/mysql
+
+  mediawiki:
+    image: mediawiki:1.44
+    ports:
+      - "8080:80"
+    volumes:
+      # Option 1: direct mount — skin files are served directly from this directory
+      - .:/var/www/html/skins/Ubuntu
+      # Option 2: composer path repository — exposes the skin directory to composer.local.json
+      - .:/ubuntu-skin
+      # Option 2: mount composer.local.json to install skin via composer
+      - ./composer.local.json:/var/www/html/composer.local.json
+      # LocalSettings.php is managed via: make deploy
+    depends_on:
+      - db
+
+volumes:
+  db-data:

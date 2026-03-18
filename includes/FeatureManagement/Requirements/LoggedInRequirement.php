@@ -20,13 +20,13 @@
  * @since 1.35
  */
 
-namespace MediaWiki\Skins\Vector\FeatureManagement\Requirements;
+namespace MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements;
 
-use MediaWiki\Skins\Vector\FeatureManagement\Requirement;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\Requirement;
 use MediaWiki\User\UserIdentity;
 
 /**
- * @package MediaWiki\Skins\Vector\FeatureManagement\Requirements
+ * @package MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements
  * @internal
  */
 class LoggedInRequirement implements Requirement {

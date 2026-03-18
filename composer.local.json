@@ -1,0 +1,14 @@
+{
+	"repositories": [
+		{
+			"type": "path",
+			"url": "/ubuntu-skin",
+			"options": {
+				"symlink": false
+			}
+		}
+	],
+	"require": {
+		"ubuntu/mediawiki-ubuntu-skin": "*"
+	}
+}

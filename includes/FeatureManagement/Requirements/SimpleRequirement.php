@@ -20,9 +20,9 @@
  * @since 1.35
  */
 
-namespace MediaWiki\Skins\Vector\FeatureManagement\Requirements;
+namespace MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements;
 
-use MediaWiki\Skins\Vector\FeatureManagement\Requirement;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\Requirement;
 
 /**
  * NOTE: This API hasn't settled. It may change at any time without warning. Please don't bind to
@@ -30,7 +30,7 @@ use MediaWiki\Skins\Vector\FeatureManagement\Requirement;
  *
  * @unstable
  *
- * @package MediaWiki\Skins\Vector\FeatureManagement\Requirements
+ * @package MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements
  * @internal
  */
 class SimpleRequirement implements Requirement {

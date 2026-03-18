@@ -1,0 +1,587 @@
+/* Apply custom styles only on login or create account pages */
+/*body.special-userlogin, */
+/*body.special-createaccount {*/
+/*    background-color: black;*/
+/*}*/
+
+/*body.special-userlogin #mw-loginform,*/
+/*body.special-createaccount #mw-createaccount-form {*/
+/*    border: 1px solid #ccc;*/
+/*    padding: 2em;*/
+/*    background-color: red;*/
+/*}*/
+
+/* load Ubuntu font */
+
+.mw-body, .mw-body-content, .mw-headline, .mw-heading, .mw-heading1, .mw-heading2, .mw-heading3, .mw-label, .mw-input, .mw-allpages-table-form, .mw-allpages-nav, .mw-page-title-main, h1, h2, h3, h4, h5, h6 {
+	font-family: 'Ubuntu', sans-serif !important;
+}
+ 
+/*remove footer elements*/
+#footer-places-privacy, #footer-places-about, #footer-places-disclaimers { display: none; }
+ 
+/* NOTE: Some CSS below modelled on Arch wiki source */
+
+/* Note, Warning, Tip, Doccan, Info, Inuse templates */
+
+:root {
+	--ubuntu-template-note-background-color: #ddf;
+	--ubuntu-template-note-border-color: #bbd;
+	--ubuntu-template-note-background-color-dark: #17193f;
+	--ubuntu-template-note-border-color-dark: #3c3d61;
+	
+	--ubuntu-template-warning-background-color: #fdd;
+	--ubuntu-template-warning-border-color: #fc7e7e;
+	--ubuntu-template-warning-background-color-dark: #390009;
+	--ubuntu-template-warning-border-color-dark: #5d3033;
+	
+	--ubuntu-template-tip-background-color: #dfd;
+	--ubuntu-template-tip-border-color: #bdb;
+	--ubuntu-template-tip-background-color-dark: #002400;
+	--ubuntu-template-tip-border-color-dark: #003400;
+	
+	--ubuntu-template-doccan-background-color: #F4AA90;
+	--ubuntu-template-doccan-border-color: #000000;
+	--ubuntu-template-doccan-background-color-dark: #ED764D;
+	--ubuntu-template-doccan-border-color-dark: #000000;
+
+	--ubuntu-template-info-background-color: #e7f3ff;
+	--ubuntu-template-info-border-color: #bbd9f7;
+	--ubuntu-template-info-background-color-dark: #0e2a47;
+	--ubuntu-template-info-border-color-dark: #1a4d80;
+
+	--ubuntu-template-inuse-background-color: #fff4e7;
+	--ubuntu-template-inuse-border-color: #f7d9bb;
+	--ubuntu-template-inuse-background-color-dark: #472a0e;
+	--ubuntu-template-inuse-border-color-dark: #804d1a;
+
+	--ubuntu-template-message-background-color: #f9faff;
+	--ubuntu-template-message-border-color: #d7dfe3;
+	--ubuntu-template-message-background-color-dark: #000105;
+	--ubuntu-template-message-border-color-dark: #1b2327;
+}
+
+div.ubuntu-template-box {
+	padding: 0.5em;
+	border: thin solid black;
+	margin: 0.5em 0;
+	overflow: hidden;
+}
+div.ubuntu-template-box.ubuntu-template-box-note { background-color: var(--ubuntu-template-note-background-color); border-color: var(--ubuntu-template-note-border-color); }
+div.ubuntu-template-box.ubuntu-template-box-warning { background-color: var(--ubuntu-template-warning-background-color); border-color: var(--ubuntu-template-warning-border-color); }
+div.ubuntu-template-box.ubuntu-template-box-tip { background-color: var(--ubuntu-template-tip-background-color); border-color: var(--ubuntu-template-tip-border-color); }
+div.ubuntu-template-box.ubuntu-template-box-doccan { background-color: var(--ubuntu-template-doccan-background-color); border-color: var(--ubuntu-template-doccan-border-color); }
+div.ubuntu-template-box.ubuntu-template-box-info { background-color: var(--ubuntu-template-info-background-color); border-color: var(--ubuntu-template-info-border-color); }
+div.ubuntu-template-box.ubuntu-template-box-inuse { background-color: var(--ubuntu-template-inuse-background-color); border-color: var(--ubuntu-template-inuse-border-color); }
+
+/* --- LOGO WORDMARK COLOR LOGIC --- */
+
+/* Default / Manual Light Mode */
+.vector-header-container a.mw-logo .mw-logo-wordmark {
+    color: #ffffff !important; 
+}
+
+/* Manual Dark Mode (Night preference) */
+html.skin-theme-clientpref-night .vector-header-container a.mw-logo .mw-logo-wordmark {
+    color: #000000 !important;
+}
+
+/* OS Preference Dark Mode */
+@media (prefers-color-scheme: dark) {
+    html.skin-theme-clientpref-os .vector-header-container a.mw-logo .mw-logo-wordmark {
+        color: #000000 !important;
+    }
+}
+
+/* --- THEME SPECIFIC OVERRIDES --- */
+
+@media screen {
+	/* Manual Night Theme */
+	html.skin-theme-clientpref-night {
+		--background-color-base: #131416;
+		--background-color-neutral-subtle: #131416;
+	}
+	
+	html.skin-theme-clientpref-night body.skin-vector-2022 {
+		& div.ubuntu-template-box.ubuntu-template-box-note { background-color: var(--ubuntu-template-note-background-color-dark); border-color: var(--ubuntu-template-note-border-color-dark); }
+		& div.ubuntu-template-box.ubuntu-template-box-warning { background-color: var(--ubuntu-template-warning-background-color-dark); border-color: var(--ubuntu-template-warning-border-color-dark); }
+		& div.ubuntu-template-box.ubuntu-template-box-tip { background-color: var(--ubuntu-template-tip-background-color-dark); border-color: var(--ubuntu-template-tip-border-color-dark); }
+		& div.ubuntu-template-box.ubuntu-template-box-doccan { background-color: var(--ubuntu-template-doccan-background-color-dark); border-color: var(--ubuntu-template-doccan-border-color-dark); }
+		& div.ubuntu-template-box.ubuntu-template-box-info { background-color: var(--ubuntu-template-info-background-color-dark); border-color: var(--ubuntu-template-info-border-color-dark); }
+		& div.ubuntu-template-box.ubuntu-template-box-inuse { background-color: var(--ubuntu-template-inuse-background-color-dark); border-color: var(--ubuntu-template-inuse-border-color-dark); }
+		& div.ubuntu-template-message { background-color: var(--ubuntu-template-message-background-color-dark); border-color: var(--ubuntu-template-message-border-color-dark); }
+	}
+
+	/* OS-based Dark Theme */
+	@media (prefers-color-scheme: dark) {
+		html.skin-theme-clientpref-os {
+			--background-color-base: #131416;
+			--background-color-neutral-subtle: #131416;
+		}
+		
+		html.skin-theme-clientpref-os body.skin-vector-2022 {
+			& div.ubuntu-template-box.ubuntu-template-box-note { background-color: var(--ubuntu-template-note-background-color-dark); border-color: var(--ubuntu-template-note-border-color-dark); }
+			& div.ubuntu-template-box.ubuntu-template-box-warning { background-color: var(--ubuntu-template-warning-background-color-dark); border-color: var(--ubuntu-template-warning-border-color-dark); }
+			& div.ubuntu-template-box.ubuntu-template-box-tip { background-color: var(--ubuntu-template-tip-background-color-dark); border-color: var(--ubuntu-template-tip-border-color-dark); }
+			& div.ubuntu-template-box.ubuntu-template-box-doccan { background-color: var(--ubuntu-template-doccan-background-color-dark); border-color: var(--ubuntu-template-doccan-border-color-dark); }
+			& div.ubuntu-template-box.ubuntu-template-box-info { background-color: var(--ubuntu-template-info-background-color-dark); border-color: var(--ubuntu-template-info-border-color-dark); }
+			& div.ubuntu-template-box.ubuntu-template-box-inuse { background-color: var(--ubuntu-template-inuse-background-color-dark); border-color: var(--ubuntu-template-inuse-border-color-dark); }
+			& div.ubuntu-template-message { background-color: var(--ubuntu-template-message-background-color-dark); border-color: var(--ubuntu-template-message-border-color-dark); }
+		}
+	}
+}
+
+/* Status templates */
+
+div.ubuntu-template-message {
+	position: relative;
+	overflow: hidden; 
+	min-height: 48px;
+	margin: 0.5em 0;
+	background-color: var(--ubuntu-template-message-background-color);
+	border: 1px solid var(--ubuntu-template-message-border-color);
+	padding-left: 74px;
+	padding-right: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	
+	& img {
+		background-color: inherit;
+	}
+}
+
+div.ubuntu-template-message > p > span[typeof="mw:File"] {
+	display: block;
+	position: absolute;
+	top: 0.5em;
+}
+div.ubuntu-template-message > p > span[typeof="mw:File"]:first-of-type {
+	left: 13px; 
+}
+div.ubuntu-template-message > div {
+	font-size: 90%;
+}
+
+/* Related articles templates */
+
+div.ubuntu-template-meta-related-articles {
+	float: right;
+	clear: right;
+	width: 25%;
+	margin: 0 0 0.5em 0.5em;
+}
+div.ubuntu-template-meta-related-articles > p {
+	background: #333;
+	color: white;
+	padding: 0.2em;
+	border-bottom:5px #08c solid;
+	margin:0;
+	text-align:center;
+	font-weight:bold;
+}
+div.ubuntu-template-meta-related-articles > ul {
+	list-style-type: none;
+	list-style-image: none;
+	margin: 0;
+	padding: 0.3em;
+}
+div.ubuntu-template-meta-related-articles > ul > li {
+	padding: 0.4em 0;
+	line-height: 1;
+}
+
+@media screen and ( min-width: 721px ) {
+	.client-darkmode div.ubuntu-template-meta-related-articles > p {
+		background: #ccc;
+		color: black;
+	}
+}
+
+/* Responsive Related Articles */
+
+@media screen and ( max-width: 720px ) {
+	div.ubuntu-template-meta-related-articles {
+		float: initial;
+		clear: initial;
+		width: initial;
+		border: 1px solid var(--border-color-base, #a2a9b1);
+		background-color: var(--background-color-neutral-subtle, #f8f9fa);
+		padding: 5px;
+		margin: 1em 0;
+		margin-top: 0; 
+		clear: both;
+	}
+	div.ubuntu-template-meta-related-articles > p {
+		background: initial;
+		color: var(--text-color);
+		padding: 0;
+		border: none;
+		margin: 0;
+		text-align: left;
+		font-weight: normal;
+		display: inline;
+	}
+	div.ubuntu-template-meta-related-articles > p::after { content: ":"; }
+	div.ubuntu-template-meta-related-articles > ul { margin: 0; padding: 0; display: inline; }
+	div.ubuntu-template-meta-related-articles > ul > li {
+		padding: 0;
+		line-height: initial;
+		display: inline;
+		white-space: nowrap;
+		padding: 0 0.5em;
+		border-left: 1px solid #a2a9b1;
+	}
+	div.ubuntu-template-meta-related-articles > ul > li:first-child { padding-left: 0.25em; border-left: 0; }
+	div.ubuntu-template-meta-related-articles > ul > li a { font-weight: normal !important; }
+}
+
+/* Hardware table */
+@media ( min-width: 721px ) {
+	.ubuntu-table-laptop { float: right; margin-left: 1em; }
+}
+
+/* Main Page columns */
+@media screen and ( min-width: 721px ) {
+	div.ubuntu-main-page-columns { column-count: 2; }
+	div.ubuntu-main-page-columns > * {
+		page-break-inside: avoid;
+		display: inline-block;
+		width: 100%;
+	}
+}
+
+/* Syntax highlighting */
+#content .CodeMirror pre { line-height: 1.5em; }
+#content pre.cm-mw-section-1, #content pre.cm-mw-section-2 { line-height: 1.5em; font-size: inherit; font-weight: bold; }
+#content .cm-mw-pagename { text-decoration: unset; }
+
+/* DarkMode Extension Workaround */
+@media screen {
+	html.client-darkmode { background-color: var(--ubuntu-body-background-color, #f6f9fc); }
+}
+
+@font-face { font-family: 'Ubuntu'; }
+
+/* Timeless Skin Fix */
+@media screen { dd { margin-left: 1.6em; } }
+
+/* END Migrated from global styles */
+  
+  /* Dark grey background for the entire header */
+  .vector-header-container {
+      background-color: #333;
+      gap: 0 !important;
+  }
+
+/*Colour area around header container*/
+  .vector-header {
+      background-color: #333 !important;
+      gap: 0 !important;
+  }
+
+  /* Ensure all header sections have consistent height and styling */
+  .vector-header-start,
+  .vector-header-end {
+      background-color: #333 !important;
+      min-height: 50px !important;
+      display: flex !important;
+      align-items: center !important;
+      margin: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      border: none !important;
+  }
+
+  /* Fix logo area for rectangular (tall) logo - reduced padding */
+  .vector-header-start .vector-logo {
+      display: flex !important;
+      align-items: center !important;
+      height: 50px !important;
+      padding: 2px 12px !important;
+  }
+  
+  /*TODO: wiki title */
+    .vector-header-start .mw-logo-wordmark {
+    /*position: relative;*/
+    /*top: 10px;*/
+    font-weight: 300 !important; /* Light */
+    /*font-size: 28px !important;*/
+  }
+
+  /* Style the logo image - larger to reduce gap */
+  .mw-logo-icon {
+      max-height: 46px !important;
+      width: auto !important;
+      height: auto !important;
+      /*remove gap at top*/
+      padding-top: 0px !important;
+      position: relative !important;
+      margin-top: -20px !important;
+  }
+  /* Make ends of sticky header same colour as background */
+  .vector-sticky-header-container {
+  	background-color: var(--background-color-neutral-subtle) !important;
+  }
+
+  /* Username and dropdown text - use #919191 for visibility on both backgrounds */
+  .vector-user-links > .mw-list-item > a,
+  .vector-user-links > .mw-list-item > .vector-user-menu-logged-in > a,
+  .vector-dropdown-content a,
+  .vector-menu-content a,
+  .vector-menu-content-list a,
+  .vector-user-menu .vector-menu-content a {
+      color: #919191 !important;
+  }
+  
+/*customise all icons*/
+:root {
+  --vector-icon-custom-color: #919191;
+  --vector-icon-hover-color: #cccccc; /* Add hover color variable */
+}
+
+/* Reduce padding around icons on hover */
+
+.vector-user-links .cdx-button--icon-only,
+#pt-watchlist-2 .cdx-button--icon-only {
+    padding: 4px !important;
+    min-width: auto !important;
+    min-height: auto !important;
+}
+
+/* Target the search toggle specifically */
+a.search-toggle.cdx-button--icon-only,
+a.search-toggle.cdx-button--icon-only:hover {
+    padding: 2px !important;
+    min-width: auto !important;
+    min-height: auto !important;
+    margin-left: 4px !important; /* Adjust this value as needed */
+
+}
+
+/* Adjust the hover background size */
+.cdx-button--icon-only:hover,
+.cdx-button.cdx-button--fake-button--enabled:hover {
+    padding: 4px !important;
+}
+
+.vector-icon.mw-ui-icon-wikimedia-bell {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-tray {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-labFlask {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-language {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-sandbox {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-listBullet {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-close {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-ellipsis {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-heart {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-logIn {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-logOut {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-search {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-settings {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-menu {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-imageGallery {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-star {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-halfStar {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-unStar {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-expand {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-userAdd {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-userAvatar {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-userContributions {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-userGroup {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-userTalk {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-userTemporary {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-watchlist {
+    background: var(--vector-icon-custom-color, #919191);
+}
+
+/* This is needed to fix deviant behaviour of the search and watchlist icons */
+.cdx-button:enabled.cdx-button--weight-quiet:hover,
+.cdx-button.cdx-button--fake-button--enabled.cdx-button--weight-quiet:hover {
+    mix-blend-mode: normal !important;
+}
+
+.vector-icon.mw-ui-icon-wikimedia-speechBubbleAdd {
+    background: var(--vector-icon-custom-color, black);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-speechBubbles {
+    background: var(--vector-icon-custom-color, black);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-article {
+    background: var(--vector-icon-custom-color, black);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-history {
+    background: var(--vector-icon-custom-color, black);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-wikiText {
+    background: var(--vector-icon-custom-color, black);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-appearance {
+    background: var(--vector-icon-custom-color, black);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-edit {
+    background: var(--vector-icon-custom-color, black);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-editLock {
+    background: var(--vector-icon-custom-color, black);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-exitFullscreen {
+    background: var(--vector-icon-custom-color, black);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-fullScreen {
+    background: var(--vector-icon-custom-color, black);
+}
+  
+  /*NOTE: trying different approach to icons*/
+/*  .vector-icon {*/
+/*    background: #ffffff !important;*/
+/*}*/
+
+/*a:hover .vector-icon, button:hover .vector-icon {*/
+/*    background: pink !important;*/
+/*}*/
+  
+
+  /* Style icons with light grey color #d0d0d0 */
+  /*.vector-header-container .vector-icon,*/
+  /*.vector-user-links .vector-icon,*/
+  /*.vector-page-tools .vector-icon {*/
+      /*opacity: 1 !important;*/
+      /*make dropdown list items readable*/
+  /*    filter: brightness(0) saturate(100%) invert(87%) sepia(0%) saturate(0%) hue-rotate(166deg) brightness(92%) contrast(89%) !important;*/
+  /*}*/
+
+  /* Icon hover state - ONLY for navbar icon items */
+  /*.vector-user-links .mw-list-item:has(.vector-icon):hover,*/
+  /*.vector-page-tools .mw-list-item:has(.vector-icon):hover {*/
+  /*    background-color: #e9e9e9 !important;*/
+      /*border-radius: 3px !important;*/
+  /*}*/
+
+  /* Make icons darker on hover */
+  /*.vector-user-links .mw-list-item:hover .vector-icon,*/
+  /*.vector-page-tools .mw-list-item:hover .vector-icon {*/
+  /*    filter: brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(0%) hue-rotate(201deg) brightness(74%) contrast(89%) !important;*/
+  /*}*/
+
+  /* Make main menu hover text darker */
+  .vector-main-menu a:hover {
+      color: #666 !important;
+  }
+
+  /* Style the search box */
+  .vector-search-box-input {
+      background-color: #3d3d3d !important;
+      border-color: #4d4d4d !important;
+      color: #ffffff !important;
+      height: 32px !important;
+  }
+
+  .vector-search-box-vue {
+      display: flex !important;
+      align-items: center !important;
+  }
+  
+  /*remove duplicate search icon*/
+  .cdx-button.vector-sticky-header-search-toggle {
+    display: none;
+  }
+  
+  /*fix color of dropdown icon in personal settings menu*/
+  @supports (-webkit-mask-image:none) or (mask-image:none) {
+    .vector-user-menu-logged-in .vector-dropdown-label::after {
+        background-color: var(--vector-icon-custom-color);
+    }
+}
+
+/* Ubuntu Mono for code elements */
+code,
+pre,
+kbd,
+.mw-code,
+.mw-highlight,
+.mw-highlight pre {
+font-family: 'Ubuntu Mono', monospace;
+}

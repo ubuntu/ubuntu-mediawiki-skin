@@ -1,26 +1,26 @@
 <?php
 
-namespace MediaWiki\Skins\Vector;
+namespace MediaWiki\Skins\Ubuntu;
 
 use MediaWiki\Html\Html;
 use MediaWiki\Languages\LanguageConverterFactory;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Skin\SkinMustache;
 use MediaWiki\Skin\SkinTemplate;
-use MediaWiki\Skins\Vector\Components\VectorComponentAppearance;
-use MediaWiki\Skins\Vector\Components\VectorComponentButton;
-use MediaWiki\Skins\Vector\Components\VectorComponentDropdown;
-use MediaWiki\Skins\Vector\Components\VectorComponentLanguageDropdown;
-use MediaWiki\Skins\Vector\Components\VectorComponentMainMenu;
-use MediaWiki\Skins\Vector\Components\VectorComponentPageTools;
-use MediaWiki\Skins\Vector\Components\VectorComponentPinnableContainer;
-use MediaWiki\Skins\Vector\Components\VectorComponentSearchBox;
-use MediaWiki\Skins\Vector\Components\VectorComponentStickyHeader;
-use MediaWiki\Skins\Vector\Components\VectorComponentTableOfContents;
-use MediaWiki\Skins\Vector\Components\VectorComponentUserLinks;
-use MediaWiki\Skins\Vector\Components\VectorComponentVariants;
-use MediaWiki\Skins\Vector\FeatureManagement\FeatureManager;
-use MediaWiki\Skins\Vector\FeatureManagement\FeatureManagerFactory;
+use MediaWiki\Skins\Ubuntu\Components\VectorComponentAppearance;
+use MediaWiki\Skins\Ubuntu\Components\VectorComponentButton;
+use MediaWiki\Skins\Ubuntu\Components\VectorComponentDropdown;
+use MediaWiki\Skins\Ubuntu\Components\VectorComponentLanguageDropdown;
+use MediaWiki\Skins\Ubuntu\Components\VectorComponentMainMenu;
+use MediaWiki\Skins\Ubuntu\Components\VectorComponentPageTools;
+use MediaWiki\Skins\Ubuntu\Components\VectorComponentPinnableContainer;
+use MediaWiki\Skins\Ubuntu\Components\VectorComponentSearchBox;
+use MediaWiki\Skins\Ubuntu\Components\VectorComponentStickyHeader;
+use MediaWiki\Skins\Ubuntu\Components\VectorComponentTableOfContents;
+use MediaWiki\Skins\Ubuntu\Components\VectorComponentUserLinks;
+use MediaWiki\Skins\Ubuntu\Components\VectorComponentVariants;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\FeatureManager;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\FeatureManagerFactory;
 use MobileContext;
 use RuntimeException;
 
@@ -29,7 +29,7 @@ use RuntimeException;
  * @package Vector
  * @internal
  */
-class SkinVector22 extends SkinMustache {
+class SkinUbuntu extends SkinMustache {
 	private const STICKY_HEADER_ENABLED_CLASS = 'vector-sticky-header-enabled';
 	/** @var null|array for caching purposes */
 	private $languages;
@@ -77,7 +77,7 @@ class SkinVector22 extends SkinMustache {
 	 */
 	public function isResponsive() {
 		// Check it's enabled by user preference and configuration
-		$responsive = parent::isResponsive() && $this->getConfig()->get( 'VectorResponsive' );
+		$responsive = parent::isResponsive() && $this->getConfig()->get( 'UbuntuResponsive' );
 		// For historic reasons, the viewport is added when Vector is loaded on the mobile
 		// domain. This is only possible for 3rd parties or by useskin parameter as there is
 		// no preference for changing mobile skin. Only need to check if $responsive is falsey.
@@ -244,7 +244,10 @@ class SkinVector22 extends SkinMustache {
 	private function mergeViewOverflowIntoActions( array $data ): array {
 		$portlets = $data['data-portlets'];
 		$actions = $portlets['data-actions'];
-		$overflow = $portlets['data-views-overflow'];
+		$overflow = $portlets['data-views-overflow'] ?? null;
+		if ( $overflow === null ) {
+			return $data;
+		}
 		// if the views overflow menu is not empty, then signal that the more menu despite
 		// being initially empty now has collapsible items.
 		if ( !$overflow['is-empty'] ) {
@@ -337,7 +340,7 @@ class SkinVector22 extends SkinMustache {
 		$pageToolsMenu = [];
 		self::extractPageToolsFromSidebar( $sidebar, $pageToolsMenu );
 
-		$hasAddTopicButton = $config->get( 'VectorPromoteAddTopic' ) &&
+		$hasAddTopicButton = $config->get( 'UbuntuPromoteAddTopic' ) &&
 			$this->removeAddTopicButton( $parentData );
 
 		$langButtonClass = $langData['class'] ?? '';

@@ -20,14 +20,14 @@
  * @since 1.35
  */
 
-namespace MediaWiki\Skins\Vector\FeatureManagement\Requirements;
+namespace MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements;
 
 use MediaWiki\Config\Config;
-use MediaWiki\Skins\Vector\FeatureManagement\Requirement;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\Requirement;
 use MediaWiki\User\UserIdentity;
 
 /**
- * @package MediaWiki\Skins\Vector\FeatureManagement\Requirements
+ * @package MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements
  * @internal
  */
 class ABRequirement implements Requirement {
@@ -65,7 +65,7 @@ class ABRequirement implements Requirement {
 	 */
 	public function isMet(): bool {
 		// Get the experiment configuration from the config object.
-		$experiment = $this->config->get( 'VectorWebABTestEnrollment' );
+		$experiment = $this->config->get( 'UbuntuWebABTestEnrollment' );
 
 		// Use the local user ID directly
 		$id = $this->user->getId();

@@ -20,12 +20,12 @@
  * @since 1.35
  */
 
-namespace MediaWiki\Skins\Vector\FeatureManagement;
+namespace MediaWiki\Skins\Ubuntu\FeatureManagement;
 
 use MediaWiki\Context\IContextSource;
-use MediaWiki\Skins\Vector\ConfigHelper;
-use MediaWiki\Skins\Vector\Constants;
-use MediaWiki\Skins\Vector\FeatureManagement\Requirements\SimpleRequirement;
+use MediaWiki\Skins\Ubuntu\ConfigHelper;
+use MediaWiki\Skins\Ubuntu\Constants;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements\SimpleRequirement;
 use MediaWiki\User\Options\UserOptionsLookup;
 use RuntimeException;
 use Wikimedia\Assert\Assert;
@@ -38,7 +38,7 @@ use Wikimedia\Assert\Assert;
  *
  * @unstable
  *
- * @package MediaWiki\Skins\Vector\FeatureManagement
+ * @package MediaWiki\Skins\Ubuntu\FeatureManagement
  * @internal
  * @final
  */
@@ -180,7 +180,7 @@ class FeatureManager {
 				// It persists for all users.
 				case CONSTANTS::FEATURE_FONT_SIZE:
 					if ( $this->configHelper->shouldDisable(
-						$config->get( 'VectorFontSizeConfigurableOptions' ), $request, $title
+						$config->get( 'UbuntuFontSizeConfigurableOptions' ), $request, $title
 					) ) {
 						return $prefix . 'clientpref--excluded';
 					}
@@ -192,7 +192,7 @@ class FeatureManager {
 				case CONSTANTS::PREF_NIGHT_MODE:
 					// if night mode is disabled for the page, add the exclude class instead and return early
 					if ( $this->configHelper->shouldDisable(
-						$config->get( 'VectorNightModeOptions' ),
+						$config->get( 'UbuntuNightModeOptions' ),
 						$request,
 						$title
 					) ) {
