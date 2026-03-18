@@ -1,5 +1,5 @@
 {
-	"name": "Vector",
+	"name": "Ubuntu",
 	"version": "1.0.0",
 	"author": [
 		"[https://www.mediawiki.org/wiki/Readers/Web/Team Readers Web Team]",
@@ -15,34 +15,34 @@
 		"Stephen Niedzielski",
 		"Volker E."
 	],
-	"url": "https://www.mediawiki.org/wiki/Skin:Vector",
-	"descriptionmsg": "vector-skin-desc",
-	"namemsg": "vector-specialversion-name",
+	"url": "https://github.com/ubuntu/ubuntu-mediawiki-skin",
+	"descriptionmsg": "ubuntu-skin-desc",
+	"namemsg": "ubuntu-specialversion-name",
 	"license-name": "GPL-2.0-or-later",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">= 1.46"
+		"MediaWiki": ">= 1.44"
 	},
 	"attributes": {
 		"DarkMode": {
 			"Disabled": [
-				"vector-2022"
+				"ubuntu"
 			]
 		}
 	},
 	"ValidSkinNames": {
-		"vector-2022": {
-			"class": "MediaWiki\\Skins\\Vector\\SkinVector22",
+		"ubuntu": {
+			"class": "MediaWiki\\Skins\\Ubuntu\\SkinUbuntu",
 			"services": [
 				"LanguageConverterFactory",
-				"Vector.FeatureManagerFactory"
+				"Ubuntu.FeatureManagerFactory"
 			],
 			"optional_services": [
 				"MobileFrontend.Context"
 			],
 			"args": [
 				{
-					"name": "vector-2022",
+					"name": "ubuntu",
 					"wrapSiteNotice": true,
 					"templateDirectory": "includes/templates",
 					"template": "skin",
@@ -56,8 +56,8 @@
 					},
 					"bodyClasses": [
 						"skin--responsive",
-						"skin-vector",
-						"skin-vector-search-vue"
+						"skin-ubuntu",
+						"skin-ubuntu-search-vue"
 					],
 					"clientPrefEnabled": true,
 					"menus": [
@@ -71,12 +71,12 @@
 						"associated-pages"
 					],
 					"scripts": [
-						"skins.vector.js"
+						"skins.ubuntu.js"
 					],
 					"styles": [
-						"skins.vector.search.codex.styles",
-						"skins.vector.styles",
-						"skins.vector.icons"
+						"skins.ubuntu.search.codex.styles",
+						"skins.ubuntu.styles",
+						"skins.ubuntu.icons"
 					],
 					"messages": [
 						"tooltip-p-logo",
@@ -107,114 +107,57 @@
 					]
 				}
 			]
-		},
-		"vector": {
-			"class": "MediaWiki\\Skins\\Vector\\SkinVectorLegacy",
-			"services": [
-				"LanguageConverterFactory"
-			],
-			"args": [
-				{
-					"name": "vector",
-					"wrapSiteNotice": true,
-					"template": "skin-legacy",
-					"clientPrefEnabled": true,
-					"templateDirectory": "includes/templates",
-					"responsive": false,
-					"link": {
-						"text-wrapper": {
-							"tag": "span"
-						}
-					},
-					"bodyClasses": [
-						"skin-vector-legacy"
-					],
-					"menus": [
-						"user-interface-preferences",
-						"user-page",
-						"user-menu",
-						"notifications",
-						"views",
-						"actions",
-						"variants",
-						"associated-pages"
-					],
-					"scripts": [
-						"skins.vector.legacy.js"
-					],
-					"styles": [
-						"skins.vector.styles.legacy"
-					],
-					"messages": [
-						"tooltip-p-logo",
-						"navigation-heading",
-						"vector-action-toggle-sidebar",
-						"vector-main-menu-tooltip",
-						"vector-jumptonavigation",
-						"vector-jumptosearch",
-						"vector-jumptocontent",
-						"search",
-						"searchbutton",
-						"searcharticle",
-						"searchsuggest-search",
-						"sitesubtitle",
-						"sitetitle",
-						"tagline"
-					]
-				}
-			]
 		}
 	},
 	"SkinLessImportPaths": {
-		"vector-2022": "resources/mediawiki.less/vector-2022",
-		"vector": "resources/mediawiki.less/vector"
+		"ubuntu": "resources/mediawiki.less/vector-2022"
 	},
 	"MessagesDirs": {
-		"Vector": [
+		"Ubuntu": [
 			"i18n"
 		]
 	},
 	"AutoloadNamespaces": {
-		"MediaWiki\\Skins\\Vector\\": "includes/"
+		"MediaWiki\\Skins\\Ubuntu\\": "includes/"
 	},
 	"TestAutoloadNamespaces": {
-		"MediaWiki\\Skins\\Vector\\": "includes/",
-		"MediaWiki\\Skins\\Vector\\Tests\\": "tests/phpunit/"
+		"MediaWiki\\Skins\\Ubuntu\\": "includes/",
+		"MediaWiki\\Skins\\Ubuntu\\Tests\\": "tests/phpunit/"
 	},
 	"DefaultUserOptions": {
 		"vector-limited-width": 1,
-		"vector-page-tools-pinned": 1,
-		"vector-main-menu-pinned": 1,
+		"vector-page-tools-pinned": 0,
+		"vector-main-menu-pinned": 0,
 		"vector-toc-pinned": 1,
-		"vector-appearance-pinned": 1,
+		"vector-appearance-pinned": 0,
 		"vector-font-size": 0,
 		"vector-theme": "day"
 	},
 	"HookHandlers": {
-		"VectorCentralAuthHooks": {
-			"class": "MediaWiki\\Skins\\Vector\\CentralAuthHooks",
+		"UbuntuCentralAuthHooks": {
+			"class": "MediaWiki\\Skins\\Ubuntu\\CentralAuthHooks",
 			"services": [
 				"UserOptionsLookup"
 			]
 		},
-		"VectorHooks": {
-			"class": "MediaWiki\\Skins\\Vector\\Hooks",
+		"UbuntuHooks": {
+			"class": "MediaWiki\\Skins\\Ubuntu\\Hooks",
 			"services": [
 				"MainConfig",
 				"UserOptionsManager",
-				"Vector.FeatureManagerFactory"
+				"Ubuntu.FeatureManagerFactory"
 			]
 		}
 	},
 	"Hooks": {
-		"CentralAuthIsUIReloadRecommended": "VectorCentralAuthHooks",
-		"GetPreferences": "VectorHooks",
-		"LocalUserCreated": "VectorHooks",
-		"SkinPageReadyConfig": "VectorHooks"
+		"CentralAuthIsUIReloadRecommended": "UbuntuCentralAuthHooks",
+		"GetPreferences": "UbuntuHooks",
+		"LocalUserCreated": "UbuntuHooks",
+		"SkinPageReadyConfig": "UbuntuHooks"
 	},
-	"@note": "When modifying skins.vector.styles definition, make sure the installer still works",
+	"@note": "When modifying skins.ubuntu.styles definition, make sure the installer still works",
 	"ResourceModules": {
-		"skins.vector.search.codex.styles": {
+		"skins.ubuntu.search.codex.styles": {
 			"class": "MediaWiki\\ResourceLoader\\CodexModule",
 			"codexStyleOnly": true,
 			"codexComponents": [
@@ -224,23 +167,23 @@
 				"CdxMessage"
 			]
 		},
-		"skins.vector.search": {
+		"skins.ubuntu.search": {
 			"dependencies": [
 				"web2017-polyfills",
 				"mediawiki.util",
 				"mediawiki.skinning.typeaheadSearch"
 			],
 			"packageFiles": [
-				"resources/skins.vector.search/skins.vector.search.js",
+				"resources/skins.ubuntu.search/skins.ubuntu.search.js",
 				{
-					"name": "resources/skins.vector.search/searchConfig.json",
+					"name": "resources/skins.ubuntu.search/searchConfig.json",
 					"config": [
-						"VectorTypeahead"
+						"UbuntuTypeahead"
 					]
 				}
 			]
 		},
-		"skins.vector.styles.legacy": {
+		"skins.ubuntu.styles.legacy": {
 			"class": "MediaWiki\\ResourceLoader\\SkinModule",
 			"features": {
 				"normalize": true,
@@ -256,10 +199,10 @@
 				"i18n-headings": true
 			},
 			"styles": [
-				"resources/skins.vector.styles.legacy/skin-legacy.less"
+				"resources/skins.ubuntu.styles.legacy/skin-legacy.less"
 			]
 		},
-		"skins.vector.styles": {
+		"skins.ubuntu.styles": {
 			"class": "MediaWiki\\ResourceLoader\\SkinModule",
 			"features": {
 				"normalize": true,
@@ -281,8 +224,10 @@
 				"toc": false
 			},
 			"styles": [
-				"resources/skins.vector.styles/CSSCustomProperties.less",
-				"resources/skins.vector.styles/skin.less"
+				"resources/skins.ubuntu.styles/CSSCustomProperties.less",
+				"resources/skins.ubuntu.styles/skin.less",
+				"resources/skins.ubuntu.styles/ubuntu-fonts.css",
+				"resources/skins.ubuntu.styles/ubuntu-custom.css"
 			],
 			"lessMessages": [
 				"parentheses-start",
@@ -291,7 +236,7 @@
 				"brackets-end"
 			]
 		},
-		"skins.vector.icons.js": {
+		"skins.ubuntu.icons.js": {
 			"selectorWithVariant": ".vector-icon.mw-ui-icon-wikimedia-{name}-{variant}",
 			"selectorWithoutVariant": ".vector-icon.mw-ui-icon-wikimedia-{name}",
 			"useDataURI": false,
@@ -311,7 +256,7 @@
 				"appearance"
 			]
 		},
-		"skins.vector.icons": {
+		"skins.ubuntu.icons": {
 			"selectorWithVariant": ".vector-icon.mw-ui-icon-wikimedia-{name}-{variant}",
 			"selectorWithoutVariant": ".vector-icon.mw-ui-icon-wikimedia-{name}",
 			"useDataURI": false,
@@ -346,9 +291,9 @@
 				"close"
 			]
 		},
-		"skins.vector.clientPreferences": {
+		"skins.ubuntu.clientPreferences": {
 			"packageFiles": [
-				"resources/skins.vector.clientPreferences/clientPreferences.js"
+				"resources/skins.ubuntu.clientPreferences/clientPreferences.js"
 			],
 			"messages": [
 				"skin-theme-name",
@@ -378,65 +323,65 @@
 				"mediawiki.user"
 			],
 			"styles": [
-				"resources/skins.vector.clientPreferences/clientPreferences.less"
+				"resources/skins.ubuntu.clientPreferences/clientPreferences.less"
 			]
 		},
-		"skins.vector.js": {
+		"skins.ubuntu.js": {
 			"styles": [
-				"resources/skins.vector.js/index.less"
+				"resources/skins.ubuntu.js/index.less"
 			],
 			"packageFiles": [
-				"resources/skins.vector.js/skin.js",
-				"resources/skins.vector.js/setupIntersectionObservers.js",
-				"resources/skins.vector.js/searchToggle.js",
-				"resources/skins.vector.js/stickyHeader.js",
-				"resources/skins.vector.js/scrollObserver.js",
-				"resources/skins.vector.js/tableOfContents.js",
-				"resources/skins.vector.js/sectionObserver.js",
-				"resources/skins.vector.js/deferUntilFrame.js",
-				"resources/skins.vector.js/pinnableElement.js",
-				"resources/skins.vector.js/userPreferences.js",
-				"resources/skins.vector.js/features.js",
-				"resources/skins.vector.js/popupNotification.js",
-				"resources/skins.vector.js/clientPreferences.json",
+				"resources/skins.ubuntu.js/skin.js",
+				"resources/skins.ubuntu.js/setupIntersectionObservers.js",
+				"resources/skins.ubuntu.js/searchToggle.js",
+				"resources/skins.ubuntu.js/stickyHeader.js",
+				"resources/skins.ubuntu.js/scrollObserver.js",
+				"resources/skins.ubuntu.js/tableOfContents.js",
+				"resources/skins.ubuntu.js/sectionObserver.js",
+				"resources/skins.ubuntu.js/deferUntilFrame.js",
+				"resources/skins.ubuntu.js/pinnableElement.js",
+				"resources/skins.ubuntu.js/userPreferences.js",
+				"resources/skins.ubuntu.js/features.js",
+				"resources/skins.ubuntu.js/popupNotification.js",
+				"resources/skins.ubuntu.js/clientPreferences.json",
 				{
-					"name": "resources/skins.vector.js/config.json",
+					"name": "resources/skins.ubuntu.js/config.json",
 					"config": [
-						"VectorWrapTablesTemporary"
+						"UbuntuWrapTablesTemporary"
 					]
 				},
 				{
-					"name": "resources/skins.vector.js/tableOfContentsConfig.json",
+					"name": "resources/skins.ubuntu.js/tableOfContentsConfig.json",
 					"config": [
-						"VectorTableOfContentsCollapseAtCount"
+						"UbuntuTableOfContentsCollapseAtCount"
 					]
 				},
 				{
-					"name": "resources/skins.vector.js/templates/TableOfContents__list.mustache",
+					"name": "resources/skins.ubuntu.js/templates/TableOfContents__list.mustache",
 					"file": "includes/templates/TableOfContents__list.mustache",
 					"type": "text"
 				},
 				{
-					"name": "resources/skins.vector.js/templates/TableOfContents__line.mustache",
+					"name": "resources/skins.ubuntu.js/templates/TableOfContents__line.mustache",
 					"file": "includes/templates/TableOfContents__line.mustache",
 					"type": "text"
 				},
-				"resources/skins.vector.js/watchstar.js",
-				"resources/skins.vector.js/portlets.js",
-				"resources/skins.vector.js/dropdownMenus.js",
-				"resources/skins.vector.js/tables.js",
-				"resources/skins.vector.js/languageButton.js",
-				"resources/skins.vector.js/menuTabs.js",
-				"resources/skins.vector.js/disableNightModeIfGadget.js"
+				"resources/skins.ubuntu.js/watchstar.js",
+				"resources/skins.ubuntu.js/portlets.js",
+				"resources/skins.ubuntu.js/dropdownMenus.js",
+				"resources/skins.ubuntu.js/tables.js",
+				"resources/skins.ubuntu.js/languageButton.js",
+				"resources/skins.ubuntu.js/menuTabs.js",
+				"resources/skins.ubuntu.js/disableNightModeIfGadget.js"
 			],
 			"dependencies": [
-				"skins.vector.clientPreferences",
+				"skins.ubuntu.clientPreferences",
 				"mediawiki.user",
 				"mediawiki.page.watch.ajax",
 				"mediawiki.storage",
 				"mediawiki.cookie",
 				"mediawiki.experiments",
-				"skins.vector.icons.js",
+				"skins.ubuntu.icons.js",
 				"mediawiki.util",
 				"mediawiki.jqueryMsg",
 				"web2017-polyfills"
@@ -454,15 +399,15 @@
 				"vector-night-mode-gadget-warning"
 			]
 		},
-		"skins.vector.legacy.js": {
+		"skins.ubuntu.legacy.js": {
 			"styles": [
-				"resources/skins.vector.legacy.js/index.less"
+				"resources/skins.ubuntu.legacy.js/index.less"
 			],
 			"packageFiles": [
-				"resources/skins.vector.legacy.js/skin-legacy.js",
-				"resources/skins.vector.legacy.js/portlets.js",
-				"resources/skins.vector.legacy.js/collapsibleTabs.js",
-				"resources/skins.vector.legacy.js/vector.js"
+				"resources/skins.ubuntu.legacy.js/skin-legacy.js",
+				"resources/skins.ubuntu.legacy.js/portlets.js",
+				"resources/skins.ubuntu.legacy.js/collapsibleTabs.js",
+				"resources/skins.ubuntu.legacy.js/vector.js"
 			],
 			"dependencies": [
 				"mediawiki.page.ready",
@@ -472,10 +417,10 @@
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "",
-		"remoteSkinPath": "Vector"
+		"remoteSkinPath": "Ubuntu"
 	},
 	"ResourceModuleSkinStyles": {
-		"vector-2022": {
+		"ubuntu": {
 			"ext.echo.styles.badge": "skinStyles/ext.echo.styles.badge.less",
 			"+ext.echo.styles.alert": "skinStyles/ext.echo.styles.alert.less",
 			"+mediawiki.action.edit": "skinStyles/mediawiki.action.edit.less",
@@ -504,49 +449,24 @@
 				"skinStyles/jquery.ui/jquery.ui.tabs.css",
 				"skinStyles/jquery.ui/jquery.ui.tooltip.css"
 			]
-		},
-		"vector": {
-			"ext.echo.styles.badge": "skinStyles/vector/ext.echo.styles.badge.less",
-			"jquery.ui": [
-				"skinStyles/jquery.ui/jquery.ui.core.css",
-				"skinStyles/jquery.ui/jquery.ui.theme.css",
-				"skinStyles/jquery.ui/jquery.ui.accordion.css",
-				"skinStyles/jquery.ui/jquery.ui.autocomplete.css",
-				"skinStyles/jquery.ui/jquery.ui.button.css",
-				"skinStyles/jquery.ui/jquery.ui.datepicker.css",
-				"skinStyles/jquery.ui/jquery.ui.dialog.css",
-				"skinStyles/jquery.ui/jquery.ui.menu.css",
-				"skinStyles/jquery.ui/jquery.ui.progressbar.css",
-				"skinStyles/jquery.ui/jquery.ui.resizable.css",
-				"skinStyles/jquery.ui/jquery.ui.selectable.css",
-				"skinStyles/jquery.ui/jquery.ui.slider.css",
-				"skinStyles/jquery.ui/jquery.ui.tabs.css",
-				"skinStyles/jquery.ui/jquery.ui.tooltip.css"
-			],
-			"+mediawiki.action.view.redirectPage": "skinStyles/mediawiki.action.view.redirectPage.less",
-			"+mediawiki.notification": "skinStyles/vector/mediawiki.notification.less",
-			"+oojs-ui-core.styles": "skinStyles/ooui.less",
-			"+ext.relatedArticles.readMore": "skinStyles/ext.relatedArticles.readMore.less",
-			"+ext.uls.compactlinks": "skinStyles/ext.uls.compactlinks.less",
-			"+ext.uls.interface": "skinStyles/ext.uls.interface.less"
 		}
 	},
 	"QUnitTestModule": {
 		"localBasePath": "",
-		"remoteSkinPath": "Vector",
+		"remoteSkinPath": "Ubuntu",
 		"dependencies": [
-			"skins.vector.clientPreferences"
+			"skins.ubuntu.clientPreferences"
 		],
 		"scripts": [
 			"tests/integration-qunit/integration.test.js"
 		]
 	},
 	"config": {
-		"VectorWrapTablesTemporary": {
+		"UbuntuWrapTablesTemporary": {
 			"value": false,
 			"description": "@var bool temporary config variable for controlling role out of tables. When enabled certain tables will be wrapped with a div"
 		},
-		"VectorFontSizeConfigurableOptions": {
+		"UbuntuFontSizeConfigurableOptions": {
 			"value": {
 				"exclude": {
 					"mainpage": false,
@@ -566,7 +486,7 @@
 			},
 			"description": "@var array determines on which pages the font size is configurable."
 		},
-		"VectorNightModeOptions": {
+		"UbuntuNightModeOptions": {
 			"value": {
 				"exclude": {
 					"mainpage": false,
@@ -578,7 +498,7 @@
 			},
 			"description": "@var array determines which pages are compatible with night mode"
 		},
-		"VectorTypeahead": {
+		"UbuntuTypeahead": {
 			"value": {
 				"apiUrl": null,
 				"recommendationApiUrl": null,
@@ -589,10 +509,10 @@
 			},
 			"description": "apiUrl - To override the default search API, set this to the URL to rest.php on another wiki. Can be used with $wgDisableTextSearch and $wgSearchForwardUrl to mimic user experience on production. recommendationApi - Provides a recommendation service. $1 will be substituted with pagetitle e.g. '/w/rest.php/v1/search/page?q=$1&limit=20'"
 		},
-		"VectorUseIconWatch": {
+		"UbuntuUseIconWatch": {
 			"value": true
 		},
-		"VectorMaxWidthOptions": {
+		"UbuntuMaxWidthOptions": {
 			"value": {
 				"exclude": {
 					"mainpage": true,
@@ -611,33 +531,33 @@
 			},
 			"description": "options for configuring where where max-width should and should not apply. More details can be found in Hooks::shouldDisableMaxWidth PHP documentation."
 		},
-		"VectorResponsive": {
-			"value": false,
+		"UbuntuResponsive": {
+			"value": true,
 			"description": "@var boolean turn Vector-2022 into a responsive skin by applying a view port and disabling the min-width"
 		},
-		"VectorDefaultSkinVersionForExistingAccounts": {
+		"UbuntuDefaultSkinVersionForExistingAccounts": {
 			"value": "1",
-			"description": "@var string:['2'|'1'] The version ('2' for latest, '1' for legacy) of the Vector skin to use when an existing user has not specified a preference. This configuration is not used for new accounts (see VectorDefaultSkinVersionForNewAccounts) and is impermanent. In the future, this field may contains versions such as \"beta\" which when specified and the BetaFeatures extension is installed, and the user is enrolled, the latest version is used otherwise legacy. The value is _not_ persisted."
+			"description": "@var string:['2'|'1'] The version ('2' for latest, '1' for legacy) of the Vector skin to use when an existing user has not specified a preference. This configuration is not used for new accounts (see UbuntuDefaultSkinVersionForNewAccounts) and is impermanent. In the future, this field may contains versions such as \"beta\" which when specified and the BetaFeatures extension is installed, and the user is enrolled, the latest version is used otherwise legacy. The value is _not_ persisted."
 		},
-		"VectorDefaultSkinVersionForNewAccounts": {
+		"UbuntuDefaultSkinVersionForNewAccounts": {
 			"value": null,
-			"description": "@var string|null The version ('2' for latest, '1' for legacy) of the Vector skin to **set** for newly created user accounts. **The value is persisted as a user preference.** This configuration is not used for preexisting accounts (see VectorDefaultSkinVersionForExistingAccounts) and only ever executed once at new account creation time. If it is null, no user preference will be set."
+			"description": "@var string|null The version ('2' for latest, '1' for legacy) of the Vector skin to **set** for newly created user accounts. **The value is persisted as a user preference.** This configuration is not used for preexisting accounts (see UbuntuDefaultSkinVersionForExistingAccounts) and only ever executed once at new account creation time. If it is null, no user preference will be set."
 		},
-		"VectorLanguageInHeader": {
+		"UbuntuLanguageInHeader": {
 			"value": {
 				"logged_in": true,
 				"logged_out": true
 			},
 			"description": "@var array Moves the language links from the sidebar into a menu beside the page title. Also moves the indicators to the line below, next to the tagline (siteSub)."
 		},
-		"VectorLanguageInMainPageHeader": {
+		"UbuntuLanguageInMainPageHeader": {
 			"value": {
 				"logged_in": false,
 				"logged_out": false
 			},
-			"description": "@var When `VectorLanguageInHeader` is enabled, determines whether the Main Page's language button should be at the top or bottom of the content. The default position on the main page is at the bottom."
+			"description": "@var When `UbuntuLanguageInHeader` is enabled, determines whether the Main Page's language button should be at the top or bottom of the content. The default position on the main page is at the bottom."
 		},
-		"VectorWebABTestEnrollment": {
+		"UbuntuWebABTestEnrollment": {
 			"value": {
 				"name": "skin-vector-unnamed",
 				"enabled": false,
@@ -655,11 +575,11 @@
 			},
 			"description": "An associative array of A/B test configs keyed by parameters noted in mediawiki.experiments.js. There must be an `unsampled` bucket that represents a population excluded from the experiment. Additionally, the treatment bucket(s) must include a case-insensitive `treatment` substring in their name (e.g. `treatment`, `stickyHeaderTreatment`, `sticky-header-treatment`)"
 		},
-		"VectorPromoteAddTopic": {
+		"UbuntuPromoteAddTopic": {
 			"value": true,
 			"description": "@var boolean Temporary feature flag that promotes the 'Add topic' link in the views menu, to a button in the page title bar."
 		},
-		"VectorTableOfContentsCollapseAtCount": {
+		"UbuntuTableOfContentsCollapseAtCount": {
 			"value": 28,
 			"description": "@var The minimum number of headings required to collapse all headings in the sticky table of contents by default."
 		}
@@ -667,5 +587,6 @@
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
 	],
-	"manifest_version": 2
+	"manifest_version": 2,
+	"skinStyles": {}
 }
