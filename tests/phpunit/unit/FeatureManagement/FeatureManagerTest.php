@@ -19,17 +19,17 @@
  * @since 1.35
  */
 
-namespace MediaWiki\Skins\Vector\Tests\Unit\FeatureManagement;
+namespace MediaWiki\Skins\Ubuntu\Tests\Unit\FeatureManagement;
 
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Skins\Vector\ConfigHelper;
-use MediaWiki\Skins\Vector\FeatureManagement\FeatureManager;
+use MediaWiki\Skins\Ubuntu\ConfigHelper;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\FeatureManager;
 use MediaWiki\User\Options\UserOptionsLookup;
 
 /**
  * @group Vector
  * @group FeatureManagement
- * @coversDefaultClass \MediaWiki\Skins\Vector\FeatureManagement\FeatureManager
+ * @coversDefaultClass \MediaWiki\Skins\Ubuntu\FeatureManagement\FeatureManager
  */
 class FeatureManagerTest extends \MediaWikiUnitTestCase {
 

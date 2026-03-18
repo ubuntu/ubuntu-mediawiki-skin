@@ -1,9 +1,9 @@
 <?php
-namespace MediaWiki\Skins\Vector\Tests\Integration;
+namespace MediaWiki\Skins\Ubuntu\Tests\Integration;
 
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Page\LinkCache;
-use MediaWiki\Skins\Vector\SkinVectorLegacy;
+use MediaWiki\Skins\Ubuntu\SkinVectorLegacy;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\Tests\User\TempUser\TempUserTestTrait;
 use MediaWiki\Title\Title;
@@ -38,7 +38,7 @@ class SkinVectorTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Skins\Vector\SkinVectorLegacy::getTemplateData
+	 * @covers \MediaWiki\Skins\Ubuntu\SkinVectorLegacy::getTemplateData
 	 */
 	public function testGetTemplateData() {
 		$this->setService( 'LinkCache', $this->createMock( LinkCache::class ) );
@@ -130,7 +130,7 @@ class SkinVectorTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Skins\Vector\SkinVectorLegacy::runOnSkinTemplateNavigationHooks
+	 * @covers \MediaWiki\Skins\Ubuntu\SkinVectorLegacy::runOnSkinTemplateNavigationHooks
 	 */
 	public function testTempUserCreateAccountLink() {
 		$this->enableAutoCreateTempUser();

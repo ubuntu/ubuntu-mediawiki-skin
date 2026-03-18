@@ -20,15 +20,15 @@
  * @since 1.35
  */
 
-namespace MediaWiki\Skins\Vector\Tests\Unit\FeatureManagement\Requirements;
+namespace MediaWiki\Skins\Ubuntu\Tests\Unit\FeatureManagement\Requirements;
 
 use MediaWiki\Config\HashConfig;
-use MediaWiki\Skins\Vector\FeatureManagement\Requirements\DynamicConfigRequirement;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements\DynamicConfigRequirement;
 
 /**
  * @group Vector
  * @group FeatureManagement
- * @coversDefaultClass \MediaWiki\Skins\Vector\FeatureManagement\Requirements\DynamicConfigRequirement
+ * @coversDefaultClass \MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements\DynamicConfigRequirement
  */
 class DynamicConfigRequirementTest extends \MediaWikiUnitTestCase {
 

@@ -18,7 +18,7 @@
  * @file
  */
 
-namespace MediaWiki\Skins\Vector\FeatureManagement\Requirements;
+namespace MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements;
 
 use MediaWiki\Request\WebRequest;
 
@@ -29,7 +29,7 @@ use MediaWiki\Request\WebRequest;
  * NOTE: This API hasn't settled. It may change at any time without warning. Please don't bind to
  * it unless you absolutely need to
  *
- * @package MediaWiki\Skins\Vector\FeatureManagement\Requirements
+ * @package MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements
  */
 class OverrideableRequirementHelper {
 	private readonly string $overrideName;

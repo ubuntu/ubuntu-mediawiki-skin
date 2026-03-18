@@ -1,18 +1,18 @@
 <?php
 
-namespace MediaWiki\Skins\Vector\Tests\Integration;
+namespace MediaWiki\Skins\Ubuntu\Tests\Integration;
 
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Request\FauxRequest;
-use MediaWiki\Skins\Vector\ConfigHelper;
+use MediaWiki\Skins\Ubuntu\ConfigHelper;
 use MediaWiki\Title\Title;
 
 /**
- * @coversDefaultClass \MediaWiki\Skins\Vector\ConfigHelper
+ * @coversDefaultClass \MediaWiki\Skins\Ubuntu\ConfigHelper
  */
 class ConfigHelperTest extends \MediaWikiIntegrationTestCase {
 	private function newInstance(): ConfigHelper {
-		return $this->getServiceContainer()->getService( 'Vector.ConfigHelper' );
+		return $this->getServiceContainer()->getService( 'Ubuntu.ConfigHelper' );
 	}
 
 	/**

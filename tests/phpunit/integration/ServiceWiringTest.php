@@ -5,7 +5,7 @@
  * used to test the ServiceWiring.php file.
  */
 
-namespace MediaWiki\Skins\Vector\Tests\Integration;
+namespace MediaWiki\Skins\Ubuntu\Tests\Integration;
 
 use MediaWikiIntegrationTestCase;
 

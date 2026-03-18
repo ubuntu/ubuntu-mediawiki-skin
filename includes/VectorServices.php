@@ -1,8 +1,8 @@
 <?php
 
-namespace MediaWiki\Skins\Vector;
+namespace MediaWiki\Skins\Ubuntu;
 
-use MediaWiki\Skins\Vector\Services\LanguageService;
+use MediaWiki\Skins\Ubuntu\Services\LanguageService;
 
 /**
  * A service locator for services specific to Vector.

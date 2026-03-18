@@ -1,9 +1,9 @@
 <?php
 
-namespace MediaWiki\Skins\Vector\Tests\Unit\FeatureManagement\Requirements;
+namespace MediaWiki\Skins\Ubuntu\Tests\Unit\FeatureManagement\Requirements;
 
 use MediaWiki\Request\FauxRequest;
-use MediaWiki\Skins\Vector\FeatureManagement\Requirements\UserPreferenceRequirement;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements\UserPreferenceRequirement;
 use MediaWiki\Title\Title;
 use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\UserIdentity;
@@ -11,7 +11,7 @@ use MediaWiki\User\UserIdentity;
 /**
  * @group Vector
  * @group FeatureManagement
- * @coversDefaultClass \MediaWiki\Skins\Vector\FeatureManagement\Requirements\UserPreferenceRequirement
+ * @coversDefaultClass \MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements\UserPreferenceRequirement
  */
 final class UserPreferenceRequirementTest extends \MediaWikiUnitTestCase {
 	public static function providerTestIsMetRequirement() {

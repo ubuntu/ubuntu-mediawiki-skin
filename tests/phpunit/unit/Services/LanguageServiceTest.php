@@ -19,15 +19,15 @@
  * $since 1.42
  */
 
-namespace MediaWiki\Skins\Vector\Tests\Unit\Services;
+namespace MediaWiki\Skins\Ubuntu\Tests\Unit\Services;
 
-use MediaWiki\Skins\Vector\Services\LanguageService;
+use MediaWiki\Skins\Ubuntu\Services\LanguageService;
 use MediaWikiUnitTestCase;
 
 /**
  * @group Vector
  * @group Services
- * @covers \MediaWiki\Skins\Vector\Services\LanguageService
+ * @covers \MediaWiki\Skins\Ubuntu\Services\LanguageService
  */
 class LanguageServiceTest extends MediaWikiUnitTestCase {
 

@@ -19,18 +19,18 @@
  * @file
  */
 
-namespace MediaWiki\Skins\Vector\FeatureManagement\Requirements;
+namespace MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements;
 
 use MediaWiki\Config\Config;
 use MediaWiki\Request\WebRequest;
-use MediaWiki\Skins\Vector\ConfigHelper;
-use MediaWiki\Skins\Vector\Constants;
-use MediaWiki\Skins\Vector\FeatureManagement\Requirement;
+use MediaWiki\Skins\Ubuntu\ConfigHelper;
+use MediaWiki\Skins\Ubuntu\Constants;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\Requirement;
 use MediaWiki\Title\Title;
 
 /**
  * The `MaxWidthRequirement` for content.
- * @package MediaWiki\Skins\Vector\FeatureManagement\Requirements
+ * @package MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements
  */
 final class LimitedWidthContentRequirement implements Requirement {
 	/**
@@ -89,7 +89,7 @@ final class LimitedWidthContentRequirement implements Requirement {
 	 */
 	public function isMet(): bool {
 		return $this->title && !$this->shouldDisableMaxWidth(
-			$this->config->get( 'VectorMaxWidthOptions' ),
+			$this->config->get( 'UbuntuMaxWidthOptions' ),
 			$this->title,
 			$this->request
 		);

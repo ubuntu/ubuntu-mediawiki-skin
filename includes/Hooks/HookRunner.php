@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Skins\Vector\Hooks;
+namespace MediaWiki\Skins\Ubuntu\Hooks;
 
 use MediaWiki\HookContainer\HookContainer;
 

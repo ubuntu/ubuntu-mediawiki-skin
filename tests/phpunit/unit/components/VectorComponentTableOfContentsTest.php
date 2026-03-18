@@ -19,18 +19,18 @@
  * @since 1.35
  */
 
-namespace MediaWiki\Skins\Vector\Tests\Unit\Components;
+namespace MediaWiki\Skins\Ubuntu\Tests\Unit\Components;
 
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Message\Message;
-use MediaWiki\Skins\Vector\Components\VectorComponentTableOfContents;
-use MediaWiki\Skins\Vector\FeatureManagement\FeatureManager;
+use MediaWiki\Skins\Ubuntu\Components\VectorComponentTableOfContents;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\FeatureManager;
 use MessageLocalizer;
 
 /**
  * @group Vector
  * @group Components
- * @coversDefaultClass \MediaWiki\Skins\Vector\Components\VectorComponentTableOfContents
+ * @coversDefaultClass \MediaWiki\Skins\Ubuntu\Components\VectorComponentTableOfContents
  */
 class VectorComponentTableOfContentsTest extends \MediaWikiUnitTestCase {
 

@@ -19,15 +19,15 @@
  * @since 1.42
  */
 
-namespace MediaWiki\Skins\Vector\Tests\Unit\Components;
+namespace MediaWiki\Skins\Ubuntu\Tests\Unit\Components;
 
-use MediaWiki\Skins\Vector\Components\VectorComponentPinnableElement;
+use MediaWiki\Skins\Ubuntu\Components\VectorComponentPinnableElement;
 use MediaWikiUnitTestCase;
 
 /**
  * @group Vector
  * @group Components
- * @coversDefaultClass \MediaWiki\Skins\Vector\Components\VectorComponentPinnableElement
+ * @coversDefaultClass \MediaWiki\Skins\Ubuntu\Components\VectorComponentPinnableElement
  */
 class VectorComponentPinnableElementTest extends MediaWikiUnitTestCase {
 

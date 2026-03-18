@@ -1,5 +1,5 @@
 <?php
-namespace MediaWiki\Skins\Vector\Components;
+namespace MediaWiki\Skins\Ubuntu\Components;
 
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;

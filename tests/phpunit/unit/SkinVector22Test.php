@@ -1,15 +1,15 @@
 <?php
-namespace MediaWiki\Skins\Vector\Tests\Unit;
+namespace MediaWiki\Skins\Ubuntu\Tests\Unit;
 
-use MediaWiki\Skins\Vector\SkinVector22;
+use MediaWiki\Skins\Ubuntu\SkinUbuntu;
 use ReflectionMethod;
 
 /**
- * @coversDefaultClass \MediaWiki\Skins\Vector\SkinVector22
+ * @coversDefaultClass \MediaWiki\Skins\Ubuntu\SkinUbuntu
  * @group Vector
  * @group Skins
  */
-class SkinVector22Test extends \MediaWikiUnitTestCase {
+class SkinUbuntuTest extends \MediaWikiUnitTestCase {
 	private const MAIN = [
 		'id' => 'p-navigation',
 	];
@@ -87,7 +87,7 @@ class SkinVector22Test extends \MediaWikiUnitTestCase {
 	public function testExtractPageToolsFromSidebar( $sidebar, $expectedSidebar, $expectedPageTools, $msg ) {
 		$pageTools = [];
 		$extractPageToolsFromSidebar = new ReflectionMethod(
-			SkinVector22::class,
+			SkinUbuntu::class,
 			'extractPageToolsFromSidebar'
 		);
 		$extractPageToolsFromSidebar->invokeArgs( null, [ &$sidebar, &$pageTools ] );

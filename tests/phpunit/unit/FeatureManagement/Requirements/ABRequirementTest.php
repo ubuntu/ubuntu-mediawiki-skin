@@ -20,17 +20,17 @@
  * @since 1.42
  */
 
-namespace MediaWiki\Skins\Vector\Tests\Unit\FeatureManagement\Requirements;
+namespace MediaWiki\Skins\Ubuntu\Tests\Unit\FeatureManagement\Requirements;
 
 use MediaWiki\Config\HashConfig;
-use MediaWiki\Skins\Vector\FeatureManagement\Requirements\ABRequirement;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements\ABRequirement;
 use MediaWiki\User\UserIdentity;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @group Vector
  * @group FeatureManagement
- * @coversDefaultClass \MediaWiki\Skins\Vector\FeatureManagement\Requirements\ABRequirement
+ * @coversDefaultClass \MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements\ABRequirement
  */
 class ABRequirementTest extends TestCase {
 

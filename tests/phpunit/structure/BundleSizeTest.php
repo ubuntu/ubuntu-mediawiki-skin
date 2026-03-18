@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Skins\Vector\Tests\Structure;
+namespace MediaWiki\Skins\Ubuntu\Tests\Structure;
 
 class BundleSizeTest extends \MediaWiki\Tests\Structure\BundleSizeTestBase {
 

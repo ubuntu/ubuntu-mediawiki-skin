@@ -20,7 +20,7 @@
  * @since 1.35
  */
 
-namespace MediaWiki\Skins\Vector\FeatureManagement;
+namespace MediaWiki\Skins\Ubuntu\FeatureManagement;
 
 /**
  * NOTE: This API hasn't settled. It may change at any time without warning. Please don't bind to
@@ -28,7 +28,7 @@ namespace MediaWiki\Skins\Vector\FeatureManagement;
  *
  * @unstable
  *
- * @package MediaWiki\Skins\Vector\FeatureManagement
+ * @package MediaWiki\Skins\Ubuntu\FeatureManagement
  * @internal
  */
 interface Requirement {

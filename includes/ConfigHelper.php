@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Skins\Vector;
+namespace MediaWiki\Skins\Ubuntu;
 
 use MediaWiki\Request\WebRequest;
 use MediaWiki\SpecialPage\SpecialPageFactory;

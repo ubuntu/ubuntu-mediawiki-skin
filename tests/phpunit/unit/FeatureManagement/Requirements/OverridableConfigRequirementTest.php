@@ -18,18 +18,18 @@
  * @file
  */
 
-namespace MediaWiki\Skins\Vector\Tests\Unit\FeatureManagement\Requirements;
+namespace MediaWiki\Skins\Ubuntu\Tests\Unit\FeatureManagement\Requirements;
 
 use MediaWiki\Config\HashConfig;
 use MediaWiki\Request\WebRequest;
-use MediaWiki\Skins\Vector\Constants;
-use MediaWiki\Skins\Vector\FeatureManagement\Requirements\OverridableConfigRequirement;
+use MediaWiki\Skins\Ubuntu\Constants;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements\OverridableConfigRequirement;
 use MediaWiki\User\UserIdentity;
 
 /**
  * @group Vector
  * @group FeatureManagement
- * @coversDefaultClass \MediaWiki\Skins\Vector\FeatureManagement\Requirements\OverridableConfigRequirement
+ * @coversDefaultClass \MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements\OverridableConfigRequirement
  */
 class OverridableConfigRequirementTest extends \MediaWikiUnitTestCase {
 

@@ -19,17 +19,17 @@
  * @since 1.42
  */
 
-namespace MediaWiki\Skins\Vector\Tests\Unit\Components;
+namespace MediaWiki\Skins\Ubuntu\Tests\Unit\Components;
 
 use MediaWiki\Message\Message;
-use MediaWiki\Skins\Vector\Components\VectorComponentPinnableHeader;
+use MediaWiki\Skins\Ubuntu\Components\VectorComponentPinnableHeader;
 use MediaWikiUnitTestCase;
 use MessageLocalizer;
 
 /**
  * @group Vector
  * @group Components
- * @coversDefaultClass \MediaWiki\Skins\Vector\Components\VectorComponentPinnableHeader
+ * @coversDefaultClass \MediaWiki\Skins\Ubuntu\Components\VectorComponentPinnableHeader
  */
 class VectorComponentPinnableHeaderTest extends MediaWikiUnitTestCase {
 

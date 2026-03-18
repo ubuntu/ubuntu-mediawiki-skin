@@ -1,17 +1,17 @@
 <?php
 
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Skins\Vector\Constants;
-use MediaWiki\Skins\Vector\FeatureManagement\FeatureManager;
+use MediaWiki\Skins\Ubuntu\Constants;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\FeatureManager;
 use MediaWiki\Title\Title;
 
 /**
- * @coversDefaultClass \MediaWiki\Skins\Vector\FeatureManagement\FeatureManager
+ * @coversDefaultClass \MediaWiki\Skins\Ubuntu\FeatureManagement\FeatureManager
  */
 class FeatureManagerTest extends \MediaWikiIntegrationTestCase {
 	private function newFeatureManager(): FeatureManager {
 		return new FeatureManager(
-			$this->getServiceContainer()->getService( 'Vector.ConfigHelper' ),
+			$this->getServiceContainer()->getService( 'Ubuntu.ConfigHelper' ),
 			$this->getServiceContainer()->getUserOptionsLookup(),
 			RequestContext::getMain()
 		);

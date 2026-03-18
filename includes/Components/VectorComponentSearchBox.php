@@ -1,5 +1,5 @@
 <?php
-namespace MediaWiki\Skins\Vector\Components;
+namespace MediaWiki\Skins\Ubuntu\Components;
 
 use MediaWiki\Config\Config;
 use MediaWiki\Linker\Linker;
@@ -23,7 +23,7 @@ class VectorComponentSearchBox implements VectorComponent {
 	 * Note this is only relevant for Vue search experience (not legacy search).
 	 */
 	private function doesSearchHaveThumbnails(): bool {
-		$searchOptions = $this->getConfig()->get( 'VectorTypeahead' )['options'];
+		$searchOptions = $this->getConfig()->get( 'UbuntuTypeahead' )['options'];
 		return $searchOptions['showThumbnail'];
 	}
 

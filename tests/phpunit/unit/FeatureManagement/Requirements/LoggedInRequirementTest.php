@@ -20,16 +20,16 @@
  * @since 1.42
  */
 
-namespace MediaWiki\Skins\Vector\Tests\Unit\FeatureManagement\Requirements;
+namespace MediaWiki\Skins\Ubuntu\Tests\Unit\FeatureManagement\Requirements;
 
-use MediaWiki\Skins\Vector\FeatureManagement\Requirements\LoggedInRequirement;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements\LoggedInRequirement;
 use MediaWiki\User\UserIdentity;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @group Vector
  * @group FeatureManagement
- * @coversDefaultClass \MediaWiki\Skins\Vector\FeatureManagement\Requirements\LoggedInRequirement
+ * @coversDefaultClass \MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements\LoggedInRequirement
  */
 class LoggedInRequirementTest extends TestCase {
 

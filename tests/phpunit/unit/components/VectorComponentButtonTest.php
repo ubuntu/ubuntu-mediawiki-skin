@@ -20,15 +20,15 @@
  * @since 1.42
  */
 
-namespace MediaWiki\Skins\Vector\Tests\Unit\Components;
+namespace MediaWiki\Skins\Ubuntu\Tests\Unit\Components;
 
-use MediaWiki\Skins\Vector\Components\VectorComponentButton;
+use MediaWiki\Skins\Ubuntu\Components\VectorComponentButton;
 use MediaWikiUnitTestCase;
 
 /**
  * @group Vector
  * @group Components
- * @coversDefaultClass \MediaWiki\Skins\Vector\Components\VectorComponentButton
+ * @coversDefaultClass \MediaWiki\Skins\Ubuntu\Components\VectorComponentButton
  */
 class VectorComponentButtonTest extends MediaWikiUnitTestCase {
 

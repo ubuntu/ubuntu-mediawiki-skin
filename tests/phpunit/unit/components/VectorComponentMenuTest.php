@@ -19,16 +19,16 @@
  * @since 1.42
  */
 
-namespace MediaWiki\Skins\Vector\Tests\Unit\Components;
+namespace MediaWiki\Skins\Ubuntu\Tests\Unit\Components;
 
-use MediaWiki\Skins\Vector\Components\VectorComponent;
-use MediaWiki\Skins\Vector\Components\VectorComponentMenu;
+use MediaWiki\Skins\Ubuntu\Components\VectorComponent;
+use MediaWiki\Skins\Ubuntu\Components\VectorComponentMenu;
 use MediaWikiUnitTestCase;
 
 /**
  * @group Vector
  * @group Components
- * @coversDefaultClass \MediaWiki\Skins\Vector\Components\VectorComponentMenu
+ * @coversDefaultClass \MediaWiki\Skins\Ubuntu\Components\VectorComponentMenu
  */
 class VectorComponentMenuTest extends MediaWikiUnitTestCase {
 

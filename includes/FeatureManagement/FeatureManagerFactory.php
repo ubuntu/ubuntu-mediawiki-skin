@@ -20,16 +20,16 @@
  * @since 1.42
  */
 
-namespace MediaWiki\Skins\Vector\FeatureManagement;
+namespace MediaWiki\Skins\Ubuntu\FeatureManagement;
 
 use MediaWiki\Context\IContextSource;
-use MediaWiki\Skins\Vector\ConfigHelper;
-use MediaWiki\Skins\Vector\Constants;
-use MediaWiki\Skins\Vector\FeatureManagement\Requirements\DynamicConfigRequirement;
-use MediaWiki\Skins\Vector\FeatureManagement\Requirements\LimitedWidthContentRequirement;
-use MediaWiki\Skins\Vector\FeatureManagement\Requirements\LoggedInRequirement;
-use MediaWiki\Skins\Vector\FeatureManagement\Requirements\OverridableConfigRequirement;
-use MediaWiki\Skins\Vector\FeatureManagement\Requirements\UserPreferenceRequirement;
+use MediaWiki\Skins\Ubuntu\ConfigHelper;
+use MediaWiki\Skins\Ubuntu\Constants;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements\DynamicConfigRequirement;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements\LimitedWidthContentRequirement;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements\LoggedInRequirement;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements\OverridableConfigRequirement;
+use MediaWiki\Skins\Ubuntu\FeatureManagement\Requirements\UserPreferenceRequirement;
 use MediaWiki\User\Options\UserOptionsLookup;
 
 /**
@@ -37,7 +37,7 @@ use MediaWiki\User\Options\UserOptionsLookup;
  *
  * @unstable
  *
- * @package MediaWiki\Skins\Vector\FeatureManagement
+ * @package MediaWiki\Skins\Ubuntu\FeatureManagement
  * @internal
  */
 class FeatureManagerFactory {
