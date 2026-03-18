@@ -75,6 +75,11 @@ final class Constants {
 	/**
 	 * @var string
 	 */
+	public const FEATURE_LANGUAGE_IN_MAIN_MENU = 'LanguageInMainMenu';
+
+	/**
+	 * @var string
+	 */
 	public const CONFIG_KEY_LANGUAGE_IN_HEADER = 'UbuntuLanguageInHeader';
 
 	/**
@@ -85,7 +90,7 @@ final class Constants {
 	/**
 	 * @var string
 	 */
-	public const CONFIG_KEY_LANGUAGE_IN_MAIN_MENU = 'VectorLanguageInMainMenu';
+	public const CONFIG_KEY_LANGUAGE_IN_MAIN_MENU = 'UbuntuLanguageInMainMenu';
 
 	/**
 	 * @var string

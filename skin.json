@@ -549,6 +549,13 @@
 			},
 			"description": "@var array Moves the language links from the sidebar into a menu beside the page title. Also moves the indicators to the line below, next to the tagline (siteSub)."
 		},
+		"UbuntuLanguageInMainMenu": {
+			"value": {
+				"logged_in": false,
+				"logged_out": false
+			},
+			"description": "@var array Shows the language links in the main menu instead of the header."
+		},
 		"UbuntuLanguageInMainPageHeader": {
 			"value": {
 				"logged_in": false,
