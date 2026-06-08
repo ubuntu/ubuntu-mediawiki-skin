@@ -17,7 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: 'Ubuntu', sans-serif !important;
+	font-family: 'Ubuntu Sans', sans-serif !important;
 }
 
 /* Remove footer elements */
@@ -388,7 +388,7 @@ div.ubuntu-template-meta-related-articles>ul>li {
 }
 
 @font-face {
-	font-family: 'Ubuntu';
+	font-family: 'Ubuntu Sans';
 }
 
 /* Timeless Skin Fix */
@@ -682,5 +682,5 @@ kbd,
 .mw-code,
 .mw-highlight,
 .mw-highlight pre {
-	font-family: 'Ubuntu Mono', monospace;
+	font-family: 'Ubuntu Sans Mono', monospace;
 }

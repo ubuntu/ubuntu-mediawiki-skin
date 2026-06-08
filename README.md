@@ -95,7 +95,7 @@ The HTML class names in the page (e.g. `vector-page-toolbar-container`, `vector-
 #### Visual / CSS
 
 - **Dark header bar** (`#333` background) applied to `.vector-header-container`, `.vector-header-start`, `.vector-header-end`
-- **Ubuntu font** applied to all body text, headings, and UI elements — self-hosted as woff2 files, no Google Fonts request
+- **Ubuntu Sans font** applied to all body text, headings, and UI elements — self-hosted as woff2 files, no Google Fonts request
 - **Ubuntu logo** displayed in the header instead of the wiki logo wordmark
 - **Search box** styled with dark background (`#3d3d3d`) to match the header
 - **Icon colours** set to `#919191` (grey) across header and user links, with hover colour `#cccccc`
@@ -137,7 +137,7 @@ These are set in `skin.json` under `DefaultUserOptions` and apply to new users o
 
 #### Bundled Assets
 
-- `resources/fonts/` — 16 Ubuntu font woff2 files (latin + latin-ext, all weights and styles)
+- `resources/fonts/` — 4 Ubuntu Sans variable font files (latin + latin-ext, all weights and styles)
 - `resources/images/ubuntu-logo.png` — Ubuntu logo for the header
 - `resources/skins.ubuntu.styles/ubuntu-custom.css` — all custom CSS overrides
 - `resources/skins.ubuntu.styles/ubuntu-fonts.css` — `@font-face` declarations for self-hosted fonts
