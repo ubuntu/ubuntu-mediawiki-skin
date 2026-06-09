@@ -1,0 +1,64 @@
+.theme-toggle-container {
+	display: flex;
+	align-items: center;
+}
+
+.theme-toggle {
+	padding: 4px;
+
+	svg {
+		width: 1.25rem;
+		height: 1.25rem;
+		min-height: 20px;
+		min-width: 20px;
+		display: none;
+		vertical-align: middle;
+		pointer-events: none;
+		color: var(--vector-icon-custom-color, #919191);
+	}
+}
+
+// Default (day mode): show sun
+.theme-toggle .theme-icon-when-day {
+	display: inline;
+}
+
+// Night mode: show moon
+html.skin-theme-clientpref-night .theme-toggle {
+	.theme-icon-when-day {
+		display: none;
+	}
+
+	.theme-icon-when-night {
+		display: inline;
+	}
+}
+
+// OS mode: show auto icon (light variant by default)
+html.skin-theme-clientpref-os .theme-toggle {
+	.theme-icon-when-day {
+		display: none;
+	}
+
+	.theme-icon-when-os-light {
+		display: inline;
+	}
+}
+
+// OS mode, dark system theme: show auto dark variant
+@media screen and ( prefers-color-scheme: dark ) {
+	html.skin-theme-clientpref-os .theme-toggle {
+		.theme-icon-when-os-light {
+			display: none;
+		}
+
+		.theme-icon-when-os-dark {
+			display: inline;
+		}
+	}
+}
+
+// Hide the landmark when JS is disabled (no button functionality)
+.client-nojs .vector-appearance-landmark {
+	display: none;
+}

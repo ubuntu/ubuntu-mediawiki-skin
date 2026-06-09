@@ -9,6 +9,7 @@ const languageButton = require( './languageButton.js' ),
 	setupIntersectionObservers = require( './setupIntersectionObservers.js' ),
 	menuTabs = require( './menuTabs.js' ),
 	userPreferences = require( './userPreferences.js' ),
+	themeToggle = require( './themeToggle.js' ),
 	{ isNightModeGadgetEnabled, disableNightModeForGadget, alterExclusionMessage, removeBetaNotice } = require( './disableNightModeIfGadget.js' ),
 	teleportTarget = /** @type {HTMLElement} */require( /** @type {string} */ ( 'mediawiki.page.ready' ) ).teleportTarget;
 
@@ -66,36 +67,20 @@ function main( window ) {
 	// Apply body styles to teleported elements
 	teleportTarget.classList.add( 'vector-body' );
 
-	// Load client preferences
-	const appearanceMenuSelector = '#vector-appearance';
-	const appearanceMenuExists = document.querySelectorAll( appearanceMenuSelector ).length > 0;
-	if ( appearanceMenuExists ) {
-		mw.loader.using( [
-			'skins.ubuntu.clientPreferences',
-			'skins.ubuntu.search.codex.styles'
-		] ).then( () => {
-			const clientPreferences = require( /** @type {string} */ ( 'skins.ubuntu.clientPreferences' ) );
-			const clientPreferenceConfig = ( require( './clientPreferences.json' ) );
-			// Can be removed once wgVectorNightMode is removed.
+	// Initialize theme toggle button
+	if ( document.querySelector( '.theme-toggle' ) ) {
+		mw.loader.using( 'skins.ubuntu.clientPreferences' ).then( () => {
+			const clientPreferenceConfig = require( './clientPreferences.json' );
 			if ( document.documentElement.classList.contains( 'vector-feature-night-mode-disabled' ) ) {
 				// @ts-ignore issues relating to delete operator are not relevant here.
 				delete clientPreferenceConfig[ 'skin-theme' ];
 			}
-
-			// while we're in beta, temporarily check if the night mode gadget is installed and
-			// disable our night mode if so
 			if ( isNightModeGadgetEnabled() ) {
 				disableNightModeForGadget();
-				clientPreferences.render(
-					appearanceMenuSelector, clientPreferenceConfig, userPreferences
-				);
 				alterExclusionMessage();
 				removeBetaNotice();
-			} else {
-				clientPreferences.render(
-					appearanceMenuSelector, clientPreferenceConfig, userPreferences
-				);
 			}
+			themeToggle.init( clientPreferenceConfig, userPreferences );
 		} );
 	}
 
