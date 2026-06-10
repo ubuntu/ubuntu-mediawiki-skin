@@ -396,7 +396,11 @@
 				"vector-main-menu-unpinned-popup",
 				"vector-appearance-unpinned-popup",
 				"vector-night-mode-gadget-names",
-				"vector-night-mode-gadget-warning"
+				"vector-night-mode-gadget-warning",
+				"skin-theme-toggle-label",
+				"skin-theme-toggle-switch-to-day",
+				"skin-theme-toggle-switch-to-night",
+				"skin-theme-toggle-switch-to-os"
 			]
 		},
 		"skins.ubuntu.legacy.js": {
