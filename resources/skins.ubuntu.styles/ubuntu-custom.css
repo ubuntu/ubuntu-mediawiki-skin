@@ -408,6 +408,10 @@ div.ubuntu-template-meta-related-articles>ul>li {
 .vector-header {
 	background-color: #333 !important;
 	gap: 0 !important;
+	padding-top: 0;
+	padding-bottom: 0;
+	display: flex !important;
+	gap: 1rem;
 }
 
 /* Ensure all header sections have consistent height and styling */
@@ -423,29 +427,52 @@ div.ubuntu-template-meta-related-articles>ul>li {
 	border: none !important;
 }
 
+.vector-header-start {
+	width: min-content;
+}
+
 /* Fix logo area for rectangular (tall) logo - reduced padding */
 .vector-header-start .vector-logo {
 	display: flex !important;
-	align-items: center !important;
-	height: 50px !important;
-	padding: 2px 12px !important;
+	padding: 0 12px !important;
+}
+
+/* Align icon to top, text to bottom, matching ubuntu.com tagged-logo layout */
+@media (min-width: 640px) {
+	.vector-header-start {
+		align-items: start !important;
+	}
+
+	.vector-header-start .vector-logo {
+		align-items: stretch !important;
+		height: 50px !important;
+	}
+
+	.vector-header-start a.mw-logo {
+		align-items: flex-end !important;
+	}
 }
 
 /* Wiki title styles */
 .vector-header-start .mw-logo-wordmark {
+	font-size: 1.3rem !important;
 	font-weight: 300 !important;
-	/* Light */
+	line-height: 1rem !important;
+	margin-bottom: 0.25rem !important;
+	white-space: nowrap !important;
+}
+
+.vector-header-start .mw-logo {
+	display: flex;
+	gap: 0.25rem;
 }
 
 /* Style the logo image */
 .mw-logo-icon {
-	max-height: 46px !important;
-	width: auto !important;
-	height: auto !important;
-	/*remove gap at top*/
-	padding-top: 0px !important;
-	position: relative !important;
-	margin-top: -20px !important;
+	max-height: 42px;
+	width: auto;
+	height: auto;
+	margin: 0;
 }
 
 /* Make ends of sticky header same colour as background */

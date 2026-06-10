@@ -35,8 +35,8 @@ $wgDefaultSkin = 'ubuntu';
 # Logo — uses the Ubuntu logo bundled in the skin.
 # Replace with your own image path to use a custom logo.
 $wgLogos = [
-'1x'   => "$wgResourceBasePath/skins/Ubuntu/resources/images/ubuntu-logo.png",
-'icon' => "$wgResourceBasePath/skins/Ubuntu/resources/images/ubuntu-logo.png",
+'1x'   => "$wgResourceBasePath/skins/Ubuntu/resources/images/Tag-CoF-Orange-Digital.svg",
+'icon' => "$wgResourceBasePath/skins/Ubuntu/resources/images/Tag-CoF-Orange-Digital.svg",
 ];
 
 unset( $wgFooterIcons['poweredby'] );
