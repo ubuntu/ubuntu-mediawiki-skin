@@ -407,11 +407,8 @@ div.ubuntu-template-meta-related-articles>ul>li {
 /*Colour area around header container*/
 .vector-header {
 	background-color: #333 !important;
-	gap: 0 !important;
 	padding-top: 0;
 	padding-bottom: 0;
-	display: flex !important;
-	gap: 1rem;
 }
 
 /* Ensure all header sections have consistent height and styling */
@@ -425,10 +422,6 @@ div.ubuntu-template-meta-related-articles>ul>li {
 	padding-top: 0 !important;
 	padding-bottom: 0 !important;
 	border: none !important;
-}
-
-.vector-header-start {
-	width: min-content;
 }
 
 /* Fix logo area for rectangular (tall) logo - reduced padding */
@@ -467,11 +460,16 @@ div.ubuntu-template-meta-related-articles>ul>li {
 	gap: 0.25rem;
 }
 
+.vector-header-start .mw-logo-container {
+	float: none;
+	max-width: none;
+}
+
 /* Style the logo image */
 .mw-logo-icon {
+	float: none;
 	max-height: 42px;
 	width: auto;
-	height: auto;
 	margin: 0;
 }
 
