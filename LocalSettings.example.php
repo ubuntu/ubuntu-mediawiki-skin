@@ -6,7 +6,7 @@ exit;
 }
 
 # Site
-$wgSitename = "Ubuntu skin test";
+$wgSitename = "Ubuntu Wiki";
 $wgServer = "http://localhost:8080";
 $wgScriptPath = "";
 $wgResourceBasePath = $wgScriptPath;
