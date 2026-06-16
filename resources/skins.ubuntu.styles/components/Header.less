@@ -1,25 +1,38 @@
 .mw-header {
-	// Vertical centering of header elements (IE>=11), requires Flexbox.
-	.flex-display();
-	flex-wrap: wrap;
-	// https://caniuse.com/#search=align-items
+	display: grid;
+	grid-template-columns: auto 1fr auto;
 	align-items: center;
 	padding-top: 8px;
 	padding-bottom: 8px;
 	gap: @spacing-100;
 
 	.vector-header-start {
+		display: flex;
+		align-items: center;
 		gap: 20px;
+
+		@media ( min-width: @min-width-breakpoint-desktop ) {
+			width: @width-column-desktop;
+		}
+
+		@media ( min-width: @min-width-breakpoint-desktop-wide ) {
+			width: @width-column-desktop-wide;
+		}
 	}
 
-	.vector-header-start,
+	.vector-header-search {
+		display: flex;
+		align-items: center;
+		justify-content: left;
+	}
+
+	.vector-search-box {
+		flex-grow: unset;
+	}
+
 	.vector-header-end {
 		display: flex;
 		align-items: center;
-	}
-
-	.vector-header-end {
-		flex-grow: 1;
 	}
 
 	.search-toggle {
@@ -35,6 +48,11 @@
 		}
 	}
 
+	// The toggle inside the search column is suppressed; the one in the end column is used instead.
+	.vector-header-search .search-toggle {
+		display: none !important;  /* stylelint-disable-line declaration-no-important */
+	}
+
 	.vector-typeahead-search-container {
 		display: none;
 
@@ -48,7 +66,10 @@
 	 	 * Toggles the visibility of the search box at lower resolutions.
 		 */
 		&.vector-header-search-toggled {
+			grid-template-columns: 1fr;
+
 			.vector-header-start,
+			.vector-header-end,
 			.search-toggle {
 				display: none;
 			}

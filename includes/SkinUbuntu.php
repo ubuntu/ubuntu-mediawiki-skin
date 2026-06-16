@@ -532,6 +532,7 @@ class SkinUbuntu extends SkinMustache {
 			'is-language-in-content-bottom' => $this->isLanguagesInContentAt( 'bottom' ),
 			// Cast empty string to null
 			'html-subtitle' => $parentData['html-subtitle'] === '' ? null : $parentData['html-subtitle'],
+			'data-search-toggle-button' => $parentData['data-search-box']['data-collapsed-search-button'] ?? null,
 		] );
 	}
 }
