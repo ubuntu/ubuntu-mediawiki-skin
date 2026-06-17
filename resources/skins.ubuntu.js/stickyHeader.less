@@ -108,15 +108,6 @@
 	}
 
 	&.vector-header-search-toggled {
-		// .vector-sticky-header-search-toggle left border (1px) + left padding (12px)
-		// - .cdx-text-input__start-icon left offset (9px [1]) = 4px
-		// [1] see https://gerrit.wikimedia.org/r/plugins/gitiles/design/codex/+/refs/tags/v0.1.0-alpha.8/packages/codex/src/components/text-input/TextInput.vue#257
-		@margin-start-search-box: 4px;
-		// .vector-sticky-header-search-toggle left border (1px) + left padding (12px)
-		// - .cdx-text-input__start-icon left offset (22px [2]) = -9px
-		// [2] see https://gerrit.wikimedia.org/r/plugins/gitiles/design/codex/+/refs/tags/v0.1.0-alpha.8/packages/codex/src/components/typeahead-search/TypeaheadSearch.vue#708
-		@margin-start-search-box-with-thumbnail: -9px;
-
 		.vector-sticky-header-icon-start,
 		.vector-sticky-header-context-bar {
 			display: none;
@@ -124,14 +115,25 @@
 
 		.vector-search-box {
 			display: block;
-			margin-left: @margin-start-search-box;
 		}
 
-		// T296318 Decrease the start margin of the search box to account for the
-		// icon's increased start position when the search component has thumbnails.
-		.vector-search-box-show-thumbnail {
-			margin-left: @margin-start-search-box-with-thumbnail;
-		}
+	}
+}
+
+.vector-sticky-header-search-spacer {
+	flex-shrink: 0;
+	width: 0;
+}
+
+@media ( min-width: @min-width-breakpoint-desktop ) {
+	.vector-sticky-header-search-spacer {
+		width: @width-column-desktop;
+	}
+}
+
+@media ( min-width: @min-width-breakpoint-desktop-wide ) {
+	.vector-sticky-header-search-spacer {
+		width: @width-column-desktop-wide;
 	}
 }
 
