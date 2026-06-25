@@ -32,6 +32,8 @@ h6 {
 
 /* Admonition templates */
 :root {
+	--ubuntu-menu-text-color: #4f4f4f;
+
 	--ubuntu-template-note-border-color: #1a4d80;
 
 	--ubuntu-template-warning-border-color: #cc7900;
@@ -187,6 +189,7 @@ html.skin-theme-clientpref-night .vector-header-container a.mw-logo .mw-logo-wor
 	html.skin-theme-clientpref-night {
 		--background-color-base: #131416;
 		--background-color-neutral-subtle: #131416;
+		--ubuntu-menu-text-color: #aea79f;
 	}
 
 	html.skin-theme-clientpref-night body.skin-ubuntu {
@@ -209,6 +212,7 @@ html.skin-theme-clientpref-night .vector-header-container a.mw-logo .mw-logo-wor
 		html.skin-theme-clientpref-os {
 			--background-color-base: #131416;
 			--background-color-neutral-subtle: #131416;
+			--ubuntu-menu-text-color: #aea79f;
 		}
 
 		html.skin-theme-clientpref-os body.skin-ubuntu {
@@ -489,14 +493,17 @@ div.ubuntu-template-meta-related-articles>ul>li {
 	background-color: var(--background-color-neutral-subtle) !important;
 }
 
-/* Username and dropdown text - use #919191 for visibility on both backgrounds */
+/* Username and dropdown text */
 .vector-user-links>.mw-list-item>a,
 .vector-user-links>.mw-list-item>.vector-user-menu-logged-in>a,
-.vector-dropdown-content a,
-.vector-menu-content a,
 .vector-menu-content-list a,
-.vector-user-menu .vector-menu-content a {
+.vector-menu-content a {
 	color: #919191 !important;
+}
+
+.vector-dropdown-content a,
+.vector-user-menu .vector-menu-content a {
+	color: var(--ubuntu-menu-text-color) !important;
 }
 
 /* Page action tabs (Read, Edit, View history, etc.) use regular text color */
@@ -504,6 +511,7 @@ div.ubuntu-template-meta-related-articles>ul>li {
 .vector-menu-tabs .vector-menu-content-list a {
 	color: inherit !important;
 }
+
 
 /* Customize color of all icons*/
 :root {
