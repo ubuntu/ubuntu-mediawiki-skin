@@ -1,6 +1,6 @@
 {
 	"@doc": "This file describes the configuration for Vector Search, including empty search recommendations.",
-	"VectorTypeahead": {
+	"UbuntuTypeahead": {
 		"apiUrl": "",
 		"recommendationApiUrl": "",
 		"options": {
