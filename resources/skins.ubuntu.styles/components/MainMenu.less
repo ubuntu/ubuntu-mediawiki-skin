@@ -5,6 +5,21 @@
 }
 
 .vector-main-menu {
+	border-right: @border-width-base @border-style-base @border-color-content-box;
+
+	.mw-list-item.mw-list-item-active a {
+		font-weight: bold;
+	}
+
+	.mw-list-item a {
+		color: @color-base !important; /* stylelint-disable-line declaration-no-important */
+
+		&:visited,
+		&:hover,
+		&:visited:hover {
+			color: @color-base !important; /* stylelint-disable-line declaration-no-important */
+		}
+	}
 
 	// Hide #p-navigation label
 	#p-navigation .vector-menu-heading {

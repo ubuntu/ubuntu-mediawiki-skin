@@ -14,8 +14,19 @@ const languageButton = require( './languageButton.js' ),
 	teleportTarget = /** @type {HTMLElement} */require( /** @type {string} */ ( 'mediawiki.page.ready' ) ).teleportTarget;
 
 /**
- * Wait for first paint before calling this function. That's its whole purpose.
- *
+ * Marks the main menu item matching the current page as active.
+ */
+function markActiveMainMenuItem() {
+	const currentHref = window.location.href;
+	const menuItems = document.querySelectorAll( '#mw-panel .mw-list-item a, #vector-main-menu-pinned-container .mw-list-item a' );
+	menuItems.forEach( ( link ) => {
+		if ( link.href === currentHref ) {
+			link.closest( '.mw-list-item' ).classList.add( 'mw-list-item-active' );
+		}
+	} );
+}
+
+/**
  * Some CSS animations and transitions are "disabled" by default as a workaround to this old Chrome
  * bug, https://bugs.chromium.org/p/chromium/issues/detail?id=332189, which otherwise causes them to
  * render in their terminal state on page load. By adding the `vector-animations-ready` class to the
@@ -84,6 +95,7 @@ function main( window ) {
 		} );
 	}
 
+	markActiveMainMenuItem();
 	dropdownMenus();
 	// menuTabs should follow `dropdownMenus` as that can move menu items from a
 	// tab menu to a dropdown.
