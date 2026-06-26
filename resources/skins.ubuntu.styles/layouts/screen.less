@@ -45,7 +45,8 @@ body {
 }
 
 #mw-content-text {
-	margin-top: 16px;
+	// Spacing between the page tabs/toolbar and the main content.
+	margin-top: @spacing-150;
 }
 
 /* Content */
@@ -68,20 +69,10 @@ body {
 .vector-page-titlebar {
 	.mixin-clearfix();
 	box-shadow: none;
-	// Faux bottom border that stretches to the edges
-	// of the *content*, not the full width of the box.
-	&::after {
-		content: '';
-		display: block;
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		height: 1px;
-		background-color: @border-color-base;
-	}
 
-	&-blank::after {
+	// Faux bottom border removed: the page title (h1) should not have a rule
+	// beneath it.
+	&::after {
 		content: none;
 	}
 }

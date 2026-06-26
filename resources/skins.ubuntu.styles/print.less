@@ -58,12 +58,20 @@ img {
 }
 
 // Headings
-.firstHeading,
+.firstHeading {
+	// To avoid the bottom border of section headings with floated elements
+	overflow: hidden;
+}
+
 .mw-heading2,
 h2 {
 	// To avoid the bottom border of section headings with floated elements
 	overflow: hidden;
-	border-bottom: 2px solid @color-emphasized;
+	// Move the rule above the heading rather than below it, with a 7px gap
+	// between the rule and the heading text.
+	border-top: 2px solid @color-emphasized;
+	padding-top: 7px;
+	padding-bottom: 0;
 }
 
 .mw-heading3,

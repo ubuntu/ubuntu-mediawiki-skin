@@ -81,6 +81,29 @@ pre,
 		font-size: @font-size-heading-2;
 	}
 
+	// Remove the rule beneath the page title (h1 / firstHeading).
+	h1,
+	.mw-heading1,
+	&-content h1,
+	&-content .mw-heading1,
+	.firstHeading {
+		border-bottom: 0;
+	}
+
+	// Move the section-heading rule above the h2 instead of below it. The rule
+	// sits @spacing-150 (24px) below the previous section, with a 7px gap
+	// between the rule and the heading text.
+	.mw-heading2,
+	h2,
+	&-content h2,
+	&-content .mw-heading2 {
+		border-bottom: 0;
+		border-top: @border-width-base @border-style-base @border-color-base;
+		margin: @spacing-150 0 0.25em 0;
+		padding-top: 7px;
+		padding-bottom: 0;
+	}
+
 	.mw-heading3,
 	h3,
 	.mw-heading4,
@@ -89,13 +112,12 @@ pre,
 	h5,
 	.mw-heading6,
 	h6 {
-		// Additional bottom padding isnt necessary because only the h2 has an underline
+		// Additional bottom padding isnt necessary because the h2 rule now sits
+		// above the heading rather than below it.
 		padding-bottom: 0;
 		line-height: @line-height-base;
 	}
 
-	.mw-heading2,
-	h2,
 	.mw-heading3,
 	h3,
 	.mw-heading4,
