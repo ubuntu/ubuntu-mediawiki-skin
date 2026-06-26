@@ -32,7 +32,7 @@ h6 {
 
 /* Admonition templates */
 :root {
-	--ubuntu-menu-text-color: #4f4f4f;
+	--ubuntu-menu-text-color: #646464;
 
 	--ubuntu-template-note-border-color: #1a4d80;
 
@@ -417,6 +417,22 @@ div.ubuntu-template-meta-related-articles>ul>li {
 .vector-header-container {
 	background-color: #333;
 	gap: 0 !important;
+	--vector-icon-custom-color: #ffffff;
+	color: #ffffff;
+}
+
+.vector-header-container .cdx-button--weight-quiet:hover,
+.vector-header-container .cdx-button--fake-button--enabled:hover,
+.vector-header-container .vector-dropdown-label:hover,
+.vector-header-container input:hover + .cdx-button--weight-quiet {
+	--background-color-button-quiet-hover: transparent;
+	--background-color-interactive: transparent;
+	background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.vector-header-container a,
+.vector-header-container a:visited {
+	color: #ffffff !important;
 }
 
 /*Colour area around header container*/
@@ -494,13 +510,6 @@ div.ubuntu-template-meta-related-articles>ul>li {
 }
 
 /* Username and dropdown text */
-.vector-user-links>.mw-list-item>a,
-.vector-user-links>.mw-list-item>.vector-user-menu-logged-in>a,
-.vector-menu-content-list a,
-.vector-menu-content a {
-	color: #919191 !important;
-}
-
 .vector-dropdown-content a,
 .vector-user-menu .vector-menu-content a {
 	color: var(--ubuntu-menu-text-color) !important;
@@ -518,6 +527,12 @@ div.ubuntu-template-meta-related-articles>ul>li {
 	--vector-icon-custom-color: #919191;
 	--vector-icon-hover-color: #cccccc;
 	/* Add hover color variable */
+}
+
+/* Personal and logout dropdown menu icons match menu text color */
+#p-personal,
+#p-user-menu-logout {
+	--vector-icon-custom-color: var(--ubuntu-menu-text-color);
 }
 
 /* Reduce padding around icons on hover */
@@ -730,6 +745,11 @@ a.search-toggle.cdx-button--icon-only:hover {
 	.vector-user-menu-logged-in .vector-dropdown-label::after {
 		background-color: var(--vector-icon-custom-color);
 	}
+}
+
+/* Search input placeholder text and icon */
+#simpleSearch .cdx-text-input__input::placeholder {
+	color: #646464;
 }
 
 /* Ubuntu Mono for code elements */
