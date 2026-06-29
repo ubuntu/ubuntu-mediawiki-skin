@@ -19,3 +19,19 @@
 		display: block;
 	}
 }
+
+// Add horizontal padding to Tools dropdown button for visual symmetry
+#vector-page-tools-dropdown > .vector-dropdown-label {
+	padding-left: @padding-horizontal-tabs;
+	padding-right: @padding-horizontal-tabs;
+}
+
+// Hide redundant pinnable header ("Tools" label + "Move to sidebar" button) inside dropdown
+#vector-page-tools-dropdown .vector-pinnable-header {
+	display: none;
+}
+
+// Hide redundant menu heading ("general") inside the Tools dropdown
+// #vector-page-tools-dropdown .vector-menu-heading {
+// 	display: none;
+// }

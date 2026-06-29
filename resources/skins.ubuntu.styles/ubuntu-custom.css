@@ -198,6 +198,10 @@ html.skin-theme-clientpref-night .vector-header-container a.mw-logo .mw-logo-wor
 			background-color: var(--ubuntu-template-message-background-color-dark);
 			border-color: var(--ubuntu-template-message-border-color-dark);
 		}
+
+		& .vector-dropdown-content {
+			border: 1px solid rgba(255, 255, 255, 0.2);
+		}
 	}
 
 	/* OS-based Dark Theme */
@@ -210,6 +214,10 @@ html.skin-theme-clientpref-night .vector-header-container a.mw-logo .mw-logo-wor
 		html.skin-theme-clientpref-os body.skin-ubuntu {
 			& div.ubuntu-template-box {
 				border-color: rgba(255, 255, 255, 0.25);
+			}
+
+			& .vector-dropdown-content {
+				border: 1px solid rgba(255, 255, 255, 0.2);
 			}
 
 			& div.ubuntu-template-message {
