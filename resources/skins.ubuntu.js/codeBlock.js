@@ -11,25 +11,15 @@ function bindBlocks(root) {
     .querySelectorAll(`${BLOCK_SELECTOR}:not( .${BOUND_CLASS} )`)
     .forEach((block) => {
       if (!block.querySelector(BUTTON_SELECTOR)) {
-        const code = block.querySelector("pre, code"),
-          button = document.createElement("button");
-
+        const button = document.createElement("button");
         button.type = "button";
         button.textContent = mw.msg("ubuntu-skin-button-copy");
         button.className = BUTTON_SELECTOR.slice(1);
-
-        // Insert before the code so it floats and the first line(s) wrap
-        // around its actual box while it overhangs the corner (see
-        // CodeBlock.less); fall back to the block if there is no code.
-        if (code) {
-          code.before(button);
-        } else {
-          block.prepend(button);
-        }
+        block.append(button);
       }
 
-		block.classList.add( BOUND_CLASS );
-	} );
+      block.classList.add(BOUND_CLASS);
+    });
 }
 
 /**
@@ -47,39 +37,39 @@ function getCodeText( button ) {
  * @return {void}
  */
 function init() {
-	if ( !( navigator.clipboard && 'writeText' in navigator.clipboard ) ) {
-		return;
-	}
+  if (!(navigator.clipboard && "writeText" in navigator.clipboard)) {
+    return;
+  }
 
   bindBlocks(document);
   mw.hook("wikipage.content").add(($content) => {
     bindBlocks($content[0]);
   });
 
-	document.addEventListener( 'click', ( event ) => {
-		const target = event.target;
+  document.addEventListener("click", (event) => {
+    const target = event.target;
 
-		if ( !( target instanceof Element ) ) {
-			return;
-		}
+    if (!(target instanceof Element)) {
+      return;
+    }
 
-		const button = target.closest( BUTTON_SELECTOR );
+    const button = target.closest(BUTTON_SELECTOR);
 
-		if ( !( button instanceof HTMLButtonElement ) ) {
-			return;
-		}
+    if (!(button instanceof HTMLButtonElement)) {
+      return;
+    }
 
-		const text = getCodeText( button );
+    const text = getCodeText(button);
 
-		if ( text === null ) {
-			return;
-		}
+    if (text === null) {
+      return;
+    }
 
-		try {
-			navigator.clipboard.writeText( text );
-		} catch ( e ) {
-			return;
-		}
+    try {
+      navigator.clipboard.writeText(text);
+    } catch (e) {
+      return;
+    }
 
     button.textContent =
       button.dataset.copiedLabel || mw.msg("ubuntu-skin-button-copied");

@@ -112,5 +112,7 @@
 	"vector-night-mode-issue-reporting-link-notification": "Rapport reçu !",
 	"vector-night-mode-issue-reporting-preload-title": "Erreur de mode sombre $1",
 	"vector-night-mode-issue-reporting-preload-content": "<!--\nInstructions\nVeuillez décrire comment les couleurs du mode sombre rendent Wikipédia difficile à lire.\nVeuillez inclure la section de l'article où vous avez trouvé le problème.\n--> \n'''Description du problème'''",
-	"vector-night-mode-beta-tag": "(bêta)"
+	"vector-night-mode-beta-tag": "(bêta)",
+	"ubuntu-skin-button-copy": "Copier",
+	"ubuntu-skin-button-copied": "Copié !"
 }
