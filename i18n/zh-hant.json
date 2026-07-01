@@ -106,5 +106,7 @@
 	"vector-night-mode-issue-reporting-link-notification": "已收到回報！",
 	"vector-night-mode-issue-reporting-preload-title": "「$1」深色模式錯誤",
 	"vector-night-mode-issue-reporting-preload-content": "<!--\n說明\n請描述深色模式的顏色如何使維基百科難以閱讀。\n請附上您發現問題的條目部分。\n-->\n'''問題描述'''",
-	"vector-night-mode-beta-tag": "（測試）"
+	"vector-night-mode-beta-tag": "（測試）",
+	"ubuntu-skin-button-copy": "複製",
+	"ubuntu-skin-button-copied": "已複製！"
 }

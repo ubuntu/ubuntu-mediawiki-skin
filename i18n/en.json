@@ -90,6 +90,8 @@
 	"vector-night-mode-issue-reporting-preload-title": "$1 dark mode error",
 	"vector-night-mode-issue-reporting-preload-content": "<!--\nInstructions\nPlease describe how the dark mode colors are making Wikipedia difficult to read.\nPlease include the section of the article where you found the issue.\n-->\n'''Issue Description'''",
 	"vector-night-mode-beta-tag": "(beta)",
+	"ubuntu-skin-button-copy": "Copy",
+	"ubuntu-skin-button-copied": "Copied!",
 	"ubuntu-specialversion-name": "Ubuntu",
 	"ubuntu-skin-desc": "Ubuntu skin for MediaWiki, based on Vector 2022."
 }

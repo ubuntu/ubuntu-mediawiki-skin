@@ -402,7 +402,9 @@
 				"skin-theme-toggle-label",
 				"skin-theme-toggle-switch-to-day",
 				"skin-theme-toggle-switch-to-night",
-				"skin-theme-toggle-switch-to-os"
+				"skin-theme-toggle-switch-to-os",
+				"ubuntu-skin-button-copy",
+				"ubuntu-skin-button-copied"
 			]
 		},
 		"skins.ubuntu.legacy.js": {
