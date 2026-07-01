@@ -10,10 +10,16 @@
 	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
-			"name": "Trevor Parscal"
+			"name": "Trevor Parscal",
+			"role": "Original author"
 		},
 		{
-			"name": "Roan Kattouw"
+			"name": "Roan Kattouw",
+			"role": "Original author"
+		},
+		{
+			"name": "Ubuntu Developers",
+			"role": "Maintainer"
 		}
 	],
 	"support": {
