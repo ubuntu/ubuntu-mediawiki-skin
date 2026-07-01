@@ -372,6 +372,7 @@
 				"resources/skins.ubuntu.js/tables.js",
 				"resources/skins.ubuntu.js/languageButton.js",
 				"resources/skins.ubuntu.js/menuTabs.js",
+				"resources/skins.ubuntu.js/codeBlock.js",
 				"resources/skins.ubuntu.js/disableNightModeIfGadget.js",
 				"resources/skins.ubuntu.js/themeToggle.js"
 			],

@@ -8,6 +8,7 @@ const languageButton = require( './languageButton.js' ),
 	watchstar = require( './watchstar.js' ).init,
 	setupIntersectionObservers = require( './setupIntersectionObservers.js' ),
 	menuTabs = require( './menuTabs.js' ),
+	codeBlock = require( './codeBlock.js' ),
 	userPreferences = require( './userPreferences.js' ),
 	themeToggle = require( './themeToggle.js' ),
 	{ isNightModeGadgetEnabled, disableNightModeForGadget, alterExclusionMessage, removeBetaNotice } = require( './disableNightModeIfGadget.js' ),
@@ -101,6 +102,7 @@ function main( window ) {
 	// tab menu to a dropdown.
 	menuTabs();
 	tables();
+	codeBlock.init();
 }
 
 /**
