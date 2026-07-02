@@ -1,9 +1,35 @@
 const BLOCK_SELECTOR = ".ubuntu-code-block",
   BOUND_CLASS = "ubuntu-code-block--bound",
   BUTTON_SELECTOR = ".ubuntu-code-block-copy",
+  CAPTCHA_BLOCK_CLASS = "ubuntu-code-block--captcha",
   FOCUSABLE_SELECTOR =
     "a[href], button, input, textarea, select, [tabindex]",
   STATUS_CLASS = "ubuntu-code-block-copy-status";
+
+/**
+ * @param {HTMLButtonElement} button
+ * @return {string}
+ */
+function getCopyLabel(button) {
+  const block = button.closest(BLOCK_SELECTOR);
+
+  if (button.dataset.copyLabel) {
+    return button.dataset.copyLabel;
+  }
+
+  if (block instanceof HTMLElement && block.dataset.copyLabel) {
+    return block.dataset.copyLabel;
+  }
+
+  if (
+    block instanceof HTMLElement &&
+    block.classList.contains(CAPTCHA_BLOCK_CLASS)
+  ) {
+    return mw.msg("ubuntu-skin-button-copy-captcha-command");
+  }
+
+  return mw.msg("ubuntu-skin-button-copy");
+}
 
 /**
  * @param {Element} element
@@ -55,18 +81,15 @@ function bindBlocks(root) {
         button.type = "button";
         button.textContent = mw.msg("ubuntu-skin-button-copy");
         button.className = BUTTON_SELECTOR.slice(1);
-        button.setAttribute("aria-label", mw.msg("ubuntu-skin-button-copy"));
         button.addEventListener("blur", () => {
-          button.setAttribute(
-            "aria-label",
-            button.dataset.copyLabel || mw.msg("ubuntu-skin-button-copy")
-          );
+          button.setAttribute("aria-label", getCopyLabel(button));
         });
         const tabIndex = getFollowingPositiveTabIndex(block);
         if (tabIndex !== null) {
           button.tabIndex = tabIndex;
         }
         block.insertBefore(button, code);
+        button.setAttribute("aria-label", getCopyLabel(button));
       }
 
       block.classList.add(BOUND_CLASS);
@@ -122,11 +145,12 @@ function announceStatus(status, message) {
 
 /**
  * @param {HTMLButtonElement} button
+ * @param {string} text
  * @param {string} label
  * @return {void}
  */
-function resetButtonLabel(button, label) {
-  button.textContent = label;
+function resetButtonLabel(button, text, label) {
+  button.textContent = text;
   if (document.activeElement !== button) {
     button.setAttribute("aria-label", label);
   }
@@ -165,9 +189,9 @@ function init() {
       return;
     }
 
-    const copyLabel =
-      button.dataset.copyLabel || mw.msg("ubuntu-skin-button-copy");
-    const copiedLabel =
+    const copyButtonLabel = mw.msg("ubuntu-skin-button-copy"),
+      copyLabel = getCopyLabel(button),
+      copiedLabel =
       button.dataset.copiedLabel || mw.msg("ubuntu-skin-button-copied");
     const status = getStatusElement();
 
@@ -189,7 +213,7 @@ function init() {
         }
 
         setTimeout(() => {
-          resetButtonLabel(button, copyLabel);
+          resetButtonLabel(button, copyButtonLabel, copyLabel);
         }, 5000);
       },
       () => undefined
