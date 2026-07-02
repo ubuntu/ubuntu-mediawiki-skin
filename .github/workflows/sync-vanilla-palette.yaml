@@ -1,0 +1,33 @@
+name: Sync Vanilla Framework palette
+
+on:
+  workflow_dispatch:
+    inputs:
+      vanilla_ref:
+        description: "Vanilla Framework ref (tag, branch, or SHA). Leave empty to use the latest stable release."
+        default: ""
+        required: false
+        type: string
+      dry_run:
+        description: "If true, don't create a PR even if there are changes"
+        default: false
+        required: false
+        type: boolean
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - "resources/skins.ubuntu.styles/ubuntu-palette.less"
+  schedule:
+    - cron: "0 9 * * 1" # Every Monday at 09:00 UTC
+
+jobs:
+  sync:
+    uses: ubuntu/ubuntu-mediawiki-skin/.github/workflows/update-palette.yaml@palette-tooling
+    with:
+      vanilla_ref: ${{ inputs.vanilla_ref || '' }}
+      dry_run: ${{ inputs.dry_run || github.event_name == 'pull_request' }}
+    secrets: inherit
+    permissions:
+      contents: write
+      pull-requests: write
