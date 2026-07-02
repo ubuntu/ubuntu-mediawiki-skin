@@ -467,20 +467,20 @@ div.ubuntu-template-meta-related-articles>ul>li {
 	padding: 0 12px !important;
 }
 
+
+
 /* Align icon to top, text to bottom, matching ubuntu.com tagged-logo layout */
-@media (min-width: 640px) {
-	.vector-header-start {
-		align-items: start !important;
-	}
+.vector-header-start {
+	align-items: start !important;
+}
 
-	.vector-header-start .vector-logo {
-		align-items: stretch !important;
-		height: 50px !important;
-	}
+.vector-header-start .vector-logo {
+	align-items: stretch !important;
+	height: 50px !important;
+}
 
-	.vector-header-start a.mw-logo {
-		align-items: flex-end !important;
-	}
+.vector-header-start a.mw-logo {
+	align-items: flex-end !important;
 }
 
 /* Wiki title styles */
