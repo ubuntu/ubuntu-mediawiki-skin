@@ -39,7 +39,7 @@
 		font-size: inherit;
 	}
 
-	// The float and margins flip with the page direction (CSSJanus), 
+	// The float and margins flip with the page direction (CSSJanus),
 	// so the button sits at the top-left in RTL while the code itself stays LTR.
 	> .ubuntu-code-block-copy {
 		float: right;
@@ -66,4 +66,8 @@
 			border-color: @border-color-progressive--active;
 		}
 	}
+}
+
+.ubuntu-code-block-copy-status {
+	.mixin-screen-reader-text();
 }
