@@ -435,10 +435,19 @@ div.ubuntu-template-meta-related-articles>ul>li {
 	color: #ffffff !important;
 }
 
+.vector-sticky-header-container {
+	color: var( --color-base, #202122 ) !important;
+	--vector-icon-custom-color: var( --color-base, #202122 );
+}
+
 /* Dropdown panels have their own backgrounds; reset inherited header white */
-.vector-dropdown-content,
-.vector-dropdown-content .vector-menu-heading {
-	color: var( --color-base, #202122 );
+.vector-dropdown-content
+.vector-dropdown-content .vector-menu-heading,
+.cdx-menu,
+.cdx-menu-item,
+.cdx-typeahead-search .cdx-menu-item__text,
+.vector-pinnable-header {
+	color: var( --color-base, #202122 ) !important;
 }
 
 /*Colour area around header container*/
