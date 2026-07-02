@@ -12,7 +12,7 @@ use MWException;
 
 /**
  * @ingroup Skins
- * @package Vector
+ * @package Ubuntu
  * @internal
  */
 class SkinVectorLegacy extends SkinMustache {

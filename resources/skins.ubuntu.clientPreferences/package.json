@@ -8,6 +8,6 @@
 	"description": "A library for rendering client preferences",
 	"repository": {
 		"type": "git",
-		"url": "https://gerrit.wikimedia.org/r/mediawiki/skins/Vector"
+		"url": "https://github.com/ubuntu/ubuntu-mediawiki-skin"
 	}
 }

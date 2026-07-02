@@ -154,7 +154,7 @@ class FeatureManager {
 			$this->context->getUser(),
 			$preferenceKey
 			// For client preferences, this should be the same as `preferenceKey`
-			// in 'resources/skins.vector.js/clientPreferences.json'
+			// in 'resources/skins.ubuntu.js/clientPreferences.json'
 		);
 	}
 

@@ -7,7 +7,7 @@ use MediaWiki\User\Options\UserOptionsLookup;
 use MediaWiki\User\User;
 
 /**
- * @package Vector
+ * @package Ubuntu
  * @internal
  */
 class CentralAuthHooks implements CentralAuthIsUIReloadRecommendedHook {

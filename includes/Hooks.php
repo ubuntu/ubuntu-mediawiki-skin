@@ -15,11 +15,11 @@ use MediaWiki\User\Options\UserOptionsManager;
 use MediaWiki\User\User;
 
 /**
- * Presentation hook handlers for Vector skin.
+ * Presentation hook handlers for Ubuntu skin.
  *
  * Hook handler method names should be in the form of:
  *	on<HookName>()
- * @package Vector
+ * @package Ubuntu
  * @internal
  */
 class Hooks implements
@@ -49,7 +49,7 @@ class Hooks implements
 	}
 
 	/**
-	 * Generates config variables for skins.vector.search Resource Loader module (defined in
+	 * Generates config variables for skins.ubuntu.search Resource Loader module (defined in
 	 * skin.json).
 	 *
 	 * @param RL\Context $context
@@ -95,7 +95,7 @@ class Hooks implements
 		// This allows us to use the new Vue implementation.
 		// Context has no knowledge of legacy / modern Vector
 		// and from its point of view they are the same thing.
-		// Please see the modules `skins.vector.js` and `skins.vector.legacy.js`
+		// Please see the modules `skins.ubuntu.js` and `skins.ubuntu.legacy.js`
 		// for the wire up of search.
 		$config['searchModule'] = 'skins.ubuntu.search';
 	}

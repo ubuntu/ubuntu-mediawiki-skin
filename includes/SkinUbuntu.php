@@ -26,7 +26,7 @@ use RuntimeException;
 
 /**
  * @ingroup Skins
- * @package Vector
+ * @package Ubuntu
  * @internal
  */
 class SkinUbuntu extends SkinMustache {

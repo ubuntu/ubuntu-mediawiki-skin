@@ -7,7 +7,7 @@ use MediaWiki\Skins\Ubuntu\Services\LanguageService;
 /**
  * A service locator for services specific to Vector.
  *
- * @package Vector
+ * @package Ubuntu
  * @internal
  */
 final class VectorServices {

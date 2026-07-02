@@ -6,7 +6,7 @@ use MediaWiki\Exception\FatalError;
 /**
  * A namespace for Vector constants for internal Vector usage only. **Do not rely on this file as an
  * API as it may change without warning at any time.**
- * @package Vector
+ * @package Ubuntu
  * @internal
  */
 final class Constants {
