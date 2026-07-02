@@ -113,5 +113,7 @@
 	"vector-night-mode-issue-reporting-link-notification": "報告を受け取りました!",
 	"vector-night-mode-issue-reporting-preload-title": "$1 ダークモードエラー",
 	"vector-night-mode-issue-reporting-preload-content": "<!--\n案内\nダークモードの色でウィキペディアがどのように読みにくくなっているのかを説明してください。\n問題を発見した記事の節を付記してください。\n-->\n'''問題の説明'''",
-	"vector-night-mode-beta-tag": "(ベータ)"
+	"vector-night-mode-beta-tag": "(ベータ)",
+	"ubuntu-skin-button-copy": "コピー",
+	"ubuntu-skin-button-copied": "コピーしました"
 }

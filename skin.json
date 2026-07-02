@@ -372,6 +372,7 @@
 				"resources/skins.ubuntu.js/tables.js",
 				"resources/skins.ubuntu.js/languageButton.js",
 				"resources/skins.ubuntu.js/menuTabs.js",
+				"resources/skins.ubuntu.js/codeBlock.js",
 				"resources/skins.ubuntu.js/disableNightModeIfGadget.js",
 				"resources/skins.ubuntu.js/themeToggle.js"
 			],
@@ -401,7 +402,10 @@
 				"skin-theme-toggle-label",
 				"skin-theme-toggle-switch-to-day",
 				"skin-theme-toggle-switch-to-night",
-				"skin-theme-toggle-switch-to-os"
+				"skin-theme-toggle-switch-to-os",
+				"ubuntu-skin-button-copy",
+				"ubuntu-skin-button-copied",
+				"ubuntu-skin-button-copy-captcha-command"
 			]
 		},
 		"skins.ubuntu.legacy.js": {
