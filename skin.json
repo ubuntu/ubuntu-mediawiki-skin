@@ -404,7 +404,8 @@
 				"skin-theme-toggle-switch-to-night",
 				"skin-theme-toggle-switch-to-os",
 				"ubuntu-skin-button-copy",
-				"ubuntu-skin-button-copied"
+				"ubuntu-skin-button-copied",
+				"ubuntu-skin-button-copy-captcha-command"
 			]
 		},
 		"skins.ubuntu.legacy.js": {

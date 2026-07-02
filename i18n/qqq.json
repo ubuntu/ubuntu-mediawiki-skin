@@ -108,5 +108,6 @@
 	"vector-night-mode-issue-reporting-preload-content": "The prefilled content of the form used to submit dark mode errors",
 	"vector-night-mode-beta-tag": "A tag appearing in the Appearance menu informing users that this feature is in beta.",
 	"ubuntu-skin-button-copy": "Generic label for a button that copies content to the clipboard.\n{{Identical|Copy}}",
-	"ubuntu-skin-button-copied": "Generic label shown briefly after content has been copied to the clipboard.\n{{Identical|Copied}}"
+	"ubuntu-skin-button-copied": "Generic label shown briefly after content has been copied to the clipboard.",
+	"ubuntu-skin-button-copy-captcha-command": "Accessible label for a copy button inside a CAPTCHA code block that copies a terminal command to the clipboard."
 }
