@@ -1,0 +1,158 @@
+name: Update Vanilla Framework palette
+
+# Lives on the palette-tooling branch.
+# Called by .github/workflows/sync-vanilla-palette.yml on main, which holds
+# the workflow_dispatch / schedule triggers.
+#
+# ── Local testing ──────────────────────────────────────────────────────────────
+# Requires: sass (npm install -g sass), python3, curl
+#
+#   mkdir -p scripts/vendor
+#   curl -fsSL https://raw.githubusercontent.com/canonical/vanilla-framework/main/scss/_settings_colors.scss \
+#     -o scripts/vendor/_settings_colors.scss
+#   sass scripts/palette-shim.scss --load-path=scripts/vendor --no-source-map --style=expanded \
+#     | python3 scripts/post-process-palette.py \
+#     > resources/skins.ubuntu.styles/ubuntu-palette.less
+#
+# ── Upstream changes ───────────────────────────────────────────────────────────
+# • New upstream variables  → silently absent until palette-shim.scss is updated
+#                              (intentional — additions are reviewed before landing)
+# • Removed / renamed vars  → sass compile error; this job fails before any PR is
+#                              created, making the breakage immediately visible
+
+on:
+  workflow_call:
+    inputs:
+      vanilla_ref:
+        description: "Vanilla Framework ref (tag, branch, or SHA). Leave empty to use the latest stable release."
+        default: ""
+        required: false
+        type: string
+      dry_run:
+        description: "If true, don't create a PR even if there are changes"
+        default: false
+        required: false
+        type: boolean
+  pull_request:
+    branches:
+      - palette-tooling
+
+jobs:
+  update-palette:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write # checkout repo + push the bot PR branch
+      pull-requests: write # open / update the bot PR
+
+    steps:
+      - name: Checkout palette-tooling branch
+        uses: actions/checkout@v7
+        with:
+          # For pull_request events targeting palette-tooling, use the PR head so we test proposed shim changes.
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'palette-tooling' && github.event.pull_request.head.sha || 'palette-tooling' }}
+
+      - name: Fetch current palette from main
+        run: |
+          git fetch origin main
+          # Restore the main-branch copy of ubuntu-palette.less so has-diff has a
+          # meaningful baseline. If the file doesn't exist yet on main (first run)
+          # the checkout exits non-zero; we swallow that and let has-diff treat it
+          # as a wholly new file.
+          git checkout origin/main -- resources/skins.ubuntu.styles/ubuntu-palette.less \
+            || echo "No existing ubuntu-palette.less on main — will be created."
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+
+      - name: Install Dart Sass
+        run: npm install --global sass
+
+      - name: Resolve Vanilla Framework ref
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          INPUT_REF="${{ inputs.vanilla_ref }}"
+          if [ -z "${INPUT_REF}" ]; then
+            echo "No ref supplied — resolving latest stable release"
+            # gh release view without a tag returns the latest non-prerelease, non-draft release.
+            INPUT_REF=$(gh release view --repo canonical/vanilla-framework --json tagName --jq '.tagName')
+            echo "Resolved: ${INPUT_REF}"
+          fi
+          echo "VANILLA_REF=${INPUT_REF}" >> "$GITHUB_ENV"
+
+      - name: Download Vanilla Framework color settings
+        run: |
+          echo "Fetching _settings_colors.scss @ ${VANILLA_REF}"
+          mkdir -p scripts/vendor
+          curl --fail --silent --show-error --location \
+            "https://raw.githubusercontent.com/canonical/vanilla-framework/${VANILLA_REF}/scss/_settings_colors.scss" \
+            --output scripts/vendor/_settings_colors.scss
+          echo "OK"
+
+      - name: Compile palette shim with Sass
+        run: |
+          mkdir -p resources/skins.ubuntu.styles
+          sass scripts/palette-shim.scss \
+            --load-path=scripts/vendor \
+            --no-source-map \
+            --style=expanded \
+            --silence-deprecation=global-builtin \
+          | python3 scripts/post-process-palette.py \
+            > resources/skins.ubuntu.styles/ubuntu-palette.less
+
+      - name: Upload generated palette as artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: ubuntu-palette
+          path: resources/skins.ubuntu.styles/ubuntu-palette.less
+
+      - name: Check for palette changes
+        id: palette-diff
+        uses: canonical/desktop-engineering/gh-actions/common/has-diff@v2
+        with:
+          working-directory: resources/skins.ubuntu.styles
+          fail-on-diff: "false"
+          # Ignore the auto-updated date stamp so the workflow doesn't open
+          # a PR on every run when Vanilla itself hasn't changed.
+          regexp-to-ignore: "Generated:\\|Ref:"
+
+      - name: Apply label to PR
+        if: steps.palette-diff.outputs.diff == 'true' && github.event_name == 'pull_request' && github.event.pull_request.base.ref != 'palette-tooling'
+        run: |
+          gh pr edit "${{ github.event.pull_request.number }}" --add-label "colors out of sync"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create or update pull request
+        uses: peter-evans/create-pull-request@v8
+        id: create-pr
+        if: github.event_name != 'pull_request' && steps.palette-diff.outputs.diff == 'true' && inputs.dry_run != true
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: main
+          branch: bot/update-vanilla-palette
+          title: "deps(ubuntu-palette.less): sync Vanilla Framework color palette"
+          body: |
+            Automated update of `ubuntu-palette.less` from upstream Vanilla Framework.
+
+            **Triggered by:** manual `workflow_dispatch` on `palette-tooling`
+            **Vanilla ref:** `${{ inputs.vanilla_ref || 'main' }}`
+
+            Changes were produced by compiling `scripts/palette-shim.scss`
+            with Dart Sass, which resolves all computed color values
+            (`adjust-color`, `rgba`, `color.scale`, map lookups, etc.).
+          add-paths: |
+            resources/skins.ubuntu.styles/ubuntu-palette.less
+          commit-message: "deps(ubuntu-palette.less): sync Vanilla Framework color palette"
+          delete-branch: true
+          sign-commits: true
+
+      - name: Create summary
+        if: always()
+        run: |
+          echo "# Summary" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Vanilla Framework ref: ${VANILLA_REF}" >> "$GITHUB_STEP_SUMMARY"
+          echo "Palette changes detected: ${{ steps.palette-diff.outputs.diff }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "Pull request: ${{ steps.create-pr.outputs.pull-request-url || 'N/A' }}" >> "$GITHUB_STEP_SUMMARY"
