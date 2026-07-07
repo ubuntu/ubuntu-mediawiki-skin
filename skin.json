@@ -150,6 +150,7 @@
 		}
 	},
 	"Hooks": {
+		"BeforePageDisplay": "UbuntuHooks",
 		"CentralAuthIsUIReloadRecommended": "UbuntuCentralAuthHooks",
 		"GetPreferences": "UbuntuHooks",
 		"LocalUserCreated": "UbuntuHooks",
@@ -422,6 +423,26 @@
 				"mediawiki.page.ready",
 				"mediawiki.util"
 			]
+		},
+		"skins.ubuntu.cookieConsent": {
+			"styles": [
+				"resources/skins.ubuntu.cookieConsent/vendor/cookie-policy.css"
+			],
+			"noflip": true,
+			"packageFiles": [
+				"resources/skins.ubuntu.cookieConsent/cookieConsent.js",
+				"resources/skins.ubuntu.cookieConsent/cookieConsent-vendor.js",
+				"resources/skins.ubuntu.cookieConsent/vendor/cookie-policy.js",
+				{
+					"name": "resources/skins.ubuntu.cookieConsent/config.json",
+					"config": [
+						"UbuntuCookieConsentEnabled"
+					]
+				}
+			],
+			"messages": [
+				"ubuntu-manage-trackers-button-label"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
@@ -598,6 +619,10 @@
 		"UbuntuTableOfContentsCollapseAtCount": {
 			"value": 28,
 			"description": "@var The minimum number of headings required to collapse all headings in the sticky table of contents by default."
+		},
+		"UbuntuCookieConsentEnabled": {
+			"value": false,
+			"description": "@var bool Enable the Canonical cookie policy consent banner. When enabled, loads the cookie-policy library which sets Google Consent Mode v2 defaults to denied and displays a consent dialog. The footer 'Manage your tracker settings' button (added via SkinAddFooterLinks hook in LocalSettings.php) allows users to reconfigure consent."
 		}
 	},
 	"ServiceWiringFiles": [

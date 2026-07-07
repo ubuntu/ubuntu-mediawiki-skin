@@ -4,9 +4,12 @@ namespace MediaWiki\Skins\Ubuntu;
 
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\Config\Config;
+use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Output\OutputPage;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader as RL;
+use MediaWiki\Skin\Skin;
 use MediaWiki\Skin\SkinTemplate;
 use MediaWiki\Skins\Hook\SkinPageReadyConfigHook;
 use MediaWiki\Skins\Ubuntu\FeatureManagement\FeatureManagerFactory;
@@ -23,6 +26,7 @@ use MediaWiki\User\User;
  * @internal
  */
 class Hooks implements
+	BeforePageDisplayHook,
 	GetPreferencesHook,
 	LocalUserCreatedHook,
 	SkinPageReadyConfigHook
@@ -98,6 +102,22 @@ class Hooks implements
 		// Please see the modules `skins.ubuntu.js` and `skins.ubuntu.legacy.js`
 		// for the wire up of search.
 		$config['searchModule'] = 'skins.ubuntu.search';
+	}
+
+	/**
+	 * BeforePageDisplay hook handler.
+	 *
+	 * Loads the cookie consent module only when the feature is enabled, so the
+	 * vendored cookie-policy CSS/JS payload isn't shipped on every page view
+	 * when the banner is disabled (the default).
+	 *
+	 * @param OutputPage $out
+	 * @param Skin $skin
+	 */
+	public function onBeforePageDisplay( $out, $skin ): void {
+		if ( $this->config->get( 'UbuntuCookieConsentEnabled' ) ) {
+			$out->addModules( [ 'skins.ubuntu.cookieConsent' ] );
+		}
 	}
 
 	/**
@@ -571,7 +591,6 @@ class Hooks implements
 			);
 		}
 	}
-
 
 	/**
 	 * Gets whether the current skin version is the legacy version.
