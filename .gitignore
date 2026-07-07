@@ -47,3 +47,6 @@ Thumbs.db
 
 # Local development config (copy of LocalSettings.example.php)
 LocalSettings.php
+
+# Palette tooling — downloaded by the update-palette workflow / local testing
+/.github/palette-tooling/vendor

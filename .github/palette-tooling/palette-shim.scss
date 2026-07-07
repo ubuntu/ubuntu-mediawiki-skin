@@ -1,0 +1,122 @@
+// palette-shim.scss
+//
+// SCSS entry point compiled by the update-vanilla-palette CI workflow.
+// Outputs all Vanilla Framework colour variables — including computed/rgba
+// values — as CSS custom properties.
+//
+// Requires the Vanilla settings file to be available at:
+//   .github/palette-tooling/vendor/_settings_colors.scss
+// (downloaded by the workflow before compilation)
+//
+// Manual compilation:
+//   sass .github/palette-tooling/palette-shim.scss \
+//     --load-path=.github/palette-tooling/vendor \
+//     --no-source-map \
+//     --style=expanded
+
+@use 'sass:map';
+@use 'settings_colors' as v;
+
+:root {
+
+  // ── Raw palette ($color-*) ─────────────────────────────────────────────────
+
+  /* Generic grays */
+  --ubuntu-palette-x-light:     #{v.$color-x-light};
+  --ubuntu-palette-light:       #{v.$color-light};
+  --ubuntu-palette-mid-x-light: #{v.$color-mid-x-light};
+  --ubuntu-palette-mid-light:   #{v.$color-mid-light};
+  --ubuntu-palette-mid:         #{v.$color-mid};
+  --ubuntu-palette-mid-dark:    #{v.$color-mid-dark};
+  --ubuntu-palette-dark:        #{v.$color-dark};
+  --ubuntu-palette-x-dark:      #{v.$color-x-dark};
+
+  /* Status */
+  --ubuntu-palette-negative:    #{v.$color-negative};
+  --ubuntu-palette-caution:     #{v.$color-caution};
+  --ubuntu-palette-positive:    #{v.$color-positive};
+  --ubuntu-palette-information: #{v.$color-information};
+  --ubuntu-palette-paper:       #{v.$color-paper};
+
+  /* Status — dark theme variants */
+  --ubuntu-palette-negative-dark: #{v.$color-negative-dark};
+  --ubuntu-palette-positive-dark: #{v.$color-positive-dark};
+
+  /* Links and focus */
+  --ubuntu-palette-link:               #{v.$color-link};
+  --ubuntu-palette-link-visited:       #{v.$color-link-visited};
+  --ubuntu-palette-focus:              #{v.$color-focus};
+  --ubuntu-palette-link-dark:          #{v.$color-link-dark};
+  --ubuntu-palette-link-visited-dark:  #{v.$color-link-visited-dark};
+  --ubuntu-palette-focus-dark:         #{v.$color-focus-dark};
+  --ubuntu-palette-focus-positive:     #{v.$color-focus-positive};
+
+  /* Non-semantic */
+  --ubuntu-palette-label-validated: #{v.$color-label-validated};
+
+  /* Status tinted backgrounds */
+  --ubuntu-palette-positive-background:        #{v.$color-positive-background};
+  --ubuntu-palette-positive-background--hover: #{v.$color-positive-background--hover};
+  --ubuntu-palette-positive-background--focus: #{v.$color-positive-background--focus};
+  --ubuntu-palette-caution-background:         #{v.$color-caution-background};
+  --ubuntu-palette-caution-background--hover:  #{v.$color-caution-background--hover};
+  --ubuntu-palette-caution-background--focus:  #{v.$color-caution-background--focus};
+  --ubuntu-palette-negative-background:        #{v.$color-negative-background};
+  --ubuntu-palette-negative-background--hover: #{v.$color-negative-background--hover};
+  --ubuntu-palette-negative-background--focus: #{v.$color-negative-background--focus};
+
+  /* Branding */
+  --ubuntu-palette-ubuntu:      #{v.$color-ubuntu};
+  --ubuntu-palette-accent:      #{v.$color-accent};
+  --ubuntu-palette-accent-dark: #{v.$color-accent-dark};
+
+
+  // ── Light theme resolved values ($colors--light-theme--*) ─────────────────
+  // Sass resolves adjust-color(), rgba(), color.scale() to their final values.
+
+  /* Text */
+  --ubuntu-palette-text-default:  #{v.$colors--light-theme--text-default};
+  --ubuntu-palette-text-muted:    #{v.$colors--light-theme--text-muted};
+  --ubuntu-palette-text-inactive: #{v.$colors--light-theme--text-inactive};
+
+  /* Backgrounds */
+  --ubuntu-palette-bg-inputs:      #{v.$colors--light-theme--background-inputs};
+  --ubuntu-palette-bg-active:      #{v.$colors--light-theme--background-active};
+  --ubuntu-palette-neutral-tinted: #{v.$colors--light-theme--background-hover};
+  --ubuntu-palette-bg-overlay:     #{v.$colors--light-theme--background-overlay};
+  --ubuntu-palette-bg-code:        #{v.$colors--light-theme--background-code};
+
+  /* Borders */
+  --ubuntu-palette-border-default:       #{v.$colors--light-theme--border-default};
+  --ubuntu-palette-border-high-contrast: #{v.$colors--light-theme--border-high-contrast};
+  --ubuntu-palette-border-low-contrast:  #{v.$colors--light-theme--border-low-contrast};
+
+
+  // ── Dark theme resolved values ($colors--dark-theme--*) ───────────────────
+
+  /* Text */
+  --ubuntu-palette-text-default-dark:   #{v.$colors--dark-theme--text-default};
+  --ubuntu-palette-text-hover-dark:     #{v.$colors--dark-theme--text-hover};
+  --ubuntu-palette-text-muted-dark:     #{v.$colors--dark-theme--text-muted};
+  --ubuntu-palette-text-inactive-dark:  #{v.$colors--dark-theme--text-inactive};
+
+  /* Backgrounds */
+  --ubuntu-palette-bg-dark:        #{v.$colors--dark-theme--background-default};
+  --ubuntu-palette-bg-alt-dark:    #{v.$colors--dark-theme--background-alt};
+  --ubuntu-palette-bg-inputs-dark: #{v.$colors--dark-theme--background-inputs};
+  --ubuntu-palette-bg-active-dark: #{v.$colors--dark-theme--background-active};
+  --ubuntu-palette-bg-hover-dark:  #{v.$colors--dark-theme--background-hover};
+  --ubuntu-palette-bg-code-dark:   #{v.$colors--dark-theme--background-code};
+
+  /* Borders */
+  --ubuntu-palette-border-default-dark:       #{v.$colors--dark-theme--border-default};
+  --ubuntu-palette-border-high-contrast-dark: #{v.$colors--dark-theme--border-high-contrast};
+  --ubuntu-palette-border-low-contrast-dark:  #{v.$colors--dark-theme--border-low-contrast};
+
+  /* Tinted borders (from $colors-dark-theme--tinted-borders map) */
+  --ubuntu-palette-border-neutral-dark:     #{map.get(v.$colors-dark-theme--tinted-borders, neutral)};
+  --ubuntu-palette-border-positive-dark:    #{map.get(v.$colors-dark-theme--tinted-borders, positive)};
+  --ubuntu-palette-border-caution-dark:     #{map.get(v.$colors-dark-theme--tinted-borders, caution)};
+  --ubuntu-palette-border-negative-dark:    #{map.get(v.$colors-dark-theme--tinted-borders, negative)};
+  --ubuntu-palette-border-information-dark: #{map.get(v.$colors-dark-theme--tinted-borders, information)};
+}

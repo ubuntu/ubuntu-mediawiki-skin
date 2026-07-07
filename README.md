@@ -76,15 +76,15 @@ The HTML class names in the page (e.g. `vector-page-toolbar-container`, `vector-
 
 These are set in `skin.json` under `DefaultUserOptions` and apply to new users only:
 
-| Preference | Vector 2022 default | Ubuntu default |
-|---|---|---|
-| Main menu pinned | 1 (pinned) | 0 (collapsed) |
-| Page tools pinned | 1 (pinned) | 0 (collapsed) |
-| TOC pinned | 1 (pinned) | 1 (pinned) |
-| Appearance panel pinned | 1 (pinned) | 0 (collapsed) |
-| Limited width | 1 (on) | 1 (on) |
-| Font size | 0 (default) | 0 (default) |
-| Theme | day | day |
+| Preference              | Vector 2022 default | Ubuntu default |
+| ----------------------- | ------------------- | -------------- |
+| Main menu pinned        | 1 (pinned)          | 0 (collapsed)  |
+| Page tools pinned       | 1 (pinned)          | 0 (collapsed)  |
+| TOC pinned              | 1 (pinned)          | 1 (pinned)     |
+| Appearance panel pinned | 1 (pinned)          | 0 (collapsed)  |
+| Limited width           | 1 (on)              | 1 (on)         |
+| Font size               | 0 (default)         | 0 (default)    |
+| Theme                   | day                 | day            |
 
 #### Responsive
 
@@ -92,16 +92,16 @@ These are set in `skin.json` under `DefaultUserOptions` and apply to new users o
 
 #### Naming / Registration
 
-| Thing | Vector 2022 | Ubuntu |
-|---|---|---|
-| Skin key | `vector-2022` | `ubuntu` |
-| PHP namespace | `MediaWiki\Skins\Vector` | `MediaWiki\Skins\Ubuntu` |
-| Composer package | `mediawiki/vector-skin` | `mediawiki/ubuntu-skin` |
-| Resource modules | `skins.vector.*` | `skins.ubuntu.*` |
-| Config keys | `wgVector*` | `wgUbuntu*` |
-| Main skin class | `SkinVector22` | `SkinUbuntu` |
-| i18n name message | `vector-specialversion-name` | `ubuntu-specialversion-name` |
-| i18n description message | `vector-skin-desc` | `ubuntu-skin-desc` |
+| Thing                    | Vector 2022                  | Ubuntu                       |
+| ------------------------ | ---------------------------- | ---------------------------- |
+| Skin key                 | `vector-2022`                | `ubuntu`                     |
+| PHP namespace            | `MediaWiki\Skins\Vector`     | `MediaWiki\Skins\Ubuntu`     |
+| Composer package         | `mediawiki/vector-skin`      | `mediawiki/ubuntu-skin`      |
+| Resource modules         | `skins.vector.*`             | `skins.ubuntu.*`             |
+| Config keys              | `wgVector*`                  | `wgUbuntu*`                  |
+| Main skin class          | `SkinVector22`               | `SkinUbuntu`                 |
+| i18n name message        | `vector-specialversion-name` | `ubuntu-specialversion-name` |
+| i18n description message | `vector-skin-desc`           | `ubuntu-skin-desc`           |
 
 #### Bundled Assets
 
@@ -109,3 +109,4 @@ These are set in `skin.json` under `DefaultUserOptions` and apply to new users o
 - `resources/images/Tag-CoF-Orange-Digital.svg` — Ubuntu logo for the header
 - `resources/skins.ubuntu.styles/ubuntu-custom.css` — all custom CSS overrides
 - `resources/skins.ubuntu.styles/ubuntu-fonts.css` — `@font-face` declarations for self-hosted fonts
+- `resources/skins.ubuntu.styles/ubuntu-palette.less` — auto-generated Vanilla Framework colour palette (CSS custom properties)
