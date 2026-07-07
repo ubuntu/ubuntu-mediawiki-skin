@@ -138,10 +138,10 @@ function init( window ) {
 	mw.loader.using( 'ext.eventLogging' ).then( () => {
 		if (
 			mw.eventLog &&
-      mw.eventLog.eventInSample( 100 /* 1 in 100 */ ) &&
-      window.performance &&
-      window.performance.timing &&
-      window.performance.timing.navigationStart
+			mw.eventLog.eventInSample( 100 /* 1 in 100 */ ) &&
+			window.performance &&
+			window.performance.timing &&
+			window.performance.timing.navigationStart
 		) {
 			mw.track(
 				'timing.Vector.ready',
@@ -158,7 +158,7 @@ function init( window ) {
 init( window );
 if (
 	document.readyState === 'interactive' ||
-  document.readyState === 'complete'
+  	document.readyState === 'complete'
 ) {
 	main( window );
 } else {

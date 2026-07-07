@@ -37,9 +37,9 @@ function getCopyLabel( button ) {
 function isFocusable( element ) {
 	return (
 		element instanceof HTMLElement &&
-    element.tabIndex >= 0 &&
-    !element.hasAttribute( 'disabled' ) &&
-    !element.matches( "input[type='hidden']" )
+		element.tabIndex >= 0 &&
+		!element.hasAttribute( 'disabled' ) &&
+		!element.matches( "input[type='hidden']" )
 	);
 }
 
