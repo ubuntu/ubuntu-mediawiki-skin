@@ -93,5 +93,7 @@
 	"vector-night-mode-issue-reporting-link-notification": "Bericht erhalten!",
 	"vector-night-mode-issue-reporting-preload-title": "$1 Dunkelmodus-Fehler",
 	"vector-night-mode-issue-reporting-preload-content": "<!--\nAnweisungen\n\nBitte {{#FORMAL:beschreibe|beschreiben Sie}}, wie die Farben im Dunkelmodus das Lesen von Wikipedia erschweren.\nBitte {{#FORMAL:gib|geben Sie}} den Abschnitt des Artikels an, in dem {{#FORMAL:du das Problem festgestellt hast|Sie das Problem festgestellt haben}}. \n-->\n'''Problembeschreibung'''",
-	"vector-night-mode-beta-tag": "(Beta)"
+	"vector-night-mode-beta-tag": "(Beta)",
+	"ubuntu-skin-button-copy": "Kopieren",
+	"ubuntu-skin-button-copied": "Kopiert!"
 }

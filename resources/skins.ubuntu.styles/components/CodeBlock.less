@@ -1,0 +1,73 @@
+.ubuntu-code-block {
+	margin: @spacing-75 0;
+	border: @border-width-base @border-style-base @border-color-subtle;
+	border-radius: @border-radius-base;
+	background-color: @background-color-neutral-subtle;
+	color: @color-base;
+	line-height: @line-height-code;
+
+	> pre,
+	> code {
+		display: block;
+		box-sizing: border-box;
+		// Render code as an LTR island so it is never mirrored on RTL pages.
+		direction: ltr;
+		/* @noflip */
+		text-align: left;
+		max-width: 100%;
+		margin: 0;
+		// Override the core `overflow: auto` so the code is not a block
+		// formatting context: a sibling float can then intrude and the first
+		// line(s) wrap around it. Content wraps ( pre-wrap + overflow-wrap ) so
+		// no horizontal scroll is needed.
+		overflow: visible;
+		background-color: transparent;
+		color: inherit;
+		line-height: inherit;
+		white-space: pre-wrap;
+		overflow-wrap: anywhere;
+	}
+
+	// Prevent double borders with nested code blocks.
+	> pre code,
+	> code code {
+		padding: 0;
+		border: 0;
+		border-radius: 0;
+		background-color: transparent;
+		color: inherit;
+		font-size: inherit;
+	}
+
+	// The float and margins flip with the page direction (CSSJanus),
+	// so the button sits at the top-left in RTL while the code itself stays LTR.
+	> .ubuntu-code-block-copy {
+		float: right;
+		// Overhang the corner and leave a gap before the wrapped code.
+		margin: -1em -0.9em 0 @spacing-50;
+		box-sizing: border-box;
+		padding: 5px 7px;
+		border: 1px solid @border-color-muted;
+		border-radius: 2px;
+		background: @background-color-base;
+		color: @color-progressive;
+		.user-select( none );
+
+		&:hover {
+			cursor: pointer;
+			color: @color-progressive--hover;
+			background: @background-color-interactive-subtle;
+			border-color: @border-color-progressive--hover;
+		}
+
+		&:active {
+			color: @color-progressive--active;
+			background: @background-color-interactive;
+			border-color: @border-color-progressive--active;
+		}
+	}
+}
+
+.ubuntu-code-block-copy-status {
+	.mixin-screen-reader-text();
+}

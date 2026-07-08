@@ -8,17 +8,27 @@ const languageButton = require( './languageButton.js' ),
 	watchstar = require( './watchstar.js' ).init,
 	setupIntersectionObservers = require( './setupIntersectionObservers.js' ),
 	menuTabs = require( './menuTabs.js' ),
+	codeBlock = require( './codeBlock.js' ),
 	userPreferences = require( './userPreferences.js' ),
 	themeToggle = require( './themeToggle.js' ),
-	{ isNightModeGadgetEnabled, disableNightModeForGadget, alterExclusionMessage, removeBetaNotice } = require( './disableNightModeIfGadget.js' ),
-	teleportTarget = /** @type {HTMLElement} */require( /** @type {string} */ ( 'mediawiki.page.ready' ) ).teleportTarget;
+	{
+		isNightModeGadgetEnabled,
+		disableNightModeForGadget,
+		alterExclusionMessage,
+		removeBetaNotice
+	} = require( './disableNightModeIfGadget.js' ),
+	teleportTarget = /** @type {HTMLElement} */ require(
+		/** @type {string} */ ( 'mediawiki.page.ready' )
+	).teleportTarget;
 
 /**
  * Marks the main menu item matching the current page as active.
  */
 function markActiveMainMenuItem() {
 	const currentHref = window.location.href;
-	const menuItems = document.querySelectorAll( '#mw-panel .mw-list-item a, #vector-main-menu-pinned-container .mw-list-item a' );
+	const menuItems = document.querySelectorAll(
+		'#mw-panel .mw-list-item a, #vector-main-menu-pinned-container .mw-list-item a'
+	);
 	menuItems.forEach( ( link ) => {
 		if ( link.href === currentHref ) {
 			link.closest( '.mw-list-item' ).classList.add( 'mw-list-item-active' );
@@ -68,7 +78,9 @@ function main( window ) {
 	// Initialize the search toggle for the main header only. The sticky header
 	// toggle is initialized after Codex search loads.
 	/** @type {HTMLElement|null} */
-	const searchToggleElement = document.querySelector( '.mw-header .search-toggle' );
+	const searchToggleElement = document.querySelector(
+		'.mw-header .search-toggle'
+	);
 	if ( searchToggleElement ) {
 		searchToggle( searchToggleElement );
 	}
@@ -82,7 +94,11 @@ function main( window ) {
 	if ( document.querySelector( '.theme-toggle' ) ) {
 		mw.loader.using( 'skins.ubuntu.clientPreferences' ).then( () => {
 			const clientPreferenceConfig = require( './clientPreferences.json' );
-			if ( document.documentElement.classList.contains( 'vector-feature-night-mode-disabled' ) ) {
+			if (
+				document.documentElement.classList.contains(
+					'vector-feature-night-mode-disabled'
+				)
+			) {
 				// @ts-ignore issues relating to delete operator are not relevant here.
 				delete clientPreferenceConfig[ 'skin-theme' ];
 			}
@@ -101,6 +117,7 @@ function main( window ) {
 	// tab menu to a dropdown.
 	menuTabs();
 	tables();
+	codeBlock.init();
 }
 
 /**
@@ -126,14 +143,23 @@ function init( window ) {
 			window.performance.timing &&
 			window.performance.timing.navigationStart
 		) {
-			mw.track( 'timing.Vector.ready', now - window.performance.timing.navigationStart ); // milliseconds
-			mw.track( 'stats.mediawiki_Vector_ready_seconds', now - window.performance.timing.navigationStart ); // milliseconds
+			mw.track(
+				'timing.Vector.ready',
+				now - window.performance.timing.navigationStart
+			); // milliseconds
+			mw.track(
+				'stats.mediawiki_Vector_ready_seconds',
+				now - window.performance.timing.navigationStart
+			); // milliseconds
 		}
 	} );
 }
 
 init( window );
-if ( document.readyState === 'interactive' || document.readyState === 'complete' ) {
+if (
+	document.readyState === 'interactive' ||
+  	document.readyState === 'complete'
+) {
 	main( window );
 } else {
 	// This is needed when document.readyState === 'loading'.
