@@ -483,6 +483,11 @@ div.ubuntu-template-meta-related-articles>ul>li {
 	align-items: start !important;
 }
 
+/* Vertically center the hamburger menu button within the header */
+.vector-header-start .vector-main-menu-landmark {
+	align-self: center;
+}
+
 .vector-header-start .vector-logo {
 	align-items: stretch !important;
 	height: 50px !important;
