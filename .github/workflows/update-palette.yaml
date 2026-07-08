@@ -127,9 +127,9 @@ jobs:
         with:
           working-directory: resources/skins.ubuntu.styles
           fail-on-diff: "false"
-          # Ignore the auto-updated date stamp so the workflow doesn't open
-          # a PR on every run when Vanilla itself hasn't changed.
-          regexp-to-ignore: "Generated:\\|Ref:"
+          # Ignore the auto-updated date stamp and ref so the workflow doesn't
+          # open a PR on every run when Vanilla itself hasn't changed.
+          regexp-to-ignore: "Generated: --ignore-matching-lines Ref:"
 
       - name: Apply label to PR
         if: steps.palette-diff.outputs.diff == 'true' && github.event_name == 'pull_request'
