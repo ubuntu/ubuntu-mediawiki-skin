@@ -1,10 +1,16 @@
 .mw-header {
 	display: grid;
-	grid-template-columns: auto 1fr auto;
+	grid-template-columns: auto 0 auto;
 	align-items: center;
 	padding-top: 8px;
 	padding-bottom: 8px;
-	gap: @spacing-100;
+	column-gap: 0;
+	row-gap: @spacing-100;
+
+	@media ( min-width: @min-width-breakpoint-desktop ) {
+		grid-template-columns: auto 1fr auto;
+		column-gap: @spacing-100;
+	}
 
 	.vector-header-start {
 		display: flex;
@@ -21,9 +27,13 @@
 	}
 
 	.vector-header-search {
-		display: flex;
+		display: none;
 		align-items: center;
 		justify-content: left;
+
+		@media ( min-width: @min-width-breakpoint-desktop ) {
+			display: flex;
+		}
 	}
 
 	.vector-search-box {
@@ -33,6 +43,8 @@
 	.vector-header-end {
 		display: flex;
 		align-items: center;
+		grid-column: 3;
+		justify-self: end;
 	}
 
 	.search-toggle {
@@ -72,6 +84,10 @@
 			.vector-header-end,
 			.search-toggle {
 				display: none;
+			}
+
+			.vector-header-search {
+				display: flex;
 			}
 
 			.vector-typeahead-search-container {
