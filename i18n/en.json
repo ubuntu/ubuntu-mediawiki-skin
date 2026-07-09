@@ -95,5 +95,6 @@
 	"ubuntu-skin-button-copied": "Copied!",
 	"ubuntu-skin-button-copy-captcha-command": "Copy terminal command for CAPTCHA",
 	"ubuntu-specialversion-name": "Ubuntu",
-	"ubuntu-skin-desc": "Ubuntu skin for MediaWiki, based on Vector 2022."
+	"ubuntu-skin-desc": "Ubuntu skin for MediaWiki, based on Vector 2022.",
+	"ubuntu-manage-trackers-button-label": "Manage your tracker settings"
 }

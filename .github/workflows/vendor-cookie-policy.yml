@@ -1,0 +1,124 @@
+name: Update cookie-policy vendor files
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "package-lock.json"
+  pull_request:
+    paths:
+      - "package-lock.json"
+      - ".github/workflows/vendor-cookie-policy.yml"
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: "Dry run: run the workflow but skip creating a PR"
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  vendor:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write # checkout repo + push the bot PR branch
+      pull-requests: write # open / update the bot PR
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 26
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Copy and scope cookie-policy vendor files
+        run: |
+          # Copy JS, then:
+          #  - rewrite the top-level `var cpNs =` to `window.cpNs =` so the
+          #    build can be require()'d without indirect eval (CSP-safe), and
+          #  - strip the sourceMappingURL comment since the .map isn't vendored.
+          cp node_modules/@canonical/cookie-policy/build/js/cookie-policy.js \
+             resources/skins.ubuntu.cookieConsent/vendor/cookie-policy.js
+          sed -i '1s/^var cpNs=/window.cpNs=/' \
+             resources/skins.ubuntu.cookieConsent/vendor/cookie-policy.js
+          sed -i '/^\/\/# sourceMappingURL=/d' \
+             resources/skins.ubuntu.cookieConsent/vendor/cookie-policy.js
+
+          # Copy CSS and scope all selectors to .cookie-policy so
+          # --vf-color-* variables and .is-dark/.is-light/.is-paper
+          # rules don't leak outside the cookie banner.
+          cp node_modules/@canonical/cookie-policy/build/css/cookie-policy.css \
+             resources/skins.ubuntu.cookieConsent/vendor/cookie-policy.css
+          python3 -c "
+          import re
+          with open('resources/skins.ubuntu.cookieConsent/vendor/cookie-policy.css') as f:
+              css = f.read()
+          # Scope :root to .cookie-policy
+          css = css.replace(':root,', '.cookie-policy,')
+          css = re.sub(r':root\{', '.cookie-policy{', css)
+          # Strip the sourceMappingURL comment since the .map isn't vendored.
+          css = re.sub(r'/\*# sourceMappingURL=[^*]*\*/', '', css)
+          # Scope .is-dark/.is-light/.is-paper to .cookie-policy.is-dark etc.
+          for theme in ['dark', 'light', 'paper']:
+              # .is-dark .cookie-policy X -> .cookie-policy.is-dark X
+              css = re.sub(
+                  r'\.is-' + theme + r'\s+\.cookie-policy',
+                  '.cookie-policy.is-' + theme,
+                  css
+              )
+              # Remaining .is-dark -> .cookie-policy.is-dark
+              css = re.sub(
+                  r'(?<!cookie-policy)\.is-' + theme + r'(?=\s|\.|,|\[|\{)',
+                  '.cookie-policy.is-' + theme,
+                  css
+              )
+          with open('resources/skins.ubuntu.cookieConsent/vendor/cookie-policy.css', 'w') as f:
+              f.write(css)
+          "
+
+      - name: Upload vendor files as artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: cookie-policy-vendor
+          path: resources/skins.ubuntu.cookieConsent/vendor/
+
+      - name: Check for vendor file changes
+        id: diff
+        uses: canonical/desktop-engineering/gh-actions/common/has-diff@v2
+        with:
+          working-directory: resources/skins.ubuntu.cookieConsent/vendor/
+          fail-on-diff: "false"
+
+      - name: Create pull request
+        id: create-pr
+        if: >-
+          steps.diff.outputs.diff == 'true' &&
+          github.event_name != 'pull_request' &&
+          inputs.dry-run != true
+        uses: peter-evans/create-pull-request@v8
+        with:
+          commit-message: "deps(@canonical/cookie-policy): update vendor files"
+          title: "deps(@canonical/cookie-policy): update vendor files"
+          body: |
+            Auto-generated update of vendored `@canonical/cookie-policy`.
+
+            **Triggered by:** ${{ github.event_name }} – [run ${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+
+            Please verify the vendor files look correct before merging.
+          branch: bot/update-cookie-policy-vendor
+          labels: dependencies
+          delete-branch: true
+          sign-commits: true
+
+      - name: Create summary
+        if: always()
+        run: |
+          echo "# Summary" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Vendor file changes detected: ${{ steps.diff.outputs.diff }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "Pull request: ${{ steps.create-pr.outputs.pull-request-url || 'N/A' }}" >> "$GITHUB_STEP_SUMMARY"

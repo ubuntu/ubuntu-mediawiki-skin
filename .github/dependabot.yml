@@ -31,3 +31,13 @@ updates:
       php-parallel-lint:
         patterns:
           - "php-parallel-lint/*"
+
+  ## npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "thursday"
+      time: "09:00"
+    commit-message:
+      prefix: "deps(npm)"
