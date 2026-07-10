@@ -13,7 +13,7 @@ name: Update Vanilla Framework palette
 #     -o .github/palette-tooling/vendor/_settings_colors.scss
 #   sass .github/palette-tooling/palette-shim.scss --load-path=.github/palette-tooling/vendor --no-source-map --style=expanded \
 #     | sed -n '/^:root {/,/^}/p' \
-#     > resources/skins.ubuntu.styles/ubuntu-palette.less
+#     > resources/skins.ubuntu.styles/ubuntu/ubuntu-palette.less
 #
 # ── Upstream changes ───────────────────────────────────────────────────────────
 # • New upstream variables  → silently absent until palette-shim.scss is updated
@@ -38,7 +38,7 @@ on:
     - cron: "0 9 * * 1" # Every Monday at 09:00 UTC
   pull_request:
     paths-ignore:
-      - resources/skins.ubuntu.styles/ubuntu-palette.less
+      - resources/skins.ubuntu.styles/ubuntu/ubuntu-palette.less
 
 jobs:
   update-palette:
@@ -113,13 +113,13 @@ jobs:
 
           EOF
             cat /tmp/palette-root-block.css
-          } > resources/skins.ubuntu.styles/ubuntu-palette.less
+          } > resources/skins.ubuntu.styles/ubuntu/ubuntu-palette.less
 
       - name: Upload generated palette as artifact
         uses: actions/upload-artifact@v7
         with:
           name: ubuntu-palette
-          path: resources/skins.ubuntu.styles/ubuntu-palette.less
+          path: resources/skins.ubuntu.styles/ubuntu/ubuntu-palette.less
 
       - name: Check for palette changes
         id: palette-diff
@@ -157,7 +157,7 @@ jobs:
             with Dart Sass, which resolves all computed color values
             (`adjust-color`, `rgba`, `color.scale`, map lookups, etc.).
           add-paths: |
-            resources/skins.ubuntu.styles/ubuntu-palette.less
+            resources/skins.ubuntu.styles/ubuntu/ubuntu-palette.less
           commit-message: "deps(ubuntu-palette.less): sync Vanilla Framework color palette"
           delete-branch: true
           sign-commits: true

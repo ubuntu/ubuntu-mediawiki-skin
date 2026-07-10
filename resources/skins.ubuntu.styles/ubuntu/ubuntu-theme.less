@@ -1,0 +1,38 @@
+/* --- THEME-SPECIFIC OVERRIDES --- */
+
+/* Mixin: dark theme CSS custom properties */
+.ubuntu-dark-theme-vars() {
+  --background-color-base: #131416;
+  --background-color-neutral-subtle: #131416;
+  --ubuntu-menu-text-color: #aea79f;
+}
+
+/* Mixin: dark theme body overrides.
+ * The actual declarations live with their components; this mixin just
+ * aggregates each component's dark-mode mixin. */
+.ubuntu-dark-theme-body-overrides() {
+  .ubuntu-templates-dark();
+  .ubuntu-header-dark();
+}
+
+@media screen {
+  /* Manual Night Theme */
+  html.skin-theme-clientpref-night {
+    .ubuntu-dark-theme-vars();
+  }
+
+  html.skin-theme-clientpref-night body.skin-ubuntu {
+    .ubuntu-dark-theme-body-overrides();
+  }
+
+  /* OS-based Dark Theme */
+  @media (prefers-color-scheme: dark) {
+    html.skin-theme-clientpref-os {
+      .ubuntu-dark-theme-vars();
+    }
+
+    html.skin-theme-clientpref-os body.skin-ubuntu {
+      .ubuntu-dark-theme-body-overrides();
+    }
+  }
+}
