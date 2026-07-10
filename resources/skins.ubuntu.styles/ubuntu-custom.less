@@ -1,0 +1,781 @@
+/* Load Ubuntu font */
+.mw-body,
+.mw-body-content,
+.mw-headline,
+.mw-heading,
+.mw-heading1,
+.mw-heading2,
+.mw-heading3,
+.mw-label,
+.mw-input,
+.mw-allpages-table-form,
+.mw-allpages-nav,
+.mw-page-title-main,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Ubuntu Sans", sans-serif !important;
+}
+
+/* Remove footer elements */
+#footer-places-privacy,
+#footer-places-about,
+#footer-places-disclaimers {
+  display: none;
+}
+
+/* NOTE: Some CSS below is partially modelled on the Arch wiki */
+/* Source: https://wiki.archlinux.org/title/MediaWiki:Common.css */
+
+/* Admonition templates */
+:root {
+  --ubuntu-menu-text-color: #646464;
+
+  --ubuntu-template-note-border-color: #1a4d80;
+
+  --ubuntu-template-warning-border-color: #cc7900;
+
+  --ubuntu-template-tip-border-color: #0e8420;
+
+  --ubuntu-template-doccan-border-color: #0e8420;
+
+  --ubuntu-template-info-border-color: #1a4d80;
+
+  --ubuntu-template-danger-border-color: #c7162b;
+
+  --ubuntu-template-message-border-color: #d7dfe3;
+}
+
+div.ubuntu-template-box {
+  position: relative;
+  padding: calc(0.5rem - 1px) 1rem calc(0.5rem - 1px) 3rem;
+  border: 1.5px solid
+    var(--ubuntu-template-box-border-color, rgba(0, 0, 0, 0.2));
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+  overflow: hidden;
+}
+
+/* Left accent bar */
+div.ubuntu-template-box::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  bottom: -1px;
+  width: 0.1875rem;
+  z-index: 1;
+}
+
+/* Alignment of icon and text */
+
+div.ubuntu-template-box > p {
+  margin: 0;
+}
+
+div.ubuntu-template-box::after {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: calc(0.5rem - 1px);
+  width: 1rem;
+  height: 1.5rem;
+  height: 1lh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1rem;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: 1rem;
+  mask-size: 1rem;
+}
+
+/* Accent bar colour per type */
+div.ubuntu-template-box.ubuntu-template-box-note::before {
+  background-color: var(--ubuntu-template-note-border-color);
+}
+
+div.ubuntu-template-box.ubuntu-template-box-warning::before {
+  background-color: var(--ubuntu-template-warning-border-color);
+}
+
+div.ubuntu-template-box.ubuntu-template-box-tip::before {
+  background-color: var(--ubuntu-template-tip-border-color);
+}
+
+div.ubuntu-template-box.ubuntu-template-box-doccan::before {
+  background-color: var(--ubuntu-template-doccan-border-color);
+}
+
+div.ubuntu-template-box.ubuntu-template-box-info::before {
+  background-color: var(--ubuntu-template-info-border-color);
+}
+
+div.ubuntu-template-box.ubuntu-template-box-danger::before {
+  background-color: var(--ubuntu-template-danger-border-color);
+}
+
+/* Icons masked so they tint to the accent colour */
+div.ubuntu-template-box.ubuntu-template-box-note::after,
+div.ubuntu-template-box.ubuntu-template-box-info::after {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 1a7 7 0 110 14A7 7 0 018 1zm0 1.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM8.75 7v5.02h-1.5V7h1.5zM8.5 3.944a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-1a.5.5 0 01-.5-.5v-1a.5.5 0 01.5-.5h1z' fill='%23000' fill-rule='nonzero'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 1a7 7 0 110 14A7 7 0 018 1zm0 1.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM8.75 7v5.02h-1.5V7h1.5zM8.5 3.944a.5.5 0 01.5.5v1a.5.5 0 01-.5.5h-1a.5.5 0 01-.5-.5v-1a.5.5 0 01.5-.5h1z' fill='%23000' fill-rule='nonzero'/%3E%3C/svg%3E");
+}
+
+div.ubuntu-template-box.ubuntu-template-box-tip::after {
+  -webkit-mask-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0nMTYnIGhlaWdodD0nMTYnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHBhdGggZD0nTTggMWE1IDUgMCAwMTMuMDAxIDlMMTEgMTJhMyAzIDAgMDEtNiAwdi0yYTUgNSAwIDAxMy05em0xLjM3IDExLjYxMUg2LjYzYTEuNSAxLjUgMCAwMDIuNzQgMHpNOCAyLjVhMy41IDMuNSAwIDAwLTIuMSA2LjMgMS41IDEuNSAwIDAxLjU5MiAxLjA0NEw2LjUgMTB2MS4xMWgzbC4wMDEtMS4xMTFBMS41IDEuNSAwIDAxMTAuMSA4LjggMy41IDMuNSAwIDAwOCAyLjV6TTYuMzkxIDYuNDNMOCA3LjI2NWwxLjYyMy0uODI3LjY4MSAxLjMzNy0yLjMxIDEuMTc3LTIuMjkyLTEuMTg5LjY5LTEuMzMxeicgZmlsbD0nIzAwMCcgIGZpbGwtcnVsZT0nbm9uemVybycvPjwvc3ZnPg==");
+  mask-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0nMTYnIGhlaWdodD0nMTYnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHBhdGggZD0nTTggMWE1IDUgMCAwMTMuMDAxIDlMMTEgMTJhMyAzIDAgMDEtNiAwdi0yYTUgNSAwIDAxMy05em0xLjM3IDExLjYxMUg2LjYzYTEuNSAxLjUgMCAwMDIuNzQgMHpNOCAyLjVhMy41IDMuNSAwIDAwLTIuMSA2LjMgMS41IDEuNSAwIDAxLjU5MiAxLjA0NEw2LjUgMTB2MS4xMWgzbC4wMDEtMS4xMTFBMS41IDEuNSAwIDAxMTAuMSA4LjggMy41IDMuNSAwIDAwOCAyLjV6TTYuMzkxIDYuNDNMOCA3LjI2NWwxLjYyMy0uODI3LjY4MSAxLjMzNy0yLjMxIDEuMTc3LTIuMjkyLTEuMTg5LjY5LTEuMzMxeicgZmlsbD0nIzAwMCcgIGZpbGwtcnVsZT0nbm9uemVybycvPjwvc3ZnPg==");
+}
+
+div.ubuntu-template-box.ubuntu-template-box-doccan::after {
+  -webkit-mask-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0nMTYnIGhlaWdodD0nMTYnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHBhdGggZD0nTTggLjQ5NmwyLjA1MyAxLjg2MyAyLjc3LS4xMDguMzc2IDIuNzQ3IDIuMTkxIDEuNjk5LTEuNDc4IDIuMzQ1LjU4NyAyLjcxLTIuNjQuODQ3LTEuMjkyIDIuNDUzTDggMTQuMDAzbC0yLjU2NyAxLjA0OS0xLjI5Mi0yLjQ1My0yLjY0LS44NDcuNTg3LTIuNzFMLjYxIDYuNjk3IDIuOCA0Ljk5OGwuMzc1LTIuNzQ3IDIuNzcuMTA4TDggLjQ5NnpNOCAyLjUyTDYuNSAzLjg4MWwtMi4wMjItLjA3OC0uMjc0IDIuMDA1LTEuNjAxIDEuMjQgMS4wOCAxLjcxMy0uNDI4IDEuOTc4IDEuOTI4LjYxOS45NDMgMS43OUw4IDEyLjM4M2wxLjg3My43NjUuOTQ0LTEuNzkgMS45MjctLjYxOS0uNDI4LTEuOTc4IDEuMDgtMS43MTMtMS42LTEuMjQtLjI3NS0yLjAwNS0yLjAyMi4wNzhMOCAyLjUyem0xLjg5OSAyLjgzNWwxLjIwNy44OS0zLjcyNyA1LjA2LTIuNjYtMi4zNTMuOTk0LTEuMTIzIDEuNDMxIDEuMjY1IDIuNzU1LTMuNzM5eicgZmlsbD0nIzAwMCcgIGZpbGwtcnVsZT0nbm9uemVybycvPjwvc3ZnPg==");
+  mask-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0nMTYnIGhlaWdodD0nMTYnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHBhdGggZD0nTTggLjQ5NmwyLjA1MyAxLjg2MyAyLjc3LS4xMDguMzc2IDIuNzQ3IDIuMTkxIDEuNjk5LTEuNDc4IDIuMzQ1LjU4NyAyLjcxLTIuNjQuODQ3LTEuMjkyIDIuNDUzTDggMTQuMDAzbC0yLjU2NyAxLjA0OS0xLjI5Mi0yLjQ1My0yLjY0LS44NDcuNTg3LTIuNzFMLjYxIDYuNjk3IDIuOCA0Ljk5OGwuMzc1LTIuNzQ3IDIuNzcuMTA4TDggLjQ5NnpNOCAyLjUyTDYuNSAzLjg4MWwtMi4wMjItLjA3OC0uMjc0IDIuMDA1LTEuNjAxIDEuMjQgMS4wOCAxLjcxMy0uNDI4IDEuOTc4IDEuOTI4LjYxOS45NDMgMS43OUw4IDEyLjM4M2wxLjg3My43NjUuOTQ0LTEuNzkgMS45MjctLjYxOS0uNDI4LTEuOTc4IDEuMDgtMS43MTMtMS42LTEuMjQtLjI3NS0yLjAwNS0yLjAyMi4wNzhMOCAyLjUyem0xLjg5OSAyLjgzNWwxLjIwNy44OS0zLjcyNyA1LjA2LTIuNjYtMi4zNTMuOTk0LTEuMTIzIDEuNDMxIDEuMjY1IDIuNzU1LTMuNzM5eicgZmlsbD0nIzAwMCcgIGZpbGwtcnVsZT0nbm9uemVybycvPjwvc3ZnPg==");
+}
+
+div.ubuntu-template-box.ubuntu-template-box-note::after,
+div.ubuntu-template-box.ubuntu-template-box-info::after {
+  background-color: var(--ubuntu-template-note-border-color);
+}
+
+div.ubuntu-template-box.ubuntu-template-box-info::after {
+  background-color: var(--ubuntu-template-info-border-color);
+}
+
+div.ubuntu-template-box.ubuntu-template-box-tip::after {
+  background-color: var(--ubuntu-template-tip-border-color);
+}
+
+div.ubuntu-template-box.ubuntu-template-box-doccan::after {
+  background-color: var(--ubuntu-template-doccan-border-color);
+}
+
+/* Multi-colour icons: used as background images to keep their colours */
+div.ubuntu-template-box.ubuntu-template-box-warning::after {
+  background-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0nMTYnIGhlaWdodD0nMTYnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHBhdGggZmlsbD0nI2NjNzkwMCcgZmlsbC1ydWxlPSdldmVub2RkJyBjbGlwLXJ1bGU9J2V2ZW5vZGQnIGQ9J005LjM0IDEuMmw1Ljg0MiAxMS42MjdBMS41IDEuNSAwIDAxMTMuODQyIDE1SDIuMTU4YTEuNSAxLjUgMCAwMS0xLjM0LTIuMTczTDYuNjYgMS4yYTEuNSAxLjUgMCAwMTIuNjggMHpNOC41IDExYS41LjUgMCAwMS40OTIuNDFMOSAxMS41djFhLjUuNSAwIDAxLS40MS40OTJMOC41IDEzaC0xYS41LjUgMCAwMS0uNDkyLS40MUw3IDEyLjV2LTFhLjUuNSAwIDAxLjQxLS40OTJMNy41IDExaDF6TTkgNXY0LjVIN1Y1aDJ6Jy8+PC9zdmc+");
+}
+
+div.ubuntu-template-box.ubuntu-template-box-danger::after {
+  background-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNicgaGVpZ2h0PScxNicgdmlld0JveD0nMCAwIDE2IDE2Jz48cGF0aCBmaWxsPScjYzcxNjJiJyBmaWxsLXJ1bGU9J2V2ZW5vZGQnIGNsaXAtcnVsZT0nZXZlbm9kZCcgZD0nTTEgOGE3IDcgMCAxIDEgMTQgMEE3IDcgMCAwIDEgMSA4TTkgOC41VjRIN3Y0LjV6bS0uMDA4IDEuOTFBLjUuNSAwIDAgMCA4LjUgMTBoLTFsLS4wOS4wMDhBLjUuNSAwIDAgMCA3IDEwLjV2MWwuMDA4LjA5QS41LjUgMCAwIDAgNy41IDEyaDFsLjA5LS4wMDhBLjUuNSAwIDAgMCA5IDExLjV2LTF6Jy8+PC9zdmc+");
+}
+
+/* --- LOGO WORDMARK COLOR LOGIC --- */
+
+/* Default / Manual Light Mode */
+.vector-header-container a.mw-logo .mw-logo-wordmark {
+  color: #ffffff !important;
+}
+
+/* Manual Dark Mode (Night preference) */
+html.skin-theme-clientpref-night
+  .vector-header-container
+  a.mw-logo
+  .mw-logo-wordmark {
+  color: #000000 !important;
+}
+
+/* OS Preference Dark Mode */
+@media (prefers-color-scheme: dark) {
+  html.skin-theme-clientpref-os
+    .vector-header-container
+    a.mw-logo
+    .mw-logo-wordmark {
+    color: #000000 !important;
+  }
+}
+
+/* --- THEME-SPECIFIC OVERRIDES --- */
+
+/* Mixin: dark theme CSS custom properties */
+.ubuntu-dark-theme-vars() {
+  --background-color-base: #131416;
+  --background-color-neutral-subtle: #131416;
+  --ubuntu-menu-text-color: #aea79f;
+}
+
+/* Mixin: dark theme body overrides */
+.ubuntu-dark-theme-body-overrides() {
+  & div.ubuntu-template-box {
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+
+  & div.ubuntu-template-message {
+    background-color: var(--ubuntu-template-message-background-color-dark);
+    border-color: var(--ubuntu-template-message-border-color-dark);
+  }
+
+  & .vector-dropdown-content {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+@media screen {
+  /* Manual Night Theme */
+  html.skin-theme-clientpref-night {
+    .ubuntu-dark-theme-vars();
+  }
+
+  html.skin-theme-clientpref-night body.skin-ubuntu {
+    .ubuntu-dark-theme-body-overrides();
+  }
+
+  /* OS-based Dark Theme */
+  @media (prefers-color-scheme: dark) {
+    html.skin-theme-clientpref-os {
+      .ubuntu-dark-theme-vars();
+    }
+
+    html.skin-theme-clientpref-os body.skin-ubuntu {
+      .ubuntu-dark-theme-body-overrides();
+    }
+  }
+}
+
+/* Status templates */
+
+div.ubuntu-template-message {
+  position: relative;
+  overflow: hidden;
+  min-height: 48px;
+  margin: 0.5em 0;
+  background-color: var(--ubuntu-template-message-background-color);
+  border: 1px solid var(--ubuntu-template-message-border-color);
+  padding-left: 74px;
+  padding-right: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+
+  & img {
+    background-color: inherit;
+  }
+}
+
+div.ubuntu-template-message > p > span[typeof="mw:File"] {
+  display: block;
+  position: absolute;
+  top: 0.5em;
+}
+
+div.ubuntu-template-message > p > span[typeof="mw:File"]:first-of-type {
+  left: 13px;
+}
+
+div.ubuntu-template-message > div {
+  font-size: 90%;
+}
+
+/* Related articles templates */
+
+div.ubuntu-template-meta-related-articles {
+  float: right;
+  clear: right;
+  width: 25%;
+  margin: 0 0 0.5em 0.5em;
+}
+
+div.ubuntu-template-meta-related-articles > p {
+  background: #333;
+  color: white;
+  padding: 0.2em;
+  border-bottom: 5px #08c solid;
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+div.ubuntu-template-meta-related-articles > ul {
+  list-style-type: none;
+  list-style-image: none;
+  margin: 0;
+  padding: 0.3em;
+}
+
+div.ubuntu-template-meta-related-articles > ul > li {
+  padding: 0.4em 0;
+  line-height: 1;
+}
+
+@media screen and (min-width: 721px) {
+  .client-darkmode div.ubuntu-template-meta-related-articles > p {
+    background: #ccc;
+    color: black;
+  }
+}
+
+/* Responsive Related Articles */
+
+@media screen and (max-width: 720px) {
+  div.ubuntu-template-meta-related-articles {
+    float: initial;
+    clear: initial;
+    width: initial;
+    border: 1px solid var(--border-color-base, #a2a9b1);
+    background-color: var(--background-color-neutral-subtle, #f8f9fa);
+    padding: 5px;
+    margin: 1em 0;
+    margin-top: 0;
+    clear: both;
+  }
+
+  div.ubuntu-template-meta-related-articles > p {
+    background: initial;
+    color: var(--text-color);
+    padding: 0;
+    border: none;
+    margin: 0;
+    text-align: left;
+    font-weight: normal;
+    display: inline;
+  }
+
+  div.ubuntu-template-meta-related-articles > p::after {
+    content: ":";
+  }
+
+  div.ubuntu-template-meta-related-articles > ul {
+    margin: 0;
+    padding: 0;
+    display: inline;
+  }
+
+  div.ubuntu-template-meta-related-articles > ul > li {
+    padding: 0;
+    line-height: initial;
+    display: inline;
+    white-space: nowrap;
+    padding: 0 0.5em;
+    border-left: 1px solid #a2a9b1;
+  }
+
+  div.ubuntu-template-meta-related-articles > ul > li:first-child {
+    padding-left: 0.25em;
+    border-left: 0;
+  }
+
+  div.ubuntu-template-meta-related-articles > ul > li a {
+    font-weight: normal !important;
+  }
+}
+
+/* Hardware table */
+@media (min-width: 721px) {
+  .ubuntu-table-laptop {
+    float: right;
+    margin-left: 1em;
+  }
+}
+
+/* Main Page columns */
+@media screen and (min-width: 721px) {
+  div.ubuntu-main-page-columns {
+    column-count: 2;
+  }
+
+  div.ubuntu-main-page-columns > * {
+    page-break-inside: avoid;
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+/* Syntax highlighting */
+#content .CodeMirror pre {
+  line-height: 1.5em;
+}
+
+#content pre.cm-mw-section-1,
+#content pre.cm-mw-section-2 {
+  line-height: 1.5em;
+  font-size: inherit;
+  font-weight: bold;
+}
+
+#content .cm-mw-pagename {
+  text-decoration: unset;
+}
+
+/* DarkMode Extension Workaround */
+@media screen {
+  html.client-darkmode {
+    background-color: var(--ubuntu-body-background-color, #f6f9fc);
+  }
+}
+
+@font-face {
+  font-family: "Ubuntu Sans";
+}
+
+/* Timeless Skin Fix */
+@media screen {
+  dd {
+    margin-left: 1.6em;
+  }
+}
+
+/* Dark grey background for the entire header */
+.vector-header-container {
+  background-color: #333;
+  gap: 0 !important;
+  --vector-icon-custom-color: #ffffff;
+  color: #ffffff;
+}
+
+.vector-header-container .cdx-button--weight-quiet:hover,
+.vector-header-container .cdx-button--fake-button--enabled:hover,
+.vector-header-container .vector-dropdown-label:hover,
+.vector-header-container input:hover + .cdx-button--weight-quiet {
+  --background-color-button-quiet-hover: transparent;
+  --background-color-interactive: transparent;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.vector-header-container a,
+.vector-header-container a:visited {
+  color: #ffffff !important;
+}
+
+.vector-sticky-header-container {
+  color: var(--color-base, #202122) !important;
+  --vector-icon-custom-color: var(--color-base, #202122);
+}
+
+/* Dropdown panels have their own backgrounds; reset inherited header white */
+.vector-dropdown-content .vector-dropdown-content .vector-menu-heading,
+.cdx-menu,
+.cdx-menu-item,
+.cdx-typeahead-search .cdx-menu-item__text,
+.vector-pinnable-header {
+  color: var(--color-base, #202122) !important;
+}
+
+/*Colour area around header container*/
+.vector-header {
+  background-color: #333 !important;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Ensure all header sections have consistent height and styling */
+.vector-header-start,
+.vector-header-end {
+  background-color: #333 !important;
+  min-height: 50px !important;
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  border: none !important;
+}
+
+/* Fix logo area for rectangular (tall) logo - reduced padding */
+.vector-header-start .vector-logo {
+  display: flex !important;
+  padding: 0 12px !important;
+}
+
+/* Align icon to top, text to bottom, matching ubuntu.com tagged-logo layout */
+.vector-header-start {
+  align-items: start !important;
+}
+
+/* Vertically center the hamburger menu button within the header */
+.vector-header-start .vector-main-menu-landmark {
+  align-self: center;
+}
+
+.vector-header-start .vector-logo {
+  align-items: stretch !important;
+  height: 50px !important;
+}
+
+.vector-header-start a.mw-logo {
+  align-items: flex-end !important;
+}
+
+/* Wiki title styles */
+.vector-header-start .mw-logo-wordmark {
+  font-size: 1.3rem !important;
+  font-weight: 300 !important;
+  line-height: 1rem !important;
+  margin-bottom: 0.25rem !important;
+  white-space: nowrap !important;
+}
+
+.vector-header-start .mw-logo {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.vector-header-start .mw-logo-container {
+  float: none;
+  max-width: none;
+}
+
+/* Style the logo image */
+.mw-logo-icon {
+  float: none;
+  max-height: 42px;
+  width: auto;
+  margin: 0;
+}
+
+/* Make ends of sticky header same colour as background */
+.vector-sticky-header-container {
+  background-color: var(--background-color-neutral-subtle) !important;
+}
+
+/* Username and dropdown text */
+.vector-dropdown-content a,
+.vector-user-menu .vector-menu-content a {
+  color: var(--ubuntu-menu-text-color) !important;
+}
+
+/* Page action tabs (Read, Edit, View history, etc.) use regular text color */
+.vector-menu-tabs .vector-menu-content a,
+.vector-menu-tabs .vector-menu-content-list a {
+  color: inherit !important;
+}
+
+/* Customize color of all icons*/
+:root {
+  --vector-icon-custom-color: #919191;
+  --vector-icon-hover-color: #cccccc;
+  /* Add hover color variable */
+}
+
+/* Personal and logout dropdown menu icons match menu text color */
+#p-personal,
+#p-user-menu-logout {
+  --vector-icon-custom-color: var(--ubuntu-menu-text-color);
+}
+
+/* Reduce padding around icons on hover */
+.vector-user-links .cdx-button--icon-only,
+#pt-watchlist-2 .cdx-button--icon-only {
+  padding: 4px !important;
+  min-width: auto !important;
+  min-height: auto !important;
+}
+
+/* Target the search toggle specifically */
+a.search-toggle.cdx-button--icon-only,
+a.search-toggle.cdx-button--icon-only:hover {
+  padding: 2px !important;
+  min-width: auto !important;
+  min-height: auto !important;
+  margin-left: 4px !important;
+  /* Adjust this value as needed */
+}
+
+/* Adjust the hover background size */
+.cdx-button--icon-only:hover,
+.cdx-button.cdx-button--fake-button--enabled:hover {
+  padding: 4px !important;
+}
+
+.vector-icon.mw-ui-icon-wikimedia-bell {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-tray {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-labFlask {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-language {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-sandbox {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-listBullet {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-close {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-ellipsis {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-heart {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-logIn {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-logOut {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-search {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-settings {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-menu {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-imageGallery {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-star {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-halfStar {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-unStar {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+/* Watch/unwatch star icons in page toolbar use regular text color */
+.vector-page-toolbar-container .vector-icon.mw-ui-icon-wikimedia-star,
+.vector-page-toolbar-container .vector-icon.mw-ui-icon-wikimedia-halfStar,
+.vector-page-toolbar-container .vector-icon.mw-ui-icon-wikimedia-unStar {
+  background: var(--color-base, #202122) !important;
+}
+
+.vector-icon.mw-ui-icon-wikimedia-expand {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-userAdd {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-userAvatar {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-userContributions {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-userGroup {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-userTalk {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-userTemporary {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-watchlist {
+  background: var(--vector-icon-custom-color, #919191);
+}
+
+/* This is needed to fix deviant behaviour of the search and watchlist icons */
+.cdx-button:enabled.cdx-button--weight-quiet:hover,
+.cdx-button.cdx-button--fake-button--enabled.cdx-button--weight-quiet:hover {
+  mix-blend-mode: normal !important;
+}
+
+.vector-icon.mw-ui-icon-wikimedia-speechBubbleAdd {
+  background: var(--vector-icon-custom-color, black);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-speechBubbles {
+  background: var(--vector-icon-custom-color, black);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-article {
+  background: var(--vector-icon-custom-color, black);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-history {
+  background: var(--vector-icon-custom-color, black);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-wikiText {
+  background: var(--vector-icon-custom-color, black);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-appearance {
+  background: var(--vector-icon-custom-color, black);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-edit {
+  background: var(--vector-icon-custom-color, black);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-editLock {
+  background: var(--vector-icon-custom-color, black);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-exitFullscreen {
+  background: var(--vector-icon-custom-color, black);
+}
+
+.vector-icon.mw-ui-icon-wikimedia-fullScreen {
+  background: var(--vector-icon-custom-color, black);
+}
+
+/* Make main menu hover text darker */
+.vector-main-menu a:hover {
+  color: #666 !important;
+}
+
+/* Style the search box */
+.vector-search-box-input {
+  background-color: #3d3d3d !important;
+  border-color: #4d4d4d !important;
+  color: #ffffff !important;
+  height: 32px !important;
+}
+
+.vector-search-box-vue {
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Remove duplicate search icon*/
+.cdx-button.vector-sticky-header-search-toggle {
+  display: none;
+}
+
+/* Fix color of dropdown icon in personal settings menu*/
+@supports (-webkit-mask-image: none) or (mask-image: none) {
+  .vector-user-menu-logged-in .vector-dropdown-label::after {
+    background-color: var(--vector-icon-custom-color);
+  }
+}
+
+/* Search input placeholder text and icon */
+#simpleSearch .cdx-text-input__input::placeholder {
+  color: #646464;
+}
+
+/* Ubuntu Mono for code elements */
+code,
+pre,
+kbd,
+.mw-code,
+.mw-highlight,
+.mw-highlight pre {
+  font-family: "Ubuntu Sans Mono", monospace;
+}
