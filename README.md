@@ -114,4 +114,4 @@ These are set in `skin.json` under `DefaultUserOptions` and apply to new users o
   - `ubuntu-header.less` — header, logo and search box styling
   - `ubuntu-icons.less` — icon colour rules
   - `ubuntu-fonts.css` — `@font-face` declarations for self-hosted fonts
-- `resources/skins.ubuntu.styles/ubuntu-palette.less` — auto-generated Vanilla Framework colour palette (CSS custom properties)
+- `resources/skins.ubuntu.styles/ubuntu/ubuntu-palette.less` — auto-generated Vanilla Framework colour palette (CSS custom properties)
