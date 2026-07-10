@@ -1,23 +1,22 @@
 name: Update Vanilla Framework palette
 
 # Syncs the Ubuntu MediaWiki skin's colour palette with the latest Vanilla
-# Framework release.  Compiles .github/palette-tooling/palette-shim.scss against the upstream
-# _settings_colors.scss, wraps the output into a .less file, and opens a PR
-# when the palette has changed.
+# Framework release.  Downloads the upstream Sass colour sources, generates a
+# throwaway shim on the fly that includes Vanilla's own vf-theme-*--colors
+# mixins, compiles it with Dart Sass, wraps the output into a .less file, and
+# opens a PR when the palette has changed.
 #
-# ── Local testing ──────────────────────────────────────────────────────────────
-# Requires: sass (npm install -g sass), curl
-#
-#   mkdir -p .github/palette-tooling/vendor
-#   curl -fsSL https://raw.githubusercontent.com/canonical/vanilla-framework/main/scss/_settings_colors.scss \
-#     -o .github/palette-tooling/vendor/_settings_colors.scss
-#   sass .github/palette-tooling/palette-shim.scss --load-path=.github/palette-tooling/vendor --no-source-map --style=expanded \
-#     | sed -n '/^:root {/,/^}/p' \
-#     > resources/skins.ubuntu.styles/ubuntu/ubuntu-palette.less
+# The generated palette reproduces Vanilla's native `--vf-color-*` custom
+# properties for the complete colour set — no hand-maintained variable list.
+# Each theme is exposed as a callable Less mixin (`.vf-theme-light-colors()`,
+# `.vf-theme-dark-colors()`, `.vf-theme-paper-colors()`) plus constant Ubuntu
+# branding (`.vf-static-colors()`).  These mixins produce no output on their own;
+# applying them (at the document root and/or on individual elements) is done
+# manually elsewhere in the skin's stylesheets, so this generated file stays
+# purely declarative.  New upstream colours flow through automatically.
 #
 # ── Upstream changes ───────────────────────────────────────────────────────────
-# • New upstream variables  → silently absent until palette-shim.scss is updated
-#                              (intentional — additions are reviewed before landing)
+# • New upstream colours    → picked up automatically on the next sync
 # • Removed / renamed vars  → sass compile error; this job fails before any PR is
 #                              created, making the breakage immediately visible
 
@@ -71,29 +70,66 @@ jobs:
           fi
           echo "VANILLA_REF=${INPUT_REF}" >> "$GITHUB_ENV"
 
-      - name: Download Vanilla Framework color settings
+      - name: Download Vanilla Framework colour sources
         run: |
-          echo "Fetching _settings_colors.scss @ ${VANILLA_REF}"
-          mkdir -p .github/palette-tooling/vendor
-          curl --fail --silent --show-error --location \
-            "https://raw.githubusercontent.com/canonical/vanilla-framework/${VANILLA_REF}/scss/_settings_colors.scss" \
-            --output .github/palette-tooling/vendor/_settings_colors.scss
+          mkdir -p /tmp/palette-tooling/vendor
+          for file in _settings_colors.scss _global_functions.scss; do
+            echo "Fetching ${file} @ ${VANILLA_REF}"
+            curl --fail --silent --show-error --location \
+              "https://raw.githubusercontent.com/canonical/vanilla-framework/${VANILLA_REF}/scss/${file}" \
+              --output "/tmp/palette-tooling/vendor/${file}"
+          done
           echo "OK"
+
+      - name: Generate dynamic palette shim
+        run: |
+          # Throwaway shim (never committed).  Each Vanilla theme's colour set is
+          # emitted under a placeholder class selector; a later sed rewrites those
+          # into parametric Less mixins (`.vf-theme-*-colors()`, `.vf-static-colors()`)
+          # that produce no output until called.
+          #
+          # Using Vanilla's own vf-theme-*--colors mixins keeps the emitted
+          # `--vf-color-*` custom properties in exact sync with upstream, for the
+          # full colour set.  _global_functions.scss supplies
+          # vf-contrast-text-color(), used by the button colours in those mixins.
+          cat > /tmp/palette-tooling/palette-shim.scss <<'SCSS'
+          @use 'sass:color';
+          @use 'sass:map';
+
+          @import 'global_functions';
+          @import 'settings_colors';
+
+          .vf-theme-light-colors { @include vf-theme-light--colors; }
+          .vf-theme-dark-colors  { @include vf-theme-dark--colors; }
+          .vf-theme-paper-colors { @include vf-theme-paper--colors; }
+
+          // Theme-independent colours (Ubuntu branding, and any future constants)
+          .vf-static-colors {
+            --vf-color-ubuntu: #{$color-ubuntu};
+            --vf-color-brand: #{$color-brand};
+            --vf-color-brand-dark: #{$color-brand-dark};
+            --vf-color-accent-light: #{$color-accent};
+            --vf-color-accent-dark: #{$color-accent-dark};
+            --vf-color-accent-background: #{$color-accent-background};
+          }
+          SCSS
 
       - name: Compile palette shim with Sass
         run: |
           mkdir -p resources/skins.ubuntu.styles
-          sass .github/palette-tooling/palette-shim.scss \
-            --load-path=.github/palette-tooling/vendor \
+          # Compile, then rewrite the placeholder class selectors into parametric
+          # Less mixins by appending "()" to each `.vf-*` selector.
+          sass /tmp/palette-tooling/palette-shim.scss \
+            --load-path=/tmp/palette-tooling/vendor \
             --no-source-map \
             --style=expanded \
-            --silence-deprecation=global-builtin \
-          | sed -n '/^:root {/,/^}/p' \
-          > /tmp/palette-root-block.css
+            --silence-deprecation=global-builtin,import,color-functions \
+          | sed -E 's/^\.(vf-[a-z-]+) \{/.\1() {/' \
+          > /tmp/palette-mixins.less
 
       - name: Wrap palette into .less file
         run: |
-          VANILLA_SOURCE="https://github.com/canilla/vanilla-framework/blob/main/scss/_settings_colors.scss"
+          VANILLA_SOURCE="https://github.com/canonical/vanilla-framework/blob/main/scss/_settings_colors.scss"
           GENERATED_DATE=$(date +%Y-%m-%d)
 
           {
@@ -107,12 +143,18 @@ jobs:
            * Source:    ${VANILLA_SOURCE}
            * Ref:       ${VANILLA_REF}
            * Generated: ${GENERATED_DATE}
+           *
+           * Exposes each Vanilla theme's colour set as a callable Less mixin
+           * (.vf-theme-{light,dark,paper}-colors()) plus constant Ubuntu branding
+           * (.vf-static-colors()).  These mixins produce no output on their own;
+           * applying them (at the document root and/or on individual elements) is
+           * done manually elsewhere in the skin's stylesheets.
            */
 
           /* stylelint-disable color-no-invalid-hex */
 
           EOF
-            cat /tmp/palette-root-block.css
+            cat /tmp/palette-mixins.less
           } > resources/skins.ubuntu.styles/ubuntu/ubuntu-palette.less
 
       - name: Upload generated palette as artifact
@@ -153,9 +195,11 @@ jobs:
             **Triggered by:** ${{ github.event_name }}
             **Vanilla ref:** `${{ inputs.vanilla_ref || 'latest stable' }}`
 
-            Changes were produced by compiling `.github/palette-tooling/palette-shim.scss`
-            with Dart Sass, which resolves all computed color values
-            (`adjust-color`, `rgba`, `color.scale`, map lookups, etc.).
+            Changes were produced by including Vanilla's own `vf-theme-*--colors`
+            mixins in a generated shim and compiling with Dart Sass, which
+            resolves all computed color values (`adjust-color`, `rgba`,
+            `color.scale`, map lookups, etc.) into static `--vf-color-*`
+            custom properties.
           add-paths: |
             resources/skins.ubuntu.styles/ubuntu/ubuntu-palette.less
           commit-message: "deps(ubuntu-palette.less): sync Vanilla Framework color palette"
