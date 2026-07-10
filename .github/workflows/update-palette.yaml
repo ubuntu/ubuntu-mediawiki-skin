@@ -180,6 +180,13 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Remove stale label from PR
+        if: steps.palette-diff.outputs.diff != 'true' && github.event_name == 'pull_request'
+        run: |
+          gh pr edit "${{ github.event.pull_request.number }}" --remove-label "colors out of sync"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Create or update pull request
         uses: peter-evans/create-pull-request@v8
         id: create-pr
