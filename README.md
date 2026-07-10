@@ -107,6 +107,11 @@ These are set in `skin.json` under `DefaultUserOptions` and apply to new users o
 
 - `resources/fonts/` — 4 Ubuntu Sans variable font files (latin + latin-ext, all weights and styles)
 - `resources/images/Tag-CoF-Orange-Digital.svg` — Ubuntu logo for the header
-- `resources/skins.ubuntu.styles/ubuntu-custom.css` — all custom CSS overrides
-- `resources/skins.ubuntu.styles/ubuntu-fonts.css` — `@font-face` declarations for self-hosted fonts
+- `resources/skins.ubuntu.styles/ubuntu/` — all custom Ubuntu style overrides, split into modules:
+  - `ubuntu-custom.less` — entry point (fonts, misc fixes) that imports the modules below
+  - `ubuntu-templates.less` — admonition/status/related-article templates
+  - `ubuntu-theme.less` — dark theme mixins and overrides
+  - `ubuntu-header.less` — header, logo and search box styling
+  - `ubuntu-icons.less` — icon colour rules
+  - `ubuntu-fonts.css` — `@font-face` declarations for self-hosted fonts
 - `resources/skins.ubuntu.styles/ubuntu-palette.less` — auto-generated Vanilla Framework colour palette (CSS custom properties)

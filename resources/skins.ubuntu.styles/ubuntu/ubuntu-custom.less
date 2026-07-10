@@ -1,0 +1,104 @@
+/* Load Ubuntu font */
+.mw-body,
+.mw-body-content,
+.mw-headline,
+.mw-heading,
+.mw-heading1,
+.mw-heading2,
+.mw-heading3,
+.mw-label,
+.mw-input,
+.mw-allpages-table-form,
+.mw-allpages-nav,
+.mw-page-title-main,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Ubuntu Sans", sans-serif !important;
+}
+
+/* Remove footer elements */
+#footer-places-privacy,
+#footer-places-about,
+#footer-places-disclaimers {
+  display: none;
+}
+
+:root {
+  --ubuntu-menu-text-color: #646464;
+}
+
+/* Hardware table */
+@media (min-width: 721px) {
+  .ubuntu-table-laptop {
+    float: right;
+    margin-left: 1em;
+  }
+}
+
+/* Main Page columns */
+@media screen and (min-width: 721px) {
+  div.ubuntu-main-page-columns {
+    column-count: 2;
+  }
+
+  div.ubuntu-main-page-columns > * {
+    page-break-inside: avoid;
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+/* Syntax highlighting */
+#content .CodeMirror pre {
+  line-height: 1.5em;
+}
+
+#content pre.cm-mw-section-1,
+#content pre.cm-mw-section-2 {
+  line-height: 1.5em;
+  font-size: inherit;
+  font-weight: bold;
+}
+
+#content .cm-mw-pagename {
+  text-decoration: unset;
+}
+
+/* DarkMode Extension Workaround */
+@media screen {
+  html.client-darkmode {
+    background-color: var(--ubuntu-body-background-color, #f6f9fc);
+  }
+}
+
+@font-face {
+  font-family: "Ubuntu Sans";
+}
+
+/* Timeless Skin Fix */
+@media screen {
+  dd {
+    margin-left: 1.6em;
+  }
+}
+
+/* Ubuntu Mono for code elements */
+code,
+pre,
+kbd,
+.mw-code,
+.mw-highlight,
+.mw-highlight pre {
+  font-family: "Ubuntu Sans Mono", monospace;
+}
+
+// Ubuntu-specific style modules
+@import "./ubuntu-templates.less";
+@import "./ubuntu-header.less";
+@import "./ubuntu-icons.less";
+// Imported last: its dark-theme scaffolding calls mixins defined above.
+@import "./ubuntu-theme.less";
