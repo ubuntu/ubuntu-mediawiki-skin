@@ -97,8 +97,45 @@ kbd,
 }
 
 // Ubuntu-specific style modules
+@import "./ubuntu-palette.less";
+@import "./ubuntu-theme.less";
 @import "./ubuntu-templates.less";
 @import "./ubuntu-header.less";
 @import "./ubuntu-icons.less";
-// Imported last: its dark-theme scaffolding calls mixins defined above.
-@import "./ubuntu-theme.less";
+
+/* Apply the Vanilla Framework palette.
+ * Light + static (branding) colours at the document root; the dark set is
+ * applied within the night/OS selectors below via .ubuntu-dark-theme-vars(). */
+:root {
+  .vf-codex-token-map-light();
+}
+
+/* Mixin: dark theme body overrides.
+ * The actual declarations live with their components; this mixin just
+ * aggregates each component's dark-mode mixin. */
+.ubuntu-dark-theme-body-overrides() {
+  .ubuntu-header-dark();
+}
+
+@media screen {
+
+  /* Manual Night Theme */
+  html.skin-theme-clientpref-night {
+    .vf-codex-token-map-dark();
+  }
+
+  html.skin-theme-clientpref-night body.skin-ubuntu {
+    .ubuntu-dark-theme-body-overrides();
+  }
+
+  /* OS-based Dark Theme */
+  @media (prefers-color-scheme: dark) {
+    html.skin-theme-clientpref-os {
+      .vf-codex-token-map-dark();
+    }
+
+    html.skin-theme-clientpref-os body.skin-ubuntu {
+      .ubuntu-dark-theme-body-overrides();
+    }
+  }
+}
