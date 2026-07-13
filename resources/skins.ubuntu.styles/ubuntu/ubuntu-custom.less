@@ -45,7 +45,7 @@ h6 {
     column-count: 2;
   }
 
-  div.ubuntu-main-page-columns > * {
+  div.ubuntu-main-page-columns>* {
     page-break-inside: avoid;
     display: inline-block;
     width: 100%;
@@ -110,13 +110,6 @@ kbd,
   .vf-codex-token-map-light();
 }
 
-/* Mixin: dark theme body overrides.
- * The actual declarations live with their components; this mixin just
- * aggregates each component's dark-mode mixin. */
-.ubuntu-dark-theme-body-overrides() {
-  .ubuntu-header-dark();
-}
-
 @media screen {
 
   /* Manual Night Theme */
@@ -124,18 +117,10 @@ kbd,
     .vf-codex-token-map-dark();
   }
 
-  html.skin-theme-clientpref-night body.skin-ubuntu {
-    .ubuntu-dark-theme-body-overrides();
-  }
-
   /* OS-based Dark Theme */
   @media (prefers-color-scheme: dark) {
     html.skin-theme-clientpref-os {
       .vf-codex-token-map-dark();
-    }
-
-    html.skin-theme-clientpref-os body.skin-ubuntu {
-      .ubuntu-dark-theme-body-overrides();
     }
   }
 }
