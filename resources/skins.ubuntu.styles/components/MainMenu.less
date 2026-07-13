@@ -23,4 +23,27 @@
 	#p-navigation .vector-menu-heading {
 		display: none;
 	}
+
+	// External link icon in sidebar, coloured to match the link text
+	.vector-menu-content-list a[href^="http"] {
+		display: inline-block;
+		padding-right: 1em;
+	}
+
+	.vector-menu-content-list a[href^="http"]::after {
+		content: "";
+		display: inline-block;
+		width: 0.857em;
+		height: 0.857em;
+		margin-left: 0.3em;
+		background-color: currentColor;
+		mask-image: url( './images/link-external-small-ltr-progressive.svg' );
+		mask-repeat: no-repeat;
+		mask-position: center;
+		mask-size: contain;
+		-webkit-mask-image: url( './images/link-external-small-ltr-progressive.svg' );
+		-webkit-mask-repeat: no-repeat;
+		-webkit-mask-position: center;
+		-webkit-mask-size: contain;
+	}
 }
