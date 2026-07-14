@@ -14,3 +14,14 @@
         color: var(--color-subtle) !important;
     }
 }
+
+// Non-button links should not change color on hover or active
+a:where(.new:not([role="button"])):hover,
+a:where(.new:not([role="button"])):active {
+    color: var(--color-destructive);
+}
+
+a:where(:not([role="button"])):hover,
+a:where(:not([role="button"])):active {
+    color: var(--color-progressive);
+}
