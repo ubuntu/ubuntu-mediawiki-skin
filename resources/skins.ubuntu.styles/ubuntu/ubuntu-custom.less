@@ -45,7 +45,7 @@ h6 {
     column-count: 2;
   }
 
-  div.ubuntu-main-page-columns > * {
+  div.ubuntu-main-page-columns>* {
     page-break-inside: avoid;
     display: inline-block;
     width: 100%;
@@ -97,8 +97,31 @@ kbd,
 }
 
 // Ubuntu-specific style modules
+@import "./ubuntu-palette.less";
+@import "./ubuntu-theme.less";
 @import "./ubuntu-templates.less";
 @import "./ubuntu-header.less";
 @import "./ubuntu-icons.less";
-// Imported last: its dark-theme scaffolding calls mixins defined above.
-@import "./ubuntu-theme.less";
+@import "./ubuntu-body.less";
+
+/* Apply the Vanilla Framework palette.
+ * Light + static (branding) colours at the document root; the dark set is
+ * applied within the night/OS selectors below via .ubuntu-dark-theme-vars(). */
+:root {
+  .vf-codex-token-map-light();
+}
+
+@media screen {
+
+  /* Manual Night Theme */
+  html.skin-theme-clientpref-night {
+    .vf-codex-token-map-dark();
+  }
+
+  /* OS-based Dark Theme */
+  @media (prefers-color-scheme: dark) {
+    html.skin-theme-clientpref-os {
+      .vf-codex-token-map-dark();
+    }
+  }
+}

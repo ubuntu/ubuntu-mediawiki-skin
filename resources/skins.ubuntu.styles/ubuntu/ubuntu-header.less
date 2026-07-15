@@ -6,62 +6,99 @@
 }
 
 /* Manual Dark Mode (Night preference) */
-html.skin-theme-clientpref-night
-  .vector-header-container
-  a.mw-logo
-  .mw-logo-wordmark {
+html.skin-theme-clientpref-night .vector-header-container a.mw-logo .mw-logo-wordmark {
   color: #000000 !important;
 }
 
 /* OS Preference Dark Mode */
 @media (prefers-color-scheme: dark) {
-  html.skin-theme-clientpref-os
-    .vector-header-container
-    a.mw-logo
-    .mw-logo-wordmark {
+  html.skin-theme-clientpref-os .vector-header-container a.mw-logo .mw-logo-wordmark {
     color: #000000 !important;
   }
 }
 
-/* Dark grey background for the entire header */
 .vector-header-container {
-  background-color: #333;
   gap: 0 !important;
-  --vector-icon-custom-color: #ffffff;
-  color: #ffffff;
 }
 
-.vector-header-container .cdx-button--weight-quiet:hover,
-.vector-header-container .cdx-button--fake-button--enabled:hover,
-.vector-header-container .vector-dropdown-label:hover,
-.vector-header-container input:hover + .cdx-button--weight-quiet {
-  --background-color-button-quiet-hover: transparent;
-  --background-color-interactive: transparent;
-  background-color: rgba(255, 255, 255, 0.15) !important;
+/* ----- Dark grey background for the entire header ----- */
+.vector-header,
+.vector-header-container {
+
+  // We still want to change links for the sticky header
+  &:not(.vector-sticky-header-container) {
+    .vf-codex-token-map-dark();
+    background-color: var(--vf-color-background-default) !important;
+  }
+
+  a,
+  a:visited {
+    color: var(--color-base) !important;
+  }
 }
 
-.vector-header-container a,
-.vector-header-container a:visited {
-  color: #ffffff !important;
+// Use different background color for dark theme
+@media screen {
+  html.skin-theme-clientpref-night {
+
+    .vector-header,
+    .vector-header-container:not(.vector-sticky-header-container) {
+      background-color: var(--vf-color-background-alt) !important;
+    }
+  }
 }
 
-.vector-sticky-header-container {
-  color: var(--color-base, #202122) !important;
-  --vector-icon-custom-color: var(--color-base, #202122);
+@media (prefers-color-scheme: dark) {
+  html.skin-theme-clientpref-os {
+
+    .vector-header,
+    .vector-header-container:not(.vector-sticky-header-container) {
+      background-color: var(--vf-color-background-alt) !important;
+    }
+  }
 }
 
-/* Dropdown panels have their own backgrounds; reset inherited header white */
-.vector-dropdown-content .vector-dropdown-content .vector-menu-heading,
-.cdx-menu,
-.cdx-menu-item,
-.cdx-typeahead-search .cdx-menu-item__text,
-.vector-pinnable-header {
-  color: var(--color-base, #202122) !important;
+/* Children that should follow the page theme, not the dark header.
+  Re-declare the token map so they override the dark tokens inherited
+  from .vector-header. Default = light, matching :root. */
+.vector-header-container .vector-dropdown-content,
+.vector-header-container .vector-search-box,
+.vector-header-container .vector-typeahead-search-container {
+  .vf-codex-token-map-light();
 }
 
-/*Colour area around header container*/
+@media screen {
+  html.skin-theme-clientpref-night {
+
+    .vector-header-container .vector-dropdown-content,
+    .vector-header-container .vector-search-box,
+    .vector-header-container .vector-typeahead-search-container {
+      .vf-codex-token-map-dark();
+    }
+
+    .vector-dropdown-content {
+      border: 1px solid var(--border-color-base);
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html.skin-theme-clientpref-os {
+
+    .vector-header-container .vector-dropdown-content,
+    .vector-header-container .vector-search-box,
+    .vector-header-container .vector-typeahead-search-container {
+      .vf-codex-token-map-dark();
+    }
+
+    .vector-dropdown-content {
+      border: 1px solid var(--border-color-base);
+    }
+  }
+}
+
+/*Header spacing*/
 .vector-header {
-  background-color: #333 !important;
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -69,7 +106,6 @@ html.skin-theme-clientpref-night
 /* Ensure all header sections have consistent height and styling */
 .vector-header-start,
 .vector-header-end {
-  background-color: #333 !important;
   min-height: 50px !important;
   display: flex !important;
   align-items: center !important;
@@ -131,29 +167,7 @@ html.skin-theme-clientpref-night
   margin: 0;
 }
 
-/* Make ends of sticky header same colour as background */
-.vector-sticky-header-container {
-  background-color: var(--background-color-neutral-subtle) !important;
-}
-
-/* Username and dropdown text */
-.vector-dropdown-content a,
-.vector-user-menu .vector-menu-content a {
-  color: var(--ubuntu-menu-text-color) !important;
-}
-
-/* Page action tabs (Read, Edit, View history, etc.) use regular text color */
-.vector-menu-tabs .vector-menu-content a,
-.vector-menu-tabs .vector-menu-content-list a {
-  color: inherit !important;
-}
-
-/* Make main menu hover text darker */
-.vector-main-menu a:hover {
-  color: #666 !important;
-}
-
-/* Style the search box */
+/* Style the legacy search box */
 .vector-search-box-input {
   background-color: #3d3d3d !important;
   border-color: #4d4d4d !important;
@@ -166,20 +180,7 @@ html.skin-theme-clientpref-night
   align-items: center !important;
 }
 
-/* Remove duplicate search icon*/
+/* Remove duplicate search icon in the sticky header*/
 .cdx-button.vector-sticky-header-search-toggle {
   display: none;
-}
-
-/* Search input placeholder text and icon */
-#simpleSearch .cdx-text-input__input::placeholder {
-  color: #646464;
-}
-
-/* Mixin: dark theme overrides for header components.
- * Called from ubuntu-theme.less within the night/OS theme selectors. */
-.ubuntu-header-dark() {
-  & .vector-dropdown-content {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
 }

@@ -1,38 +1,157 @@
 /* --- THEME-SPECIFIC OVERRIDES --- */
+// https://doc.wikimedia.org/codex/latest/design-tokens/color.html
 
-/* Mixin: dark theme CSS custom properties */
-.ubuntu-dark-theme-vars() {
-  --background-color-base: #131416;
-  --background-color-neutral-subtle: #131416;
-  --ubuntu-menu-text-color: #aea79f;
+/* Other colors */
+// MediaWiki generally expects solid colors, but VF uses a lot of transparency.
+.ubuntu-other-light-colors() {
+  // Background
+  --background-color-progressive: #0f6ed7; // color/foreground/primary/information/root
+  --background-color-progressive--hover: #0065cd; // color/foreground/primary/information/hover
+  --background-color-progressive--active: #0062ca; // color/foreground/primary/information/active
+
+  --background-color-progressive-subtle: #cedff6; // color/foreground/secondary/information/root
+  --background-color-progressive-subtle--hover: #c2d3e9; // color/foreground/secondary/information/hover
+  --background-color-progressive-subtle--active: #bbcce3; // color/foreground/secondary/information/active
+
+  --background-color-interactive: #dddddd; // color/foreground/secondary/root
+  --background-color-interactive--hover: #d1d1d1; // color/foreground/secondary/hover
+  --background-color-interactive--active: #cacaca; // color/foreground/secondary/active
+
+  --background-color-interactive-subtle: #dddddd; // color/foreground/secondary/root
+  --background-color-interactive-subtle--hover: #d1d1d1; // color/foreground/secondary/hover
+  --background-color-interactive-subtle--active: #cacaca; // color/foreground/secondary/active
+
+  // Text
+  --color-destructive: #d0192d; // color/foreground/primary/destructive/root
+  --color-destructive--hover: #c50024; // color/foreground/primary/destructive/hover
+  --color-destructive--active: #c20021; // color/foreground/primary/destructive/active
 }
 
-/* Mixin: dark theme body overrides.
- * The actual declarations live with their components; this mixin just
- * aggregates each component's dark-mode mixin. */
-.ubuntu-dark-theme-body-overrides() {
-  .ubuntu-templates-dark();
-  .ubuntu-header-dark();
+.ubuntu-other-dark-colors() {
+  // Background
+  --background-color-progressive: #368bf6; // color/foreground/primary/information/root
+  --background-color-progressive--hover: #1e78e2; // color/foreground/primary/information/hover
+  --background-color-progressive--active: #267ee8; // color/foreground/primary/information/active
+
+  --background-color-progressive-subtle: #133662; // color/foreground/secondary/information/root
+  --background-color-progressive-subtle--hover: #1a3d6a; // color/foreground/secondary/information/hover
+  --background-color-progressive-subtle--active: #204370; // color/foreground/secondary/information/active
+
+  --background-color-interactive: #363636; // color/foreground/secondary/root
+  --background-color-interactive--hover: #3d3d3d; // color/foreground/secondary/hover
+  --background-color-interactive--active: #424242; // color/foreground/secondary/active
+
+  --background-color-interactive-subtle: #363636; // color/foreground/secondary/root
+  --background-color-interactive-subtle--hover: #3d3d3d; // color/foreground/secondary/hover
+  --background-color-interactive-subtle--active: #424242; // color/foreground/secondary/active
+
+  // Text
+  --color-destructive: #f53e45; // color/foreground/primary/destructive/root
+  --color-destructive--hover: #db2a36; // color/foreground/primary/destructive/hover
+  --color-destructive--active: #e3333c; // color/foreground/primary/destructive/active
 }
 
-@media screen {
-  /* Manual Night Theme */
-  html.skin-theme-clientpref-night {
-    .ubuntu-dark-theme-vars();
-  }
+/* Map colors */
+.vf-codex-token-map() {
+  .vf-static-colors();
 
-  html.skin-theme-clientpref-night body.skin-ubuntu {
-    .ubuntu-dark-theme-body-overrides();
-  }
+  /* Background */
+  --background-color-base: var(--vf-color-background-default);
+  --background-color-neutral: var(--vf-color-background-neutral-default);
+  --background-color-neutral-subtle: var(--vf-color-background-code);
+  --background-color-inverted: (#fff - var(--vf-color-background-default));
 
-  /* OS-based Dark Theme */
-  @media (prefers-color-scheme: dark) {
-    html.skin-theme-clientpref-os {
-      .ubuntu-dark-theme-vars();
-    }
+  --background-color-progressive--focus: var(--vf-color-focus);
+  --background-color-destructive--focus: var(--vf-color-focus);
 
-    html.skin-theme-clientpref-os body.skin-ubuntu {
-      .ubuntu-dark-theme-body-overrides();
-    }
-  }
+  // -- Same color for destructive and error
+  --background-color-error: var(--color-destructive);
+  --background-color-error--hover: var(--color-destructive--hover);
+  --background-color-error--active: var(--color-destructive--active);
+
+  /* Text */
+  --color-base: var(--vf-color-text-default);
+  --color-subtle: var(--vf-color-text-muted);
+  --color-neutral: var(--vf-color-text-muted);
+  --color-disabled: var(--vf-color-text-inactive);
+
+  --color-visited: var(--vf-color-link-visited);
+  --color-visited--hover: var(--vf-color-link-visited);
+  --color-visited--active: var(--vf-color-link-visited);
+
+  --color-progressive: var(--background-color-progressive);
+  --color-progressive--hover: var(--background-color-progressive--hover);
+  --color-progressive--active: var(--background-color-progressive--active);
+  --color-progressive--focus: var(--vf-color-focus);
+
+  --color-link: var(--vf-color-link-default);
+  --color-link--hover: var(--vf-color-link-default);
+  --color-link--active: var(--vf-color-link-default);
+  --color-link--focus: var(--vf-color-focus);
+
+  --color-link--visited: var(--vf-color-link-visited);
+  --color-link--visited--hover: var(--vf-color-link-visited);
+  --color-link--visited--active: var(--vf-color-link-visited);
+
+  /* Border */
+  --border-color-base: var(--vf-color-border-default);
+  --border-color-emphasized: var(--vf-color-border-high-contrast);
+  --border-color-subtle: var(--vf-color-border-low-contrast);
+  --border-color-muted: var(--vf-color-border-neutral);
+
+  --border-color-disabled: var(--vf-color-border-low-contrast);
+
+  --border-color-progressive: var(--background-color-progressive);
+  --border-color-progressive--hover: var(--background-color-progressive--hover);
+  --border-color-progressive--active: var(--background-color-progressive--active);
+  --border-color-progressive--focus: var(--vf-color-focus);
+
+  --border-color-destructive: var(--color-destructive);
+  --border-color-destructive--hover: var(--color-destructive--hover);
+  --border-color-destructive--active: var(--color-destructive--active);
+  --border-color-destructive--focus: var(--vf-color-focus);
+
+  --border-color-error: var(--color-destructive);
+  --border-color-error--hover: var(--color-destructive--hover);
+  --border-color-error--active: var(--color-destructive--active);
+
+  --border-color-warning: var(--vf-color-border-caution);
+  --border-color-success: var(--vf-color-border-positive);
+  --border-color-notice: var(--vf-color-border-neutral);
+
+  --border-color-option-red: var(--color-destructive);
+
+  /* Box-shadow */
+  --box-shadow-color-progressive--active: var(--background-color-progressive--active);
+  --box-shadow-color-progressive--focus: var(--vf-color-focus);
+  --box-shadow-color-progressive-selected: var(--color-progressive);
+  --box-shadow-color-progressive-selected--hover: var(--color-progressive--hover);
+  --box-shadow-color-progressive-selected--active: var(--color-progressive--active);
+
+  --box-shadow-color-destructive--focus: var(--vf-color-focus);
+
+  /* Other */
+  --color-accent: var(--vf-color-accent);
+
+  --color-icon-error: var(--color-destructive);
+}
+
+.vf-codex-token-map-light() {
+  .vf-theme-light-colors();
+  .vf-codex-token-map();
+  .ubuntu-other-light-colors();
+}
+
+.vf-codex-token-map-dark() {
+  .vf-theme-dark-colors();
+  .vf-codex-token-map();
+  .ubuntu-other-dark-colors();
+
+  --mix-blend-mode-blend: screen;
+}
+
+.vf-codex-token-map-paper() {
+  .vf-theme-paper-colors();
+  .vf-codex-token-map();
+  .ubuntu-other-light-colors();
 }

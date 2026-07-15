@@ -3,26 +3,25 @@
 
 /* Admonition templates */
 :root {
-  --ubuntu-template-note-border-color: #1a4d80;
+  --ubuntu-template-note-border-color: var(--vf-color-border-information);
 
-  --ubuntu-template-warning-border-color: #cc7900;
+  --ubuntu-template-warning-border-color: var(--vf-color-border-caution);
 
-  --ubuntu-template-tip-border-color: #0e8420;
+  --ubuntu-template-tip-border-color: var(--vf-color-border-positive);
 
-  --ubuntu-template-doccan-border-color: #0e8420;
+  --ubuntu-template-doccan-border-color: var(--vf-color-border-positive);
 
-  --ubuntu-template-info-border-color: #1a4d80;
+  --ubuntu-template-info-border-color: var(--vf-color-border-information);
 
-  --ubuntu-template-danger-border-color: #c7162b;
+  --ubuntu-template-danger-border-color: var(--vf-color-border-negative);
 
-  --ubuntu-template-message-border-color: #d7dfe3;
+  --ubuntu-template-message-border-color: var(--vf-color-border-neutral);
 }
 
 div.ubuntu-template-box {
   position: relative;
   padding: calc(0.5rem - 1px) 1rem calc(0.5rem - 1px) 3rem;
-  border: 1.5px solid
-    var(--ubuntu-template-box-border-color, rgba(0, 0, 0, 0.2));
+  border: 1.5px solid var(--vf-color-border-default);
   margin-bottom: 1.5rem;
   margin-top: 0;
   overflow: hidden;
@@ -41,7 +40,7 @@ div.ubuntu-template-box::before {
 
 /* Alignment of icon and text */
 
-div.ubuntu-template-box > p {
+div.ubuntu-template-box>p {
   margin: 0;
 }
 
@@ -151,17 +150,17 @@ div.ubuntu-template-message {
   }
 }
 
-div.ubuntu-template-message > p > span[typeof="mw:File"] {
+div.ubuntu-template-message>p>span[typeof="mw:File"] {
   display: block;
   position: absolute;
   top: 0.5em;
 }
 
-div.ubuntu-template-message > p > span[typeof="mw:File"]:first-of-type {
+div.ubuntu-template-message>p>span[typeof="mw:File"]:first-of-type {
   left: 13px;
 }
 
-div.ubuntu-template-message > div {
+div.ubuntu-template-message>div {
   font-size: 90%;
 }
 
@@ -174,7 +173,7 @@ div.ubuntu-template-meta-related-articles {
   margin: 0 0 0.5em 0.5em;
 }
 
-div.ubuntu-template-meta-related-articles > p {
+div.ubuntu-template-meta-related-articles>p {
   background: #333;
   color: white;
   padding: 0.2em;
@@ -184,20 +183,20 @@ div.ubuntu-template-meta-related-articles > p {
   font-weight: bold;
 }
 
-div.ubuntu-template-meta-related-articles > ul {
+div.ubuntu-template-meta-related-articles>ul {
   list-style-type: none;
   list-style-image: none;
   margin: 0;
   padding: 0.3em;
 }
 
-div.ubuntu-template-meta-related-articles > ul > li {
+div.ubuntu-template-meta-related-articles>ul>li {
   padding: 0.4em 0;
   line-height: 1;
 }
 
 @media screen and (min-width: 721px) {
-  .client-darkmode div.ubuntu-template-meta-related-articles > p {
+  .client-darkmode div.ubuntu-template-meta-related-articles>p {
     background: #ccc;
     color: black;
   }
@@ -218,7 +217,7 @@ div.ubuntu-template-meta-related-articles > ul > li {
     clear: both;
   }
 
-  div.ubuntu-template-meta-related-articles > p {
+  div.ubuntu-template-meta-related-articles>p {
     background: initial;
     color: var(--text-color);
     padding: 0;
@@ -229,17 +228,17 @@ div.ubuntu-template-meta-related-articles > ul > li {
     display: inline;
   }
 
-  div.ubuntu-template-meta-related-articles > p::after {
+  div.ubuntu-template-meta-related-articles>p::after {
     content: ":";
   }
 
-  div.ubuntu-template-meta-related-articles > ul {
+  div.ubuntu-template-meta-related-articles>ul {
     margin: 0;
     padding: 0;
     display: inline;
   }
 
-  div.ubuntu-template-meta-related-articles > ul > li {
+  div.ubuntu-template-meta-related-articles>ul>li {
     padding: 0;
     line-height: initial;
     display: inline;
@@ -248,25 +247,12 @@ div.ubuntu-template-meta-related-articles > ul > li {
     border-left: 1px solid #a2a9b1;
   }
 
-  div.ubuntu-template-meta-related-articles > ul > li:first-child {
+  div.ubuntu-template-meta-related-articles>ul>li:first-child {
     padding-left: 0.25em;
     border-left: 0;
   }
 
-  div.ubuntu-template-meta-related-articles > ul > li a {
+  div.ubuntu-template-meta-related-articles>ul>li a {
     font-weight: normal !important;
-  }
-}
-
-/* Mixin: dark theme overrides for template components.
- * Called from ubuntu-theme.less within the night/OS theme selectors. */
-.ubuntu-templates-dark() {
-  & div.ubuntu-template-box {
-    border-color: rgba(255, 255, 255, 0.25);
-  }
-
-  & div.ubuntu-template-message {
-    background-color: var(--ubuntu-template-message-background-color-dark);
-    border-color: var(--ubuntu-template-message-border-color-dark);
   }
 }

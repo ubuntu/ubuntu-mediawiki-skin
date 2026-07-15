@@ -1,0 +1,27 @@
+/* Main body styling */
+
+/* Page action tabs (Read, Edit, View history, etc.) use regular text color */
+.vector-menu-tabs .vector-menu-content a,
+.vector-menu-tabs .vector-menu-content-list a {
+    color: inherit !important;
+}
+
+// Tools links should not be blue
+.vector-page-tools {
+
+    a,
+    a:visited {
+        color: var(--color-subtle) !important;
+    }
+}
+
+// Non-button links should not change color on hover or active
+a:where(.new:not([role="button"])):hover,
+a:where(.new:not([role="button"])):active {
+    color: var(--color-destructive);
+}
+
+a:where(:not([role="button"])):hover,
+a:where(:not([role="button"])):active {
+    color: var(--color-progressive);
+}
