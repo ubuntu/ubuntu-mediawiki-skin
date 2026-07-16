@@ -23,20 +23,7 @@ a:where( .new:not( [ role='button' ] ) ) {
 	}
 
 	a.external::after {
-		content: "";
-		display: inline-block;
-		width: 0.857em;
-		height: 0.857em;
-		margin-left: 0.3em;
-		background-color: currentColor;
-		mask-image: url( './images/link-external-small-ltr-progressive.svg' );
-		mask-repeat: no-repeat;
-		mask-position: center;
-		mask-size: contain;
-		-webkit-mask-image: url( './images/link-external-small-ltr-progressive.svg' );
-		-webkit-mask-repeat: no-repeat;
-		-webkit-mask-position: center;
-		-webkit-mask-size: contain;
+		.mixin-vector-external-link-icon();
 	}
 }
 /* stylelint-enable selector-max-specificity */
