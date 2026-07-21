@@ -5,15 +5,20 @@
   color: #ffffff !important;
 }
 
-/* Manual Dark Mode (Night preference) */
-html.skin-theme-clientpref-night .vector-header-container a.mw-logo .mw-logo-wordmark {
-  color: #000000 !important;
+/* Don't underline the wiki title on hover. */
+.vector-header-container a.mw-logo:hover {
+  text-decoration: none;
 }
 
-/* OS Preference Dark Mode */
+/* Keep the logo and wordmark the same color in all modes by overriding
+ * the .skin-invert filter that flips the wordmark from white to black in dark mode. */
+html.skin-theme-clientpref-night .vector-header-container .mw-logo-container.skin-invert {
+  filter: none !important;
+}
+
 @media (prefers-color-scheme: dark) {
-  html.skin-theme-clientpref-os .vector-header-container a.mw-logo .mw-logo-wordmark {
-    color: #000000 !important;
+  html.skin-theme-clientpref-os .vector-header-container .mw-logo-container.skin-invert {
+    filter: none !important;
   }
 }
 
