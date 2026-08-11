@@ -41,7 +41,7 @@ $wgLogos = [
 
 unset($wgFooterIcons['poweredby']);
 
-$wgUbuntuNightMode = [
+$wgUbuntuNightModeOptions = [
     'beta'      => false,
     'logged_in' => true,
     'logged_out' => true,
